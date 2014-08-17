@@ -1,0 +1,20 @@
+itemGroup.Miscellany=Miscellany
+
+item.redstonicBoots.name=Redstonic JetBoots
+item.redstonicBoots.documentation=Can step-up a single block, increases speed and gives double jump.
+item.sacredChalice.name=§6Sacred Chalice
+item.sacredChalice.documentation=Consumes cobblestone, receives water.
+item.manualBook.name=Miscellany Manual
+item.manualBook.documentation=Manual for the Raizunne's Miscellany.
+
+item.packagedFood.name=Packaged Food
+
+tile.foodPackager.name=Food Packager
+tile.foodPackager.documentation=Generate better food from poor food!
+
+tile.advBrew.name=Advanced Reactive Brewer
+
+
+tile.present.name=Present
+tile.present.documentation=Insert items and place this block for giving presents to your friends!
+

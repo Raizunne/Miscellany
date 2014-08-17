@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Miscellany",
+  "name": "miscellany",
+  "description": "Raizunne's Miscellany",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "raizunne.webs.com",
+  "updateUrl": "",
+  "authorList": ["Raizunne"],
+  "credits": "Every single of the devs involved in the making of Forge and FML",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
