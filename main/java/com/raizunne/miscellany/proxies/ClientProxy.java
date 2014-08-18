@@ -26,6 +26,7 @@ import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class ClientProxy extends CommonProxy
 {		
@@ -47,6 +48,7 @@ public class ClientProxy extends CommonProxy
 		
 		MinecraftForgeClient.registerItemRenderer(Miscellany.sacredChalice, new ItemChaliceRender());
 		
+		LanguageRegistry.instance().addStringLocalization("potion.knowledgePotion", "Potion name here");
 	}
 		
 }

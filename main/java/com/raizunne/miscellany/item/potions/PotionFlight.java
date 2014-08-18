@@ -2,15 +2,14 @@ package com.raizunne.miscellany.item.potions;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 
-public class PotionKnowledge extends Potion{
+public class PotionFlight extends Potion{
 
-	public PotionKnowledge(int id, boolean bad, int color) {
+	protected PotionFlight(int id, boolean bad, int color) {
 		super(id, bad, color);
-		setPotionName("knowledgePotion");
+		setPotionName("flightPotion");
 		setIconIndex(0, 0);
 	}
 
@@ -20,7 +19,7 @@ public class PotionKnowledge extends Potion{
 
 	@Override
 	protected Potion setIconIndex(int p_76399_1_, int p_76399_2_) {
-		return super.setIconIndex(0,0);
+		return super.setIconIndex(1,0);
 	}
 
 	@Override
@@ -29,5 +28,4 @@ public class PotionKnowledge extends Potion{
 		return super.getStatusIconIndex();
 	}
 
-	
 }

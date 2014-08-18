@@ -6,6 +6,15 @@ item.sacredChalice.name=§6Sacred Chalice
 item.sacredChalice.documentation=Consumes cobblestone, receives water.
 item.manualBook.name=Miscellany Manual
 item.manualBook.documentation=Manual for the Raizunne's Miscellany.
+item.emptyPotionFlask.name=Empty Potion Flask
+emptyPotionFlask.name=Empty Potion Flask
+flightPotionFlask.name=Potion of Flight
+knowledgePotionFlask.name=Potion of Knowledge
+
+knowledgePotion=Knowledge
+knowledgePotion.postfix=Knowledge
+flightPotion.=Flight
+flightPotion.postfix=Flight
 
 item.packagedFood.name=Packaged Food
 
