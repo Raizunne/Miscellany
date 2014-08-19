@@ -1,10 +1,9 @@
 package com.raizunne.miscellany.item;
 
 import java.util.List;
+import java.util.Random;
 
-import com.raizunne.miscellany.Miscellany;
-
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -13,6 +12,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+
+import com.raizunne.miscellany.Miscellany;
 
 public class PotionFlask extends Item{
 		
@@ -24,6 +25,17 @@ public class PotionFlask extends Item{
 		setCreativeTab(Miscellany.miscTab);
 		setHasSubtypes(true);
 		setNoRepair();
+	}
+	
+	@Override
+	public void onUpdate(ItemStack itemstack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
+		if(itemstack.stackTagCompound == null){
+			itemstack.stackTagCompound = new NBTTagCompound();
+			itemstack.stackTagCompound.setString("potionType", "empty");
+		}else{
+			itemstack.stackTagCompound.setInteger("damage", itemstack.getItemDamage());
+			itemstack.setItemDamage(itemstack.stackTagCompound.getInteger("damage"));
+		}
 	}
 	
 	@Override
@@ -51,25 +63,14 @@ public class PotionFlask extends Item{
 			list.add("Flight");
 		}else if(itemstack.stackTagCompound.getString("potionType").equals("knowledge")){
 			list.removeAll(list);
-			list.add("Potion of Knowledge");
+			list.add("§aPotion of Knowledge");
 			list.add("Knowledge");
 		}
 	}
 	
 	@Override
 	public void onCreated(ItemStack itemstack, World world, EntityPlayer player) {
-		super.onCreated(itemstack, world, player);
-		itemstack.stackTagCompound = new NBTTagCompound();
-		itemstack.stackTagCompound.setString("potionType", "empty");
-	}
-	
-	@Override
-	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack itemstack) {
-		if(itemstack.stackTagCompound == null){
-			itemstack.stackTagCompound = new NBTTagCompound();
-			itemstack.stackTagCompound.setString("potionType", "empty");
-		}
-		return super.onEntitySwing(entityLiving, itemstack);
+		
 	}
 	
 	@Override
@@ -77,70 +78,61 @@ public class PotionFlask extends Item{
 		return 32;
 	}
 	
-	//WRITE TO NBT ITS DAMAGE ----------------TODO-----------TODO----------TODO DONT FORGET DAMN IT!
-	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+		if(!player.isSneaking()){
+			player.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));	
+		}
 		if(player.isSneaking()){
-			if(itemstack.stackTagCompound != null){
-				String type = itemstack.stackTagCompound.getString("potionType");
-				if(type.equals("empty")){
-					getUnlocalizedName();
-					if(world.isRemote){
-						player.addChatMessage(new ChatComponentText("Potion Type: Flight"));
-						itemstack.setItemDamage(itemstack.getItemDamage());
-					}
-					itemstack.stackTagCompound.setString("potionType", "flight");
-				}else if(type.equals("flight")){
-					getUnlocalizedName();
-					if(world.isRemote){
-						player.addChatMessage(new ChatComponentText("Potion Type: Knowledge"));
-						itemstack.setItemDamage(itemstack.getItemDamage());
-					}
-					itemstack.stackTagCompound.setString("potionType", "knowledge");
-				}else if(type.equals("knowledge")){
-					getUnlocalizedName();
-					if(world.isRemote){
-						player.addChatMessage(new ChatComponentText("Potion Type: Empty"));
-						itemstack.setItemDamage(itemstack.getItemDamage());
-					}
-					itemstack.stackTagCompound.setString("potionType", "empty");
+			String potionType = itemstack.stackTagCompound.getString("potionType");
+			if(potionType.equals("empty")){
+				if(world.isRemote){
+					player.addChatMessage(new ChatComponentText("Potion Type: Flight"));
 				}
+				itemstack.stackTagCompound.setString("potionType", "flight");
+			}else if(potionType.equals("flight")){
+				if(world.isRemote){
+					player.addChatMessage(new ChatComponentText("Potion Type: Knowledge"));
+				}
+				itemstack.stackTagCompound.setString("potionType", "knowledge");
+			}else if(potionType.equals("knowledge")){
+				if(world.isRemote){
+					player.addChatMessage(new ChatComponentText("Potion Type: Empty"));
+				}
+				itemstack.stackTagCompound.setString("potionType", "empty");
 			}
 		}
-		player.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
 		return itemstack;
 	}
 	
 	@Override
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		if(itemstack.stackTagCompound.getString("potionType").equals("flight")){		
-			player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 200, 0));
-		}else if(itemstack.stackTagCompound.getString("potionType").equals("empty")){	
-			if(world.isRemote){
-				player.addChatComponentMessage(new ChatComponentText("§dPotion seems to be empty..."));
+		String potionType = itemstack.stackTagCompound.getString("potionType");
+		if(potionType.equals("empty")){
+			Random random = new Random();
+			int numb = random.nextInt(30);
+			if(numb==29){
+				if(world.isRemote){
+					player.addExperience(50);
+					player.addChatComponentMessage(new ChatComponentText("Something goes down your throat..."));
+				}
 			}
-			return itemstack;
-		}else if(itemstack.stackTagCompound.getString("potionType").equals("knowledge")){
-			player.addPotionEffect(new PotionEffect(Miscellany.knowledgePotion.getId(), 200, 0));
+			if(world.isRemote && numb!=29){
+				player.addChatMessage(new ChatComponentText("Flask seems to be empty..."));
+			}
+		}else if(potionType.equals("flight")){
+			if(world.isRemote){
+				player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 90));
+			}
 		}
-		if(itemstack.getItemDamage()==2){
-			return null;
-		
-		}else{
-			if(world.isRemote){
-				itemstack.damageItem(1, player);
-			}
-			return itemstack;
-		}	
-		
+		return itemstack;
 	}
 
 	
 	@Override
 	public boolean doesSneakBypassUse(World world, int x, int y, int z,
 			EntityPlayer player) {
-		return true;
+		return false;
 	}
 	
 	@Override

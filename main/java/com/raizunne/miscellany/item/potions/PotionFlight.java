@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class PotionFlight extends Potion{
 
-	protected PotionFlight(int id, boolean bad, int color) {
+	public PotionFlight(int id, boolean bad, int color) {
 		super(id, bad, color);
 		setPotionName("flightPotion");
 		setIconIndex(0, 0);

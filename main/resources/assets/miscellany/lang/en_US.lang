@@ -13,7 +13,7 @@ knowledgePotionFlask.name=Potion of Knowledge
 
 knowledgePotion=Knowledge
 knowledgePotion.postfix=Knowledge
-flightPotion.=Flight
+flightPotion=Flight
 flightPotion.postfix=Flight
 
 item.packagedFood.name=Packaged Food

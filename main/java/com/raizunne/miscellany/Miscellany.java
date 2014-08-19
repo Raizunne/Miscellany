@@ -13,6 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.raizunne.miscellany.block.AdvReactBrewer;
 import com.raizunne.miscellany.block.FoodPackager;
+import com.raizunne.miscellany.block.NoNite;
 import com.raizunne.miscellany.block.Present;
 import com.raizunne.miscellany.handler.GUIHandler;
 import com.raizunne.miscellany.handler.MiscellanyEventHandler;
@@ -21,6 +22,7 @@ import com.raizunne.miscellany.item.PackagedFood;
 import com.raizunne.miscellany.item.manualBook;
 import com.raizunne.miscellany.item.redstonicJetBoots;
 import com.raizunne.miscellany.item.sacredChalice;
+import com.raizunne.miscellany.item.potions.PotionFlight;
 import com.raizunne.miscellany.item.potions.PotionKnowledge;
 import com.raizunne.miscellany.item.PotionFlask;
 import com.raizunne.miscellany.proxies.CommonProxy;
@@ -67,6 +69,7 @@ public class Miscellany
     public static Block foodPackager;
     public static Block present;
     public static Block brewer;
+    public static Block noNite;
     
     public static Potion knowledgePotion;
     public static Potion flightPotion;
@@ -86,11 +89,11 @@ public class Miscellany
    	 	foodPackager = new FoodPackager(Material.ground);
    	 	present = new Present(Material.ground);
    	 	brewer = new AdvReactBrewer(Material.ground);
-   	 	
+   	 	noNite = new NoNite(Material.ground);
    	 	
    	 	PotionHandler.initPotions();
    	 	knowledgePotion = (new PotionKnowledge(45, false, 0));
-   	 	flightPotion = (new PotionKnowledge(46, false, 0));
+   	 	flightPotion = (new PotionFlight(46, false, 0));
   	 	   	 
    	 	GameRegistry.registerItem(packagedFood, packagedFood.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));
@@ -102,6 +105,7 @@ public class Miscellany
    	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
    	 	GameRegistry.registerBlock(present, "present");
    	 	GameRegistry.registerBlock(brewer, "advBrew");
+//   	 	GameRegistry.registerBlock(noNite, "nonite");
    	 	
 
    	 	GameRegistry.addRecipe(new ItemStack(Miscellany.redstonicBoots), new Object[] { 
