@@ -3,6 +3,7 @@ package com.raizunne.miscellany.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
@@ -16,11 +17,9 @@ public class MiscellanyEventHandler {
 
 	@SubscribeEvent
 	public void onLivingUpdateEntity(LivingUpdateEvent event){
-		
 		if(event.entity instanceof EntityPlayer){
 			player = (EntityPlayer)event.entity;
 		}
-		
 		//REDSTONIC JETBOOTS
 		if(event.entity instanceof EntityPlayer){
 			boolean equipped = false;
@@ -44,13 +43,21 @@ public class MiscellanyEventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)event.entity;
 			boolean world = event.entity.worldObj.isRemote;
-			if(player.isPotionActive(Miscellany.flightPotion)){
-				if(world){
-					if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()==0){
-						
+			if(world){
+				
+			}
+		}
+		
+		//KNOWLEDGE POTION
+		if(event.entity instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer)event.entity;
+			boolean world = event.entity.worldObj.isRemote;
+			if(world){
+				if(player.isPotionActive(Miscellany.knowledgePotion.getId())){
+					if(player.getActivePotionEffect(Miscellany.knowledgePotion).getDuration()==0){
+						player.experienceLevel=0;
+						player.removePotionEffect(Miscellany.knowledgePotion.getId());
 					}
-					
-					
 				}
 			}
 		}
@@ -71,3 +78,5 @@ public class MiscellanyEventHandler {
 		}
 	}
 }
+
+

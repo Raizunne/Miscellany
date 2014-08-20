@@ -19,5 +19,12 @@ public class debugHunger extends Item{
 		setMaxStackSize(1);
 	}
 	
-	
+	@Override
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+		if(world.isRemote){
+			player.getFoodStats().addStats(-5, -10);
+			
+		}
+		return itemstack;
+	}
 }

@@ -2,8 +2,6 @@ package com.raizunne.miscellany.gui.button;
 
 import org.lwjgl.opengl.GL11;
 
-import com.sun.prism.paint.Color;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.FontRenderer;

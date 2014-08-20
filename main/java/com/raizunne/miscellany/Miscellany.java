@@ -19,6 +19,7 @@ import com.raizunne.miscellany.handler.GUIHandler;
 import com.raizunne.miscellany.handler.MiscellanyEventHandler;
 import com.raizunne.miscellany.handler.PotionHandler;
 import com.raizunne.miscellany.item.PackagedFood;
+import com.raizunne.miscellany.item.Shake;
 import com.raizunne.miscellany.item.manualBook;
 import com.raizunne.miscellany.item.redstonicJetBoots;
 import com.raizunne.miscellany.item.sacredChalice;
@@ -26,6 +27,7 @@ import com.raizunne.miscellany.item.potions.PotionFlight;
 import com.raizunne.miscellany.item.potions.PotionKnowledge;
 import com.raizunne.miscellany.item.PotionFlask;
 import com.raizunne.miscellany.proxies.CommonProxy;
+import com.raizunne.miscellany.server.debugHunger;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -33,6 +35,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -65,6 +68,7 @@ public class Miscellany
     public static Item sacredChalice;
     public static Item manualBook;
     public static Item potionFlask;
+    public static Item Shake;
     
     public static Block foodPackager;
     public static Block present;
@@ -85,6 +89,7 @@ public class Miscellany
    	 	sacredChalice = new sacredChalice();
    	 	manualBook = new manualBook();
    	 	potionFlask = new PotionFlask();
+   	 	Shake = new Shake();
    	 	
    	 	foodPackager = new FoodPackager(Material.ground);
    	 	present = new Present(Material.ground);
@@ -101,6 +106,7 @@ public class Miscellany
    	 	GameRegistry.registerItem(sacredChalice, sacredChalice.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(manualBook, manualBook.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
    	 	
    	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
    	 	GameRegistry.registerBlock(present, "present");
@@ -134,6 +140,12 @@ public class Miscellany
     public void load(FMLInitializationEvent event){
     	new GUIHandler();
     	new PotionHandler();
+    }
+    
+    @EventHandler
+    public void serverLoad(FMLServerStartingEvent event)
+    {
+      event.registerServerCommand(new debugHunger());
     }
     
 
