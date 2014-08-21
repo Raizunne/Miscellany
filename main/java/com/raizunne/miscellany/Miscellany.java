@@ -19,6 +19,7 @@ import com.raizunne.miscellany.handler.GUIHandler;
 import com.raizunne.miscellany.handler.MiscellanyEventHandler;
 import com.raizunne.miscellany.handler.PotionHandler;
 import com.raizunne.miscellany.item.PackagedFood;
+import com.raizunne.miscellany.item.Pamphlet;
 import com.raizunne.miscellany.item.Shake;
 import com.raizunne.miscellany.item.manualBook;
 import com.raizunne.miscellany.item.redstonicJetBoots;
@@ -69,6 +70,7 @@ public class Miscellany
     public static Item manualBook;
     public static Item potionFlask;
     public static Item Shake;
+    public static Item pamphlet;
     
     public static Block foodPackager;
     public static Block present;
@@ -90,35 +92,38 @@ public class Miscellany
    	 	manualBook = new manualBook();
    	 	potionFlask = new PotionFlask();
    	 	Shake = new Shake();
+   	 	pamphlet = new Pamphlet();
    	 	
    	 	foodPackager = new FoodPackager(Material.ground);
    	 	present = new Present(Material.ground);
    	 	brewer = new AdvReactBrewer(Material.ground);
    	 	noNite = new NoNite(Material.ground);
+
    	 	
    	 	PotionHandler.initPotions();
    	 	knowledgePotion = (new PotionKnowledge(45, false, 0));
    	 	flightPotion = (new PotionFlight(46, false, 0));
   	 	   	 
-   	 	GameRegistry.registerItem(packagedFood, packagedFood.getUnlocalizedName().substring(5));
-   	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));
-   	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerItem(packagedFood, packagedFood.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(sacredChalice, sacredChalice.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(manualBook, manualBook.getUnlocalizedName().substring(5));
-   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
-   	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(pamphlet, pamphlet.getUnlocalizedName().substring(5));
    	 	
-   	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
-   	 	GameRegistry.registerBlock(present, "present");
-   	 	GameRegistry.registerBlock(brewer, "advBrew");
+//   	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
+//   	 	GameRegistry.registerBlock(present, "present");
+//   	 	GameRegistry.registerBlock(brewer, "advBrew");
 //   	 	GameRegistry.registerBlock(noNite, "nonite");
    	 	
 
-   	 	GameRegistry.addRecipe(new ItemStack(Miscellany.redstonicBoots), new Object[] { 
-   	 		"RLR",
-   	 		"LBL",
-   	 		"RGR",
-   	 		'R', Blocks.redstone_block, 'L', Items.leather, 'B', Items.leather_boots, 'G', Items.gold_ingot});
+//   	 	GameRegistry.addRecipe(new ItemStack(Miscellany.redstonicBoots), new Object[] { 
+//   	 		"RLR",
+//   	 		"LBL",
+//   	 		"RGR",
+//   	 		'R', Blocks.redstone_block, 'L', Items.leather, 'B', Items.leather_boots, 'G', Items.gold_ingot});
    	 	
    	 	GameRegistry.addRecipe(new ItemStack(Miscellany.sacredChalice), new Object[]{
    	 		"IWI",

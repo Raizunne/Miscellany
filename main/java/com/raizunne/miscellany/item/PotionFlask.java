@@ -87,9 +87,7 @@ public class PotionFlask extends Item{
 				break;
 			}
 		}
-		if(!player.isSneaking()){
-			player.setItemInUse(itemstack, 32);
-		}
+		player.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
 		return itemstack;
 	}
 	
@@ -103,7 +101,9 @@ public class PotionFlask extends Item{
 			player.addPotionEffect(new PotionEffect(Miscellany.knowledgePotion.getId(), 200));
 			break;
 		case "empty":
-			player.addChatComponentMessage(new ChatComponentText("Seems to be empty..."));
+			if(world.isRemote){
+				player.addChatComponentMessage(new ChatComponentText("§dSeems to be empty..."));
+			}
 			break;
 		}		
 		if(itemstack.getItemDamage()==2){
@@ -138,5 +138,11 @@ public class PotionFlask extends Item{
 		// TODO Auto-generated method stub
 		return EnumAction.drink;
 	}
+	@Override
+	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
+		// TODO Auto-generated method stub
+		return 32;
+	}
+	
 }
 

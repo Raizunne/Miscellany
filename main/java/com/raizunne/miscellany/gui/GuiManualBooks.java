@@ -134,10 +134,10 @@ public class GuiManualBooks extends GuiScreen{
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(menu0);
-			buttonList.add(menu1);
-			buttonList.add(menu2);
-			buttonList.add(menu3);
-			buttonList.add(menu4);
+//			buttonList.add(menu1);
+//			buttonList.add(menu2);
+//			buttonList.add(menu3);
+//			buttonList.add(menu4);
 		}else if(entry){
 			buttonList.removeAll(buttonList);
 			if(maxPages!=subSection){

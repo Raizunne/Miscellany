@@ -6,6 +6,7 @@ import com.raizunne.miscellany.gui.ContainerFoodPackager;
 import com.raizunne.miscellany.gui.GuiAdvReactBrewer;
 import com.raizunne.miscellany.gui.GuiFoodPackager;
 import com.raizunne.miscellany.gui.GuiManualBooks;
+import com.raizunne.miscellany.gui.GuiPamphlet;
 import com.raizunne.miscellany.gui.GuiTest;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
@@ -52,7 +53,7 @@ public class GUIHandler implements IGuiHandler {
 			}
 			break;
 			case 2: return new GuiManualBooks(player);
-			case 3: return new GuiTest();
+			case 3: return new GuiPamphlet();
 			default: return null;
 		}
 		return null;
