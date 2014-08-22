@@ -19,7 +19,7 @@ import com.raizunne.miscellany.Miscellany;
 public class PotionFlask extends Item{
 		
 	public PotionFlask() {
-		setUnlocalizedName("emptyPotionFlask");
+		setUnlocalizedName(getUnlocalizedName());
 		setTextureName("miscellany:emptyPotionFlask");
 		setMaxStackSize(1);
 		setMaxDamage(3);
@@ -61,6 +61,20 @@ public class PotionFlask extends Item{
 			break;
 		}
 	}
+
+	
+	@Override
+	public String getUnlocalizedName(ItemStack itemstack) {
+		switch(nbt.getString("potionType")){
+		case "flight":
+			return "flightPotionFlask";
+		case "knowledge":
+			return "knowledgePotionFlask";
+		case "empty":
+			return "emptyPotionFlask";
+		default: return "emptyPotionFlask";
+		}
+	}
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
@@ -95,7 +109,7 @@ public class PotionFlask extends Item{
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
 		switch(nbt.getString("potionType")){
 		case "flight":
-			player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 400));
+			player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 1000));
 			break;
 		case "knowledge":
 			player.addPotionEffect(new PotionEffect(Miscellany.knowledgePotion.getId(), 200));

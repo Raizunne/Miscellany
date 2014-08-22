@@ -11,7 +11,7 @@ import org.lwjgl.opengl.GL11;
 public class GuiPamphlet extends GuiScreen{
 
 	public static final ResourceLocation texture = new ResourceLocation("miscellany", "textures/gui/Panflet.png"); 
-	public static final int xSizeofTexture = 123;
+	public static final int xSizeofTexture = 153;
 	public static final int ySizeofTexture = 177;
 	
 	@Override

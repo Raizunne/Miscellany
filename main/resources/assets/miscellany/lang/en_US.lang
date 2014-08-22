@@ -7,7 +7,7 @@ item.sacredChalice.documentation=Consumes cobblestone, receives water.
 item.manualBook.name=Miscellany Manual
 item.manualBook.documentation=Manual for the Raizunne's Miscellany.
 item.emptyPotionFlask.name=Empty Potion Flask
-item.pamphlet.name=Miscellany Pamphlet
+item.pamphlet.name=Miscellany Pamphlet 0.1a
 
 emptyPotionFlask.name=Empty Potion Flask
 flightPotionFlask.name=Potion of Flight

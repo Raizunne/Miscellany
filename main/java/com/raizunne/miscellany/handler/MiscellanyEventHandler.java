@@ -33,7 +33,7 @@ public class MiscellanyEventHandler {
 				}
 			}
 			if(equipped==true && boots.getItem()!=Miscellany.redstonicBoots){
-				player.stepHeight=player.stepHeight-1;
+				player.stepHeight=player.stepHeight-1F;
 				player.capabilities.setPlayerWalkSpeed(player.capabilities.getWalkSpeed()-0.15F);
 				player.jumpMovementFactor = player.jumpMovementFactor - 0.05F;
 				equipped=false;
@@ -43,8 +43,12 @@ public class MiscellanyEventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)event.entity;
 			boolean world = event.entity.worldObj.isRemote;
-			if(world){
-				
+			if(player.isPotionActive(Miscellany.flightPotion.getId())){
+				player.capabilities.allowFlying=true;
+				if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()==1){
+					player.capabilities.allowFlying=false;
+					player.removePotionEffect(Miscellany.flightPotion.getId());
+				}
 			}
 		}
 		
@@ -52,16 +56,16 @@ public class MiscellanyEventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)event.entity;
 			boolean world = event.entity.worldObj.isRemote;
-			if(world){
-				if(player.isPotionActive(Miscellany.knowledgePotion.getId())){
-					if(player.getActivePotionEffect(Miscellany.knowledgePotion).getDuration()==0){
-						player.experienceLevel=0;
-						player.removePotionEffect(Miscellany.knowledgePotion.getId());
-					}
+			if(player.isPotionActive(Miscellany.knowledgePotion.getId())){
+				player.addExperience(6);
+				if(player.getActivePotionEffect(Miscellany.knowledgePotion).getDuration()==1){
+					player.experienceLevel=0;
+					player.removePotionEffect(Miscellany.knowledgePotion.getId());
 				}
 			}
 		}
 	}
+	
 	
 	@SubscribeEvent
 	public void livingFall(LivingFallEvent event){

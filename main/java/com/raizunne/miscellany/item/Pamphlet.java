@@ -20,6 +20,7 @@ public class Pamphlet extends Item{
 	public ItemStack onItemRightClick(ItemStack itemstack, World world,
 			EntityPlayer player) {
 		player.openGui(com.raizunne.miscellany.Miscellany.instance, 3, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+		player.playSound("random.successful_hit", 0.0F, 0.0F);
 		return itemstack;
 	}
 	

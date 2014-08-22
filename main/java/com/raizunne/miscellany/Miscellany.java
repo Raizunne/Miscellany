@@ -109,7 +109,7 @@ public class Miscellany
 //   	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(sacredChalice, sacredChalice.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(manualBook, manualBook.getUnlocalizedName().substring(5));
-//   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
 //   	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(pamphlet, pamphlet.getUnlocalizedName().substring(5));
    	 	
