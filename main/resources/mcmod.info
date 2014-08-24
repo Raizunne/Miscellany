@@ -1,7 +1,7 @@
 [
 {
   "modid": "Miscellany",
-  "name": "miscellany",
+  "name": "Miscellany",
   "description": "Raizunne's Miscellany",
   "version": "${version}",
   "mcversion": "${mcversion}",

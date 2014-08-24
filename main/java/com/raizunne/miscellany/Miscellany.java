@@ -27,6 +27,8 @@ import com.raizunne.miscellany.item.sacredChalice;
 import com.raizunne.miscellany.item.potions.PotionFlight;
 import com.raizunne.miscellany.item.potions.PotionKnowledge;
 import com.raizunne.miscellany.item.PotionFlask;
+import com.raizunne.miscellany.item.PotionFlasks.Flight;
+import com.raizunne.miscellany.item.breadLoaf;
 import com.raizunne.miscellany.proxies.CommonProxy;
 import com.raizunne.miscellany.server.debugHunger;
 
@@ -46,7 +48,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Miscellany
 {
     public static final String MODID = "Miscellany";
-    public static final String VERSION = "a1";
+    public static final String VERSION = "0.2a";
     
     @Instance
     public static Miscellany instance;
@@ -69,8 +71,10 @@ public class Miscellany
     public static Item sacredChalice;
     public static Item manualBook;
     public static Item potionFlask;
+    public static Item flightFlask;
     public static Item Shake;
     public static Item pamphlet;
+    public static Item breadLoaf;
     
     public static Block foodPackager;
     public static Block present;
@@ -90,9 +94,11 @@ public class Miscellany
    	 	redstonicBoots = new redstonicJetBoots(ArmorMaterial.DIAMOND, 2, 3);
    	 	sacredChalice = new sacredChalice();
    	 	manualBook = new manualBook();
-   	 	potionFlask = new PotionFlask();
+   	 	potionFlask = new PotionFlask("emptyPotionFlask", "emptyPotionFlask");
+   	 	flightFlask = new Flight("flightPotionFlask", "emptyPotionFlask");
    	 	Shake = new Shake();
    	 	pamphlet = new Pamphlet();
+   	 	breadLoaf = new breadLoaf(12, 10, false);
    	 	
    	 	foodPackager = new FoodPackager(Material.ground);
    	 	present = new Present(Material.ground);
@@ -105,13 +111,17 @@ public class Miscellany
    	 	flightPotion = (new PotionFlight(46, false, 0));
   	 	   	 
 //   	 	GameRegistry.registerItem(packagedFood, packagedFood.getUnlocalizedName().substring(5));
-//   	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));
 //   	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(sacredChalice, sacredChalice.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(manualBook, manualBook.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
-//   	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(pamphlet, pamphlet.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(breadLoaf, breadLoaf.getUnlocalizedName().substring(5));
+   	 	
+   	 	//POTION FLASKS
+   	 	GameRegistry.registerItem(flightFlask, flightFlask.getUnlocalizedName().substring(5));
    	 	
 //   	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
 //   	 	GameRegistry.registerBlock(present, "present");
@@ -127,11 +137,24 @@ public class Miscellany
    	 	
    	 	GameRegistry.addRecipe(new ItemStack(Miscellany.sacredChalice), new Object[]{
    	 		"IWI",
-   	 		" I ",
-   	 		"GGG",
+   	 		" G ",
+   	 		"III",
    	 		'I', Items.gold_ingot, 'W', Items.water_bucket, 'G', Blocks.gold_block});
    	 	
-   	 	GameRegistry.addShapelessRecipe(new ItemStack(Miscellany.manualBook), Items.book, Items.flint_and_steel);
+   	 	GameRegistry.addRecipe(new ItemStack(Miscellany.breadLoaf), new Object[]{
+   	 		" S ",
+   	 		"BBB",
+   	 		" S ",
+   	 		'S', Items.sugar, 'B', Items.bread});
+   	 	
+   	 	GameRegistry.addRecipe(new ItemStack(Miscellany.Shake), new Object[]{
+   	 		"LLL",
+   	 		"ESE",
+   	 		"LLL",
+   	 		'L', Miscellany.breadLoaf, 'S', Items.glass_bottle, 'E', Items.ender_eye});
+   	 	
+   	 	GameRegistry.addShapelessRecipe(new ItemStack(Miscellany.manualBook), Items.book, Items.flint);
+   	 	GameRegistry.addShapelessRecipe(new ItemStack(Miscellany.pamphlet), Items.paper, Items.flint);
    	 	proxy.initRenderers();
    	 	MinecraftForge.EVENT_BUS.register(new MiscellanyEventHandler());
     }

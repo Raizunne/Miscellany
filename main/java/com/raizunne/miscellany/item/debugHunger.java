@@ -1,6 +1,9 @@
 package com.raizunne.miscellany.item;
 
+import java.util.List;
+
 import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.util.StringResources;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -21,10 +24,23 @@ public class debugHunger extends Item{
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-		if(world.isRemote){
+		if(!world.isRemote){
 			player.getFoodStats().addStats(-5, -10);
+			world.playSoundAtEntity(player, "note.pling", 0.5F, 1.0F);
 			
 		}
 		return itemstack;
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	@Override
+	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_,
+			List list, boolean p_77624_4_) {
+		list.add(StringResources.debugHunger);
 	}
 }

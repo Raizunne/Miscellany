@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.jcraft.jorbis.Block;
 import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.util.StringResources;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
@@ -44,7 +45,7 @@ public class sacredChalice extends Item {
 	@Override
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_,
 			List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.LIGHT_PURPLE + "Eats cobble, places water.");
+		list.add(StringResources.chalice);
 	}
 
 	@Override

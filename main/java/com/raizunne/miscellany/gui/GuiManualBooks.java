@@ -40,6 +40,7 @@ public class GuiManualBooks extends GuiScreen{
 	public int subSection;
 	public boolean entry;
 	public int maxPages;
+	public String prevSection;
 	
 
 	
@@ -76,7 +77,8 @@ public class GuiManualBooks extends GuiScreen{
 //		drawCrafting(Item slot1, Item slot2, Item slot3, Item slot4, Item slot5, Item slot6, Item slot7, Item slot8,
 //				Item slot9, Item product, int xPos, int yPos, int mousex, int mousey)
 		
-		if(!entry){
+		if(!entry || currentSection=="index" || currentSection=="items" || currentSection=="machines" || currentSection=="alchemy" ||
+				currentSection=="Blocks" || currentSection=="equipment"){
 		mc.renderEngine.bindTexture(resources1);
 		drawTexturedModalRect(posX + 7, posY + 7, 0, 0, 99,84);
 		fontrenderer.drawSplitString("Raizunne's Miscellany is still a very work in progress, the mod has a few items and other "
@@ -88,8 +90,13 @@ public class GuiManualBooks extends GuiScreen{
 			fontrenderer.drawSplitString(bookResources.chalice1, posX + 10, posY + 80, 98, 0);
 			fontrenderer.drawSplitString(bookResources.chalice2, posX + 121, posY + 17, 98, 0);
 			Item goldBlock = Blocks.gold_block.getItemDropped(Blocks.gold_block.getIdFromBlock(Blocks.gold_block), new Random(), 1);
-			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, Items.gold_ingot, null, goldBlock, goldBlock, goldBlock, Miscellany.sacredChalice, 20, 20, x, y);
-			
+			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, goldBlock, null, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, Miscellany.sacredChalice, 20, 20, x, y);	
+		}else if(entry && currentSection=="shake" && subSection==0){
+			fontrenderer.drawString("Shake", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(bookResources.shake1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(bookResources.shake2, posX + 121, posY + 17, 98, 0);
+			drawCrafting(Miscellany.breadLoaf, Miscellany.breadLoaf, Miscellany.breadLoaf, Items.ender_eye, Items.glass_bottle, Items.ender_eye, Miscellany.breadLoaf,
+					Miscellany.breadLoaf, Miscellany.breadLoaf, Miscellany.Shake, 20, 20, x, y);	
 		}
 		
 		super.drawScreen(x, y, f);
@@ -112,7 +119,7 @@ public class GuiManualBooks extends GuiScreen{
 		
 		buttonLeft prevButton = new buttonLeft(0, posX + 0, posY + 167, 18, 12, "Prev");
 		buttonRight nextButton = new buttonRight(1, posX + 210, posY + 167, 18, 12, "Next");
-		buttonNormal returnIndex = new buttonNormal(2, posX + 87, posY + 167, 50, 14, "Index");
+		buttonNormal returnIndex = new buttonNormal(2, posX + 87, posY + 167, 50, 14, "Return");
 		buttonMenu menu0 = new buttonMenu(3, posX + 124, posY + 18, 90, 12, "Items", color1, color2);
 		buttonMenu menu1 = new buttonMenu(4, posX + 124, posY + 30, 90, 12, "Blocks", color1, color2);
 		buttonMenu menu2 = new buttonMenu(5, posX + 124, posY + 42, 90, 12, "Machines", color1, color2);
@@ -120,6 +127,7 @@ public class GuiManualBooks extends GuiScreen{
 		buttonMenu menu4 = new buttonMenu(7, posX + 124, posY + 66, 90, 12, "Advanced Alchemy", color1, color2);
 
 		buttonMenu items1 = new buttonMenu(8, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2);
+		buttonMenu items2 = new buttonMenu(15, posX + 124, posY + 30, 90, 12, "Shake", color1, color2);
 		
 		buttonMenu blocks1 = new buttonMenu(9, posX + 124, posY + 18, 90, 12, "Present", color1, color2);
 		
@@ -156,6 +164,7 @@ public class GuiManualBooks extends GuiScreen{
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
 			buttonList.add(items1);
+			buttonList.add(items2);
 		}else if(currentSection=="blocks"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
@@ -191,7 +200,12 @@ public class GuiManualBooks extends GuiScreen{
 			}
 		break;
 		case 2:
-			currentSection="index";
+			String s = currentSection;
+			if(s=="items" || s=="blocks" || s=="machines" || s=="alchemy" || s=="equipment"){
+				currentSection="index";
+			}else{
+				currentSection=prevSection;
+			}
 			subSection=0;
 			entry=false;
 		break;
@@ -225,6 +239,7 @@ public class GuiManualBooks extends GuiScreen{
 			subSection=0;
 			entry=true;
 			maxPages=0;
+			prevSection="items";
 		break;
 		case 9:
 			
@@ -235,6 +250,13 @@ public class GuiManualBooks extends GuiScreen{
 		case 11:
 			
 		break;	
+		case 15:
+			currentSection="shake";
+			prevSection="items";
+			subSection=0;
+			entry=true;
+			maxPages=0;
+		break;
 		
 		}
 		
@@ -243,11 +265,13 @@ public class GuiManualBooks extends GuiScreen{
 		protected void mouseClicked(int x, int y, int mouseId) {
 			super.mouseClicked(x, y, mouseId);
 			this.initGui();
-		}
-	
-	
-	
-	
+			if(mouseId==1){
+//				currentSection=prevSection;
+//				subSection=0;
+//				entry=false;
+			}
+	}
+
 	public void drawCrafting(Item slot1, Item slot2, Item slot3, Item slot4, Item slot5, Item slot6, Item slot7, Item slot8,
 			Item slot9, Item product, int xPos, int yPos, int mousex, int mousey){
 		FontRenderer itemsInGrid = Minecraft.getMinecraft().fontRenderer;

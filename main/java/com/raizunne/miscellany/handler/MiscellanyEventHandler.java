@@ -2,6 +2,7 @@ package com.raizunne.miscellany.handler;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -81,6 +82,14 @@ public class MiscellanyEventHandler {
 			}
 		}
 	}
+//	@SubscribeEvent
+//	public void onPlayerLogin(EntityPlayer player){
+//		NBTTagCompound playerstats = player.getEntityData();
+//		if(playerstats.getString("hasbook")==null || playerstats.getString("hasbook")==""){
+//			player.inventory.addItemStackToInventory(new ItemStack(Miscellany.pamphlet));
+//			playerstats.setString("hasbook", "true");
+//		}
+//	}
 }
 
 

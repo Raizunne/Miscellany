@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 
 import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.util.StringResources;
 
 public class redstonicJetBoots extends ItemArmor implements ISpecialArmor{
 
@@ -29,7 +30,7 @@ public class redstonicJetBoots extends ItemArmor implements ISpecialArmor{
 	@Override
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_,
 			List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.RED + "Powered by Redstone");
+		list.add(StringResources.redstonicJetBoots);
 	}
 	
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
@@ -37,8 +38,6 @@ public class redstonicJetBoots extends ItemArmor implements ISpecialArmor{
 		
 	};
 	
-	
-		
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
 			String type) {
