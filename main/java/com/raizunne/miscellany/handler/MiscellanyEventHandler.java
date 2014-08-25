@@ -46,7 +46,7 @@ public class MiscellanyEventHandler {
 			boolean world = event.entity.worldObj.isRemote;
 			if(player.isPotionActive(Miscellany.flightPotion.getId())){
 				player.capabilities.allowFlying=true;
-				if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()==1){
+				if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()<10){
 					player.capabilities.allowFlying=false;
 					player.removePotionEffect(Miscellany.flightPotion.getId());
 				}

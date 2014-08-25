@@ -28,6 +28,7 @@ import com.raizunne.miscellany.item.potions.PotionFlight;
 import com.raizunne.miscellany.item.potions.PotionKnowledge;
 import com.raizunne.miscellany.item.PotionFlask;
 import com.raizunne.miscellany.item.PotionFlasks.Flight;
+import com.raizunne.miscellany.item.PotionFlasks.Knowledge;
 import com.raizunne.miscellany.item.breadLoaf;
 import com.raizunne.miscellany.proxies.CommonProxy;
 import com.raizunne.miscellany.server.debugHunger;
@@ -70,11 +71,13 @@ public class Miscellany
     public static Item redstonicBoots;
     public static Item sacredChalice;
     public static Item manualBook;
-    public static Item potionFlask;
-    public static Item flightFlask;
     public static Item Shake;
     public static Item pamphlet;
     public static Item breadLoaf;
+    
+    public static Item potionFlask;
+    public static Item flightFlask;
+    public static Item knowledgeFlask;
     
     public static Block foodPackager;
     public static Block present;
@@ -94,11 +97,14 @@ public class Miscellany
    	 	redstonicBoots = new redstonicJetBoots(ArmorMaterial.DIAMOND, 2, 3);
    	 	sacredChalice = new sacredChalice();
    	 	manualBook = new manualBook();
-   	 	potionFlask = new PotionFlask("emptyPotionFlask", "emptyPotionFlask");
-   	 	flightFlask = new Flight("flightPotionFlask", "emptyPotionFlask");
    	 	Shake = new Shake();
    	 	pamphlet = new Pamphlet();
    	 	breadLoaf = new breadLoaf(12, 10, false);
+   	 	
+
+   	 	potionFlask = new PotionFlask();
+   	 	flightFlask = new Flight();
+   	 	knowledgeFlask = new Knowledge();
    	 	
    	 	foodPackager = new FoodPackager(Material.ground);
    	 	present = new Present(Material.ground);
@@ -115,17 +121,18 @@ public class Miscellany
 //   	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(sacredChalice, sacredChalice.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(manualBook, manualBook.getUnlocalizedName().substring(5));
-   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(pamphlet, pamphlet.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(breadLoaf, breadLoaf.getUnlocalizedName().substring(5));
    	 	
-   	 	//POTION FLASKS
+   	 	//ALCHEMY
+   	 	GameRegistry.registerBlock(brewer, "advBrew");
+   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(flightFlask, flightFlask.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(knowledgeFlask, knowledgeFlask.getUnlocalizedName().substring(5));
    	 	
 //   	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
 //   	 	GameRegistry.registerBlock(present, "present");
-//   	 	GameRegistry.registerBlock(brewer, "advBrew");
 //   	 	GameRegistry.registerBlock(noNite, "nonite");
    	 	
 

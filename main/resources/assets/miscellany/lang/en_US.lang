@@ -1,16 +1,22 @@
 itemGroup.Miscellany=Miscellany
 
 item.redstonicBoots.name=Redstonic JetBoots
-item.redstonicBoots.documentation=Can step-up a single block, increases speed and gives double jump.
 item.sacredChalice.name=§6Sacred Chalice
-item.sacredChalice.documentation=Consumes cobblestone, receives water.
 item.manualBook.name=Miscellany Manual
-item.manualBook.documentation=Manual for the Raizunne's Miscellany.
-item.emptyPotionFlask.name=Empty Potion Flask	
 item.pamphlet.name=Miscellany Pamphlet 0.1a
 item.shake.name=Shake
 item.debugHunger.name=Debug Hunger
 item.breadLoaf.name=Bread Loaf
+
+item.emptyFlask.name=Empty Flask
+item.flightFlask.name=Flight Flask
+item.knowledgeFlask.name=Knowledge Flask
+
+item.redstonicBoots.documentation=Can step-up a single block, increases speed and gives double jump.
+item.sacredChalice.documentation=Consumes cobblestone, receives water.
+item.manualBook.documentation=Manual for the Raizunne's Miscellany.
+item.pamphlet.documentation=Free propaganda given to the player when spawned or a new version comes out!
+item.debugHunger.doumentation=Creative item that decreases hunger for debuging.
 
 emptyPotionFlask.name=Empty Potion Flask
 flightPotionFlask.name=Potion of Flight

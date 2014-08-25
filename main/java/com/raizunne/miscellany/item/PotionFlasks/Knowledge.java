@@ -1,6 +1,6 @@
-package com.raizunne.miscellany.item;
+package com.raizunne.miscellany.item.PotionFlasks;
 
-import java.util.Random;
+import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,31 +8,22 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import org.lwjgl.opengl.GL11;
-
 import com.raizunne.miscellany.Miscellany;
 
-public class PotionFlask extends Item{
-		
-	public PotionFlask() {
-		setUnlocalizedName("emptyFlask");
+public class Knowledge extends Item{
+
+	public Knowledge() {
+		setUnlocalizedName("knowledgeFlask");
 		setMaxStackSize(1);
 		setMaxDamage(3);
 		setCreativeTab(Miscellany.miscTab);
 		setNoRepair();
 	}
-	
-	public static NBTTagCompound nbt = new NBTTagCompound();
-	public static String potionType = nbt.getString("potionType");
-	public static int itemdamage = nbt.getInteger("damage");
-	public static String typeofpotion;
 	public static IIcon icons;
-	
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
@@ -42,14 +33,13 @@ public class PotionFlask extends Item{
 	
 	@Override
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		Random random = new Random();
-		if(random.nextInt(30)==27){
-			player.addExperience(30);
-			if(!world.isRemote){
-				player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Something goes down your throat..."));
-			}
+		player.addPotionEffect(new PotionEffect(Miscellany.knowledgePotion.getId(), 200, 0));
+		itemstack.damageItem(1, player);
+		if(itemstack.getItemDamage()==3){
+			return null;
+		}else{
+			return itemstack;
 		}
-		return itemstack;
 	}
 	
 	@Override
@@ -63,8 +53,13 @@ public class PotionFlask extends Item{
 	}
 	
 	@Override
+	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
+		return true;
+	}
+	
+	@Override
 	public void registerIcons(IIconRegister register) {
-		icons = register.registerIcon("miscellany:emptyFlask");
+		icons = register.registerIcon("miscellany:knowledgeFlask");
 	}
 	
 	@Override
