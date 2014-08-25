@@ -34,7 +34,7 @@ public class Flight extends Item{
 	
 	@Override
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 80, 0));
+		player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 6000, 0));
 		itemstack.damageItem(1, player);
 		if(itemstack.getItemDamage()==3){
 			return null;
