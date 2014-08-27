@@ -14,8 +14,8 @@ public class GuiAdvReactBrewer extends GuiContainer{
 
 	public GuiAdvReactBrewer(InventoryPlayer invplayer, TileEntityAdvReactBrewer advbrewer) {
 		super(new ContainerAdvReactBrewer(invplayer, advbrewer));
-		xSize = 177;
-		ySize = 218;
+		xSize = 176;
+		ySize = 166;
 	}
 
 	public static final ResourceLocation texture = new ResourceLocation("miscellany", "textures/gui/brewerGUI.png");

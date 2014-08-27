@@ -55,9 +55,11 @@ public class MiscellanyEventHandler {
 					}
 				}
 				if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()==1){
-					player.capabilities.isFlying=false;
-					player.capabilities.allowFlying=false;
-					player.sendPlayerAbilities();
+					if(!player.capabilities.isCreativeMode){
+						player.capabilities.isFlying=false;
+						player.capabilities.allowFlying=false;
+						player.sendPlayerAbilities();
+					}
 				}
 			}
 		}

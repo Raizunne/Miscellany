@@ -1,5 +1,7 @@
 package com.raizunne.miscellany.item.PotionFlasks;
 
+import java.util.List;
+
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -9,6 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
@@ -34,12 +37,29 @@ public class Flight extends Item{
 	
 	@Override
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 6000, 0));
+		player.addPotionEffect(new PotionEffect(Miscellany.flightPotion.getId(), 3000, 0));
 		itemstack.damageItem(1, player);
 		if(itemstack.getItemDamage()==3){
 			return null;
 		}else{
 			return itemstack;
+		}
+	}
+	
+	@Override
+	public void addInformation(ItemStack itemstack, EntityPlayer p_77624_2_,
+			List list, boolean p_77624_4_) {
+		list.add(EnumChatFormatting.LIGHT_PURPLE + "Invisible wings...");
+		switch(getDamage(itemstack)){
+		case 0:
+			list.add(EnumChatFormatting.GRAY + "Potations Left: 3");
+			break;
+		case 1:
+			list.add(EnumChatFormatting.GRAY + "Potations Left: 2");
+			break;
+		case 2:
+			list.add(EnumChatFormatting.GRAY + "Potations Left: 3");
+			break;
 		}
 	}
 	

@@ -2,6 +2,9 @@ package com.raizunne.miscellany.item;
 
 import java.util.List;
 
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.raizunne.miscellany.Miscellany;
@@ -20,11 +24,12 @@ public class Shake extends Item{
 
 	public Shake(){
 		setUnlocalizedName("shake");
-		setTextureName("miscellany:shake");
 		setCreativeTab(Miscellany.miscTab);
 		setMaxStackSize(1);
 		setMaxDamage(100);
 	}
+	
+	public static IIcon icons;
 	
 	@Override
 	public void onCreated(ItemStack itemstack, World world, EntityPlayer player) {
@@ -79,5 +84,24 @@ public class Shake extends Item{
 	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
 		// TODO Auto-generated method stub
 		return EnumAction.block;
+	}
+	
+	@Override
+	public void registerIcons(IIconRegister register) {
+		icons = register.registerIcon("miscellany:shake");
+	}
+	
+	@Override
+	public IIcon getIcon(ItemStack stack, int pass) {
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glEnable(GL11.GL_BLEND);
+		return icons;
+	}
+	
+	@Override
+	public IIcon getIconIndex(ItemStack itemstack) {
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glEnable(GL11.GL_BLEND);
+		return icons;
 	}
 }

@@ -15,7 +15,7 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 	private int progress;
 	
 	public TileEntityAdvReactBrewer(){
-		items = new ItemStack[8];
+		items = new ItemStack[4];
 		
 	}
 	
