@@ -266,7 +266,12 @@ public class GuiManualBooks extends GuiScreen{
 			super.mouseClicked(x, y, mouseId);
 			this.initGui();
 			if(mouseId==1){
-//				currentSection=prevSection;
+//				String s = currentSection;
+//				if(s=="items" || s=="blocks" || s=="machines" || s=="alchemy" || s=="equipment"){
+//					currentSection="index";
+//				}else{
+//					currentSection=prevSection;
+//				}
 //				subSection=0;
 //				entry=false;
 			}

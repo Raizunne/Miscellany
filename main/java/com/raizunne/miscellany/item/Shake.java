@@ -26,7 +26,7 @@ public class Shake extends Item{
 		setUnlocalizedName("shake");
 		setCreativeTab(Miscellany.miscTab);
 		setMaxStackSize(1);
-		setMaxDamage(100);
+		setMaxDamage(50);
 	}
 	
 	public static IIcon icons;
@@ -35,7 +35,7 @@ public class Shake extends Item{
 	public void onCreated(ItemStack itemstack, World world, EntityPlayer player) {
 		if(itemstack.stackTagCompound==null){
 			itemstack.stackTagCompound = new NBTTagCompound();
-			itemstack.stackTagCompound.setInteger("uses", 100);
+			itemstack.stackTagCompound.setInteger("uses", 50);
 		}
 	}
 	
@@ -43,9 +43,9 @@ public class Shake extends Item{
 	public void onUpdate(ItemStack itemstack, World p_77663_2_, Entity player, int p_77663_4_, boolean p_77663_5_) {
 		if(itemstack.stackTagCompound==null){
 			itemstack.stackTagCompound = new NBTTagCompound();
-			itemstack.stackTagCompound.setInteger("uses", 100);
+			itemstack.stackTagCompound.setInteger("uses", 50);
 		}
-		if(itemstack.getItemDamage()==100){
+		if(itemstack.getItemDamage()==50){
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class Shake extends Item{
 					itemstack.damageItem(1, entityLiving);
 					
 				}
-				if(player.inventory.getCurrentItem().getItemDamage()==100){
+				if(player.inventory.getCurrentItem().getItemDamage()==50){
 					player.inventory.decrStackSize(player.inventory.currentItem, 1);
 					world.playSoundAtEntity(player, "mob.endermen.hit", 0.5F, 1F);
 				}

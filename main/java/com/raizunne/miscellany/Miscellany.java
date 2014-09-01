@@ -32,6 +32,7 @@ import com.raizunne.miscellany.item.PotionFlasks.Knowledge;
 import com.raizunne.miscellany.item.breadLoaf;
 import com.raizunne.miscellany.proxies.CommonProxy;
 import com.raizunne.miscellany.server.debugHunger;
+import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -132,8 +133,8 @@ public class Miscellany
    	 	GameRegistry.registerItem(knowledgeFlask, knowledgeFlask.getUnlocalizedName().substring(5));
    	 	
 //   	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
-//   	 	GameRegistry.registerBlock(present, "present");
-//   	 	GameRegistry.registerBlock(noNite, "nonite");
+   	 	GameRegistry.registerBlock(present, "present");
+   	 	GameRegistry.registerBlock(noNite, "nonite");
    	 	
 
 //   	 	GameRegistry.addRecipe(new ItemStack(Miscellany.redstonicBoots), new Object[] { 
@@ -141,6 +142,8 @@ public class Miscellany
 //   	 		"LBL",
 //   	 		"RGR",
 //   	 		'R', Blocks.redstone_block, 'L', Items.leather, 'B', Items.leather_boots, 'G', Items.gold_ingot});
+   	 	
+   	 	GameRegistry.registerTileEntity(TileEntityAdvReactBrewer.class, "advreactbrewer");
    	 	
    	 	GameRegistry.addRecipe(new ItemStack(Miscellany.sacredChalice), new Object[]{
    	 		"IWI",
@@ -164,6 +167,7 @@ public class Miscellany
    	 	GameRegistry.addShapelessRecipe(new ItemStack(Miscellany.pamphlet), Items.paper, Items.flint);
    	 	proxy.initRenderers();
    	 	MinecraftForge.EVENT_BUS.register(new MiscellanyEventHandler());
+   	 	
     }
     
     @EventHandler
@@ -175,6 +179,7 @@ public class Miscellany
     public void load(FMLInitializationEvent event){
     	new GUIHandler();
     	new PotionHandler();
+    	
     }
     
     @EventHandler

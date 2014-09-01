@@ -28,12 +28,7 @@ public class ContainerAdvReactBrewer extends Container{
 		addSlotToContainer(new Slot(advbrewer, 0, 54, 26));
 		addSlotToContainer(new Slot(advbrewer, 1, 80, 16));
 		addSlotToContainer(new Slot(advbrewer, 2, 106, 26));
-		addSlotToContainer(new Slot(advbrewer, 3, 80, 59));
-//		addSlotToContainer(new Slot(advbrewer, 4, 80, 52));
-//		
-//		addSlotToContainer(new Slot(advbrewer, 5, 58, 111));
-//		addSlotToContainer(new Slot(advbrewer, 6, 80, 111));
-//		addSlotToContainer(new Slot(advbrewer, 7, 102, 111));		
+		addSlotToContainer(new Slot(advbrewer, 3, 80, 59));	
 		
 	}
 	

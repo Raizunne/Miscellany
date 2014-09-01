@@ -48,7 +48,5 @@ public class ClientProxy extends CommonProxy
 		
 		MinecraftForgeClient.registerItemRenderer(Miscellany.sacredChalice, new ItemChaliceRender());
 		
-		LanguageRegistry.instance().addStringLocalization("potion.knowledgePotion", "Potion name here");
 	}
-		
 }

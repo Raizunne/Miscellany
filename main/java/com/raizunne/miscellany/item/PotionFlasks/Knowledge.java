@@ -54,7 +54,7 @@ public class Knowledge extends Item{
 			list.add(EnumChatFormatting.GRAY + "Potations Left: 2");
 			break;
 		case 1:
-			list.add(EnumChatFormatting.GRAY + "Potations Left: 1");
+			list.add(EnumChatFormatting.GRAY + "Potationsd Left: 1");
 			break;
 			default:
 		}
