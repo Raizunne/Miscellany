@@ -1,6 +1,7 @@
 package com.raizunne.miscellany.tileentities;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -34,8 +35,16 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 	
 	@Override
 	public void updateEntity() {
+		ItemStack slot1 = getStackInSlot(0);
+		ItemStack slot2 = getStackInSlot(1);
+		ItemStack slot3 = getStackInSlot(2);
+		ItemStack slot4 = getStackInSlot(3);
+		
 		if(!this.worldObj.isRemote){
-			
+			if(slot1 == (new ItemStack(Items.book)) && slot2==(new ItemStack(Blocks.emerald_block)) && slot3==(new ItemStack(Items.book))){
+				slot3 = new ItemStack(Miscellany.knowledgeFlask);
+				
+			}
 		}
 		super.updateEntity();
 		

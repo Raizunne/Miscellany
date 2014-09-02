@@ -163,6 +163,12 @@ public class Miscellany
    	 		"LLL",
    	 		'L', Miscellany.breadLoaf, 'S', Items.glass_bottle, 'E', Items.ender_eye});
    	 	
+   	 	GameRegistry.addRecipe(new ItemStack(Miscellany.brewer), new Object[]{
+   	 		"SSS",
+   	 		" C ",
+   	 		"CCC",
+   	 		'S', Blocks.stone_slab, 'C', Blocks.hardened_clay});
+   	 	
    	 	GameRegistry.addShapelessRecipe(new ItemStack(Miscellany.manualBook), Items.book, Items.flint);
    	 	GameRegistry.addShapelessRecipe(new ItemStack(Miscellany.pamphlet), Items.paper, Items.flint);
    	 	proxy.initRenderers();

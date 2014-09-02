@@ -53,7 +53,7 @@ public class RenderAdvReactBrewer extends TileEntitySpecialRenderer{
 				EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, slot1);
 				entItem.hoverStart = 0.0F;
 				RenderItem.renderInFrame = true;
-				GL11.glTranslatef((float)x + 0.5F, (float)y + 0.8F, (float)z + 0.08F);
+				GL11.glTranslatef((float)x + 0.83F, (float)y + 0.87F, (float)z + 0.15F);
 				GL11.glRotatef(45, 0, -45, 0);
 				GL11.glScalef(0.7F, 0.7F, 0.7F);
 				RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
@@ -65,9 +65,9 @@ public class RenderAdvReactBrewer extends TileEntitySpecialRenderer{
 				EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, slot2);
 				entItem.hoverStart = 0.0F;
 				RenderItem.renderInFrame = true;
-				GL11.glTranslatef((float)x + 0.9F, (float)y + 0.8F, (float)z + 0.5F);
+				GL11.glTranslatef((float)x + 0.05F, (float)y + 0.87F, (float)z + 0.5F);
 				GL11.glScalef(0.7F, 0.7F, 0.7F);
-				GL11.glRotatef(90, 1, 90, 1);
+				GL11.glRotatef(270, 1, 90, 1);
 				RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
 				RenderItem.renderInFrame = true;
 				GL11.glPopMatrix();
@@ -77,7 +77,7 @@ public class RenderAdvReactBrewer extends TileEntitySpecialRenderer{
 				EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, slot3);
 				entItem.hoverStart = 0.0F;
 				RenderItem.renderInFrame = true;
-				GL11.glTranslatef((float)x + 0.5F, (float)y + 0.8F, (float)z + 0.9F);
+				GL11.glTranslatef((float)x + 0.83F, (float)y + 0.87F, (float)z + 0.83F);
 				GL11.glScalef(0.7F, 0.7F, 0.7F);
 				GL11.glRotatef(45, 0, 90, 0);
 				RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
@@ -89,7 +89,7 @@ public class RenderAdvReactBrewer extends TileEntitySpecialRenderer{
 				EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, slot4);
 				entItem.hoverStart = 0.0F;
 				RenderItem.renderInFrame = true;
-				GL11.glTranslatef((float)x + 0.5F, (float)y + 1F, (float)z + 0.5F);
+				GL11.glTranslatef((float)x + 0.5F, (float)y + 1.1F, (float)z + 0.5F);
 				GL11.glScalef(0.8F, 0.8F, 0.8F);
 				GL11.glRotatef(90, 1, 90, 1);
 				RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);

@@ -3,10 +3,14 @@ package com.raizunne.miscellany.block;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
@@ -24,16 +28,18 @@ public class AdvReactBrewer extends BlockContainer{
 		setBlockName("advBrew");
 		setCreativeTab(Miscellany.miscTab);
 		setBlockTextureName("miscellany:advBrewer");
+		setHarvestLevel("pickaxe", 0);
+		setHardness(1.0F);
 		setBlockBounds(0.1875F, 0F, 0.1875F, 0.8125F, 0.75F, 0.8125F);
 	}
 
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
 		
-		world.spawnParticle("smoke", (double)x + 1F, (double)y+0.7F, (double)z+0.5F, 0, 0, 0);
-		world.spawnParticle("smoke", (double)x + 0.5F, (double)y+0.7F, (double)z+1F, 0, 0, 0);
-		world.spawnParticle("smoke", (double)x + 0.5F, (double)y+0.7F, (double)z+0F, 0, 0, 0);
-		world.spawnParticle("smoke", (double)x + 0F, (double)y+0.7F, (double)z+0.5F, 0, 0, 0);
+		world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.15F, 0, 0, 0);
+		world.spawnParticle("smoke", (float)x + 0.05F, (float)y + 0.87F, (float)z + 0.5F, 0, 0, 0);
+		world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.83F, 0, 0, 0);
+		world.spawnParticle("smoke", (float)x + 0.5F, (float)y + 1.1F, (float)z + 0.5F, 0, 0, 0);
 		
 	}
 	
@@ -54,6 +60,19 @@ public class AdvReactBrewer extends BlockContainer{
 	
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer player, List list, boolean p_77624_4_) {
 		list.add(EnumChatFormatting.LIGHT_PURPLE + "Infuse different");
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		TileEntityAdvReactBrewer tile = (TileEntityAdvReactBrewer)world.getTileEntity(x, y, z);
+		EntityItem item;
+		for(int i=0; i<tile.getSizeInventory(); i++){
+			if(tile.getStackInSlot(i)!=null){
+				item = new EntityItem(world, x, y, z, tile.getStackInSlot(i));
+				world.spawnEntityInWorld(item);
+			}
+		}
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 	
 	@Override
