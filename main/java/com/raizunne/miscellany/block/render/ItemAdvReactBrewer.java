@@ -38,6 +38,9 @@ public class ItemAdvReactBrewer implements IItemRenderer{
 			GL11.glTranslatef(1F, 0.3F, 1F);
 			GL11.glRotatef(180, 0, 1, 0);
 			break;
+		case ENTITY:
+			GL11.glTranslatef(-0.5F, -0.2F, -0.5F);
+			break;
 		default:
 			break;
 			

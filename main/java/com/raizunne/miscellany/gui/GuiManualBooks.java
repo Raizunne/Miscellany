@@ -120,24 +120,24 @@ public class GuiManualBooks extends GuiScreen{
 		buttonLeft prevButton = new buttonLeft(0, posX + 0, posY + 167, 18, 12, "Prev");
 		buttonRight nextButton = new buttonRight(1, posX + 210, posY + 167, 18, 12, "Next");
 		buttonNormal returnIndex = new buttonNormal(2, posX + 87, posY + 167, 50, 14, "Return");
-		buttonMenu menu0 = new buttonMenu(3, posX + 124, posY + 18, 90, 12, "Items", color1, color2);
-		buttonMenu menu1 = new buttonMenu(4, posX + 124, posY + 30, 90, 12, "Blocks", color1, color2);
-		buttonMenu menu2 = new buttonMenu(5, posX + 124, posY + 42, 90, 12, "Machines", color1, color2);
-		buttonMenu menu3 = new buttonMenu(6, posX + 124, posY + 54, 90, 12, "Equipment", color1, color2);
-		buttonMenu menu4 = new buttonMenu(7, posX + 124, posY + 66, 90, 12, "Advanced Alchemy", color1, color2);
+		buttonMenu menu0 = new buttonMenu(3, posX + 124, posY + 18, 90, 12, "Items", color1, color2, true);
+		buttonMenu menu1 = new buttonMenu(4, posX + 124, posY + 30, 90, 12, "Blocks", color1, color2, true);
+		buttonMenu menu2 = new buttonMenu(5, posX + 124, posY + 42, 90, 12, "Machines", color1, color2, true);
+		buttonMenu menu3 = new buttonMenu(6, posX + 124, posY + 54, 90, 12, "Equipment", color1, color2, true);
+		buttonMenu menu4 = new buttonMenu(7, posX + 124, posY + 66, 90, 12, "Advanced Alchemy", color1, color2, true);
 
-		buttonMenu items1 = new buttonMenu(8, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2);
-		buttonMenu items2 = new buttonMenu(15, posX + 124, posY + 30, 90, 12, "Shake", color1, color2);
+		buttonMenu items1 = new buttonMenu(8, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2, true);
+		buttonMenu items2 = new buttonMenu(15, posX + 124, posY + 30, 90, 12, "Shake", color1, color2, true);
 		
-		buttonMenu blocks1 = new buttonMenu(9, posX + 124, posY + 18, 90, 12, "Present", color1, color2);
+		buttonMenu blocks1 = new buttonMenu(9, posX + 124, posY + 18, 90, 12, "Present", color1, color2, true);
 		
-		buttonMenu machines1 = new buttonMenu(10, posX + 124, posY + 18, 90, 12, "Food Packager", color1, color2);
+		buttonMenu machines1 = new buttonMenu(10, posX + 124, posY + 18, 90, 12, "Food Packager", color1, color2, true);
 		
-		buttonMenu equipment1 = new buttonMenu(11, posX + 124, posY + 18, 90, 12, "Redstonic JetBoots", color1, color2);
+		buttonMenu equipment1 = new buttonMenu(11, posX + 124, posY + 18, 90, 12, "Redstonic JetBoots", color1, color2, true);
 		
-		buttonMenu alchemy1 = new buttonMenu(12, posX + 124, posY + 18, 90, 12, "Reactive Brewer", color1, color2);
-		buttonMenu alchemy2 = new buttonMenu(13, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2);
-		buttonMenu alchemy3 = new buttonMenu(14, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2);
+		buttonMenu alchemy1 = new buttonMenu(12, posX + 124, posY + 18, 90, 12, "Reactive Brewer", color1, color2, true);
+		buttonMenu alchemy2 = new buttonMenu(13, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2, true);
+		buttonMenu alchemy3 = new buttonMenu(14, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
 			
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);

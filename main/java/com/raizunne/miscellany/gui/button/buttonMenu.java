@@ -25,13 +25,15 @@ public class buttonMenu extends GuiButton {
 	public int colors2;
 	public int color;
 	public int color2;
+	public boolean page;
+	public boolean page2;
 	
-	public buttonMenu(int id, int posX, int posY, String text, int colors, int colors2)
+	public buttonMenu(int id, int posX, int posY, String text, int colors, int colors2, boolean page)
     {
-        this(id, posX, posY, 200, 12, text, colors, colors2);
+        this(id, posX, posY, 200, 12, text, colors, colors2, page);
     }
 
-	public buttonMenu(int id2, int posX2, int posY2, int i, int j, String text2, int color, int color2) {
+	public buttonMenu(int id2, int posX2, int posY2, int i, int j, String text2, int color, int color2, boolean page2) {
 		super(id2, posX2, posY2, i, j, text2);
 		this.width = 200;
         this.height = 12;
@@ -46,6 +48,7 @@ public class buttonMenu extends GuiButton {
         boolean h1 = true;
         this.colors = color;
         this.colors2 = color2;
+        this.page2 = page;
         
 	}
 	
@@ -104,27 +107,30 @@ public class buttonMenu extends GuiButton {
 		
 		Random r = new Random();
 		int n = r.nextInt(10) + 1;
-		
-		if(n==1){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page1, 1.0F));
-		}else if(n==2){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page2, 1.0F));
-		}else if(n==3){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page3, 1.0F));
-		}else if(n==4){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page4, 1.0F));
-		}else if(n==5){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page5, 1.0F));
-		}else if(n==6){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page6, 1.0F));
-		}else if(n==7){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page7, 1.0F));
-		}else if(n==8){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page8, 1.0F));
-		}else if(n==9){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page9, 1.0F));
-		}else if(n==10){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page10, 1.0F));
+		if(page){
+			if(n==1){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page1, 1.0F));
+			}else if(n==2){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page2, 1.0F));
+			}else if(n==3){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page3, 1.0F));
+			}else if(n==4){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page4, 1.0F));
+			}else if(n==5){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page5, 1.0F));
+			}else if(n==6){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page6, 1.0F));
+			}else if(n==7){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page7, 1.0F));
+			}else if(n==8){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page8, 1.0F));
+			}else if(n==9){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page9, 1.0F));
+			}else if(n==10){
+				p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page10, 1.0F));
+			}
+		}else{
+			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation("gui.button.press"), 1.0F));
 		}
     }
 }

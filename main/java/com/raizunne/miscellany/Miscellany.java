@@ -33,6 +33,7 @@ import com.raizunne.miscellany.item.breadLoaf;
 import com.raizunne.miscellany.proxies.CommonProxy;
 import com.raizunne.miscellany.server.debugHunger;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -144,6 +145,7 @@ public class Miscellany
 //   	 		'R', Blocks.redstone_block, 'L', Items.leather, 'B', Items.leather_boots, 'G', Items.gold_ingot});
    	 	
    	 	GameRegistry.registerTileEntity(TileEntityAdvReactBrewer.class, "advreactbrewer");
+   	 	GameRegistry.registerTileEntity(TileEntityPresent.class, "present");
    	 	
    	 	GameRegistry.addRecipe(new ItemStack(Miscellany.sacredChalice), new Object[]{
    	 		"IWI",

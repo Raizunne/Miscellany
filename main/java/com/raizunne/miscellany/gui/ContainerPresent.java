@@ -1,19 +1,20 @@
 package com.raizunne.miscellany.gui;
 
-import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerAdvReactBrewer extends Container{
+import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
-	private TileEntityAdvReactBrewer advbrewer;
+public class ContainerPresent extends Container{
+
+	private TileEntityPresent present;
 	
-	public ContainerAdvReactBrewer(InventoryPlayer invplayer, TileEntityAdvReactBrewer advbrewer){
-		this.advbrewer = advbrewer;
+	public ContainerPresent(InventoryPlayer invplayer, TileEntityPresent present){
+		this.present = present;
 		
 		for(int x=0; x < 9; x++){
 			addSlotToContainer(new Slot(invplayer, x, 8 + 18 * x, 142));
@@ -24,16 +25,15 @@ public class ContainerAdvReactBrewer extends Container{
 				addSlotToContainer(new Slot(invplayer, x + y * 9 + 9, 8 + 18 * x, 84 + y * 18));
 			}
 		}
-		addSlotToContainer(new Slot(advbrewer, 0, 53, 25));
-		addSlotToContainer(new Slot(advbrewer, 1, 79, 15));
-		addSlotToContainer(new Slot(advbrewer, 2, 105, 25));
-		addSlotToContainer(new Slot(advbrewer, 3, 79, 58));
+		
+		for(int x=0; x<7; x++){
+			addSlotToContainer(new Slot(present, x, 26 + 18*x, 58));
+		}	
+		
 	}
-	
-	
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return advbrewer.isUseableByPlayer(player);
+		return present.isUseableByPlayer(player);
 	}
 	
 	@Override

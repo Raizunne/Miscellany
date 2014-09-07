@@ -3,13 +3,15 @@ package com.raizunne.miscellany.handler;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.gui.ContainerAdvReactBrewer;
 import com.raizunne.miscellany.gui.ContainerFoodPackager;
+import com.raizunne.miscellany.gui.ContainerPresent;
 import com.raizunne.miscellany.gui.GuiAdvReactBrewer;
 import com.raizunne.miscellany.gui.GuiFoodPackager;
 import com.raizunne.miscellany.gui.GuiManualBooks;
 import com.raizunne.miscellany.gui.GuiPamphlet;
-import com.raizunne.miscellany.gui.GuiTest;
+import com.raizunne.miscellany.gui.GuiPresent;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
+import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -35,6 +37,10 @@ public class GUIHandler implements IGuiHandler {
 			}
 			break;
 			case 2: return null;
+			case 4: if(te != null && te instanceof TileEntityPresent){
+				return new ContainerPresent(player.inventory, (TileEntityPresent)te);
+			}
+			break;
 			default: return null;
 		}
 		return null;
@@ -54,6 +60,10 @@ public class GUIHandler implements IGuiHandler {
 			break;
 			case 2: return new GuiManualBooks(player);
 			case 3: return new GuiPamphlet();
+			case 4: if(te != null && te instanceof TileEntityPresent){
+				return new GuiPresent(player.inventory, (TileEntityPresent)te);
+			}
+			break;
 			default: return null;
 		}
 		return null;
