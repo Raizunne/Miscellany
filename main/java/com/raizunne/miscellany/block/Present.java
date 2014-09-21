@@ -19,6 +19,7 @@ public class Present extends BlockContainer{
 		setBlockName("present");
 		setStepSound(soundTypeCloth);
 		setBlockTextureName("miscellany:foodPackager");
+		setHarvestLevel("axe", 0);
 		setHardness(1.0F);
 		setCreativeTab(Miscellany.miscTab);
 	}
@@ -31,8 +32,10 @@ public class Present extends BlockContainer{
 			TileEntity te = world.getTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPresent){
 				TileEntityPresent present = (TileEntityPresent) te;
-				if(present.userSender==null){
-					present.userSender = player.getDisplayName();
+				System.out.println(present.getSender());
+				System.out.println(present.getReceiver());
+				if(present.getSender()==null){
+					present.setSender(player.getDisplayName());
 				}
 			}
 			return true;
@@ -48,8 +51,6 @@ public class Present extends BlockContainer{
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z) {
 		super.onBlockAdded(world, x, y, z);
-		world.setTileEntity(x, y, z, this.createNewTileEntity(world, 0));
-		
 	}
 
 	@Override

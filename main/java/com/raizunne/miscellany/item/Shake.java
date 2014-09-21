@@ -15,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.raizunne.miscellany.Miscellany;
@@ -61,22 +62,22 @@ public class Shake extends Item{
 	@Override
 	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack itemstack) {
 		if(entityLiving instanceof EntityPlayer){
-			EntityPlayer player = (EntityPlayer)entityLiving;
-			World world = player.worldObj;
-			if(player.getFoodStats().needFood()){
-				player.getFoodStats().addStats(4, 6);
-				world.playSoundAtEntity(player, "mob.enderdragon.hit", 0.5F, 1.3F);
-				if(!player.capabilities.isCreativeMode){
-					itemstack.stackTagCompound.setInteger("uses", itemstack.stackTagCompound.getInteger("uses")-1);
-					itemstack.damageItem(1, entityLiving);
-					
-				}
-				if(player.inventory.getCurrentItem().getItemDamage()==50){
-					player.inventory.decrStackSize(player.inventory.currentItem, 1);
-					world.playSoundAtEntity(player, "mob.endermen.hit", 0.5F, 1F);
+			EntityPlayer player = (EntityPlayer) entityLiving;		
+			MovingObjectPosition pos = this.getMovingObjectPositionFromPlayer(player.worldObj, player, true);
+				World world = player.worldObj;
+				if(player.getFoodStats().needFood() && pos==null){
+					player.getFoodStats().addStats(4, 6);
+					world.playSoundAtEntity(player, "mob.enderdragon.hit", 0.5F, 1.3F);
+					if(!player.capabilities.isCreativeMode){
+						itemstack.stackTagCompound.setInteger("uses", itemstack.stackTagCompound.getInteger("uses")-1);
+						itemstack.damageItem(1, entityLiving);
+					}
+					if(player.inventory.getCurrentItem().getItemDamage()==50){
+						player.inventory.decrStackSize(player.inventory.currentItem, 1);
+						world.playSoundAtEntity(player, "mob.endermen.hit", 0.5F, 1F);
+					}
 				}
 			}
-		}
 		return false;
 	}	
 		

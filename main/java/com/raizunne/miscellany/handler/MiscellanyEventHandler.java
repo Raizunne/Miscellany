@@ -1,6 +1,8 @@
 package com.raizunne.miscellany.handler;
 
+import ibxm.Player;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
@@ -78,29 +80,18 @@ public class MiscellanyEventHandler {
 		}
 	}
 	
-	
-	@SubscribeEvent
-	public void livingFall(LivingFallEvent event){
-		if(event.entity instanceof EntityPlayer){
-			EntityPlayer player = (EntityPlayer)event.entity;
-			boolean world = event.entity.worldObj.isRemote;
-			if(player.isPotionActive(Miscellany.flightPotion)){
-				if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()==0){
-					if(player.onGround){
-						event.distance=0F;
-					}
-				}
-			}
+	public void onPlayerLogin(EntityPlayer player){
+		if(!player.getEntityData().getBoolean("hasPamphlet")){
+			if(!player.worldObj.isRemote){
+				player.inventory.addItemStackToInventory(new ItemStack(Miscellany.pamphlet));
+				player.getEntityData().setBoolean("hasPamphlet", true);
+				player.addChatComponentMessage(new ChatComponentText("Miscellany welcomes you to a new world of Minecraft"));
+				player.addChatComponentMessage(new ChatComponentText("Have a nice stay."));
+			}			
+		}else{
+			player.addChatComponentMessage(new ChatComponentText("Welcome Back!"));
 		}
 	}
-//	@SubscribeEvent
-//	public void onPlayerLogin(EntityPlayer player){
-//		NBTTagCompound playerstats = player.getEntityData();
-//		if(playerstats.getString("hasbook")==null || playerstats.getString("hasbook")==""){
-//			player.inventory.addItemStackToInventory(new ItemStack(Miscellany.pamphlet));
-//			playerstats.setString("hasbook", "true");
-//		}
-//	}
 }
 
 

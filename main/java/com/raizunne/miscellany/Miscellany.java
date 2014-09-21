@@ -17,6 +17,7 @@ import com.raizunne.miscellany.block.NoNite;
 import com.raizunne.miscellany.block.Present;
 import com.raizunne.miscellany.handler.GUIHandler;
 import com.raizunne.miscellany.handler.MiscellanyEventHandler;
+import com.raizunne.miscellany.handler.PlayerTracker;
 import com.raizunne.miscellany.handler.PotionHandler;
 import com.raizunne.miscellany.item.PackagedFood;
 import com.raizunne.miscellany.item.Pamphlet;
@@ -30,6 +31,7 @@ import com.raizunne.miscellany.item.PotionFlask;
 import com.raizunne.miscellany.item.PotionFlasks.Flight;
 import com.raizunne.miscellany.item.PotionFlasks.Knowledge;
 import com.raizunne.miscellany.item.breadLoaf;
+import com.raizunne.miscellany.item.Package;
 import com.raizunne.miscellany.proxies.CommonProxy;
 import com.raizunne.miscellany.server.debugHunger;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
@@ -51,7 +53,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Miscellany
 {
     public static final String MODID = "Miscellany";
-    public static final String VERSION = "0.2a";
+    public static final String VERSION = "0.2.5a";
     
     @Instance
     public static Miscellany instance;
@@ -76,6 +78,7 @@ public class Miscellany
     public static Item Shake;
     public static Item pamphlet;
     public static Item breadLoaf;
+    public static Item pack;
     
     public static Item potionFlask;
     public static Item flightFlask;
@@ -102,8 +105,8 @@ public class Miscellany
    	 	Shake = new Shake();
    	 	pamphlet = new Pamphlet();
    	 	breadLoaf = new breadLoaf(12, 10, false);
+   	 	pack = new Package();
    	 	
-
    	 	potionFlask = new PotionFlask();
    	 	flightFlask = new Flight();
    	 	knowledgeFlask = new Knowledge();
@@ -126,16 +129,17 @@ public class Miscellany
    	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(pamphlet, pamphlet.getUnlocalizedName().substring(5));
    	 	GameRegistry.registerItem(breadLoaf, breadLoaf.getUnlocalizedName().substring(5));
+   	 	GameRegistry.registerItem(pack, pack.getUnlocalizedName().substring(5));
    	 	
    	 	//ALCHEMY
-   	 	GameRegistry.registerBlock(brewer, "advBrew");
-   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
-   	 	GameRegistry.registerItem(flightFlask, flightFlask.getUnlocalizedName().substring(5));
-   	 	GameRegistry.registerItem(knowledgeFlask, knowledgeFlask.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerBlock(brewer, "advBrew");
+//   	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerItem(flightFlask, flightFlask.getUnlocalizedName().substring(5));
+//   	 	GameRegistry.registerItem(knowledgeFlask, knowledgeFlask.getUnlocalizedName().substring(5));
    	 	
 //   	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
-   	 	GameRegistry.registerBlock(present, "present");
-   	 	GameRegistry.registerBlock(noNite, "nonite");
+//   	 	GameRegistry.registerBlock(present, "present");
+//   	 	GameRegistry.registerBlock(noNite, "nonite");
    	 	
 
 //   	 	GameRegistry.addRecipe(new ItemStack(Miscellany.redstonicBoots), new Object[] { 
@@ -175,6 +179,7 @@ public class Miscellany
    	 	GameRegistry.addShapelessRecipe(new ItemStack(Miscellany.pamphlet), Items.paper, Items.flint);
    	 	proxy.initRenderers();
    	 	MinecraftForge.EVENT_BUS.register(new MiscellanyEventHandler());
+//   	 	MinecraftForge.EVENT_BUS.register(new PlayerTracker());
    	 	
     }
     
@@ -187,7 +192,6 @@ public class Miscellany
     public void load(FMLInitializationEvent event){
     	new GUIHandler();
     	new PotionHandler();
-    	
     }
     
     @EventHandler

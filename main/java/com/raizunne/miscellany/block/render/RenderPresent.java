@@ -26,7 +26,7 @@ public class RenderPresent extends TileEntitySpecialRenderer{
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + 0.5F, (float)y + 0.75F, (float)z + 0.5F);
+		GL11.glTranslatef((float)x + 0.5675F, (float)y + 0.75F, (float)z + 0.4325F);
 			GL11.glRotatef(180, 0F, 0F, 1F);
 			this.bindTexture(texture);
 			GL11.glPushMatrix();

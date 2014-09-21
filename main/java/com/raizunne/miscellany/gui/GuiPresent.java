@@ -31,13 +31,14 @@ public class GuiPresent extends GuiContainer{
 	
 	public static final ResourceLocation texture = new ResourceLocation("miscellany", "textures/gui/presentGUI.png");
 	GuiTextField textfield;
+	boolean set;
 		
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f,	int x, int y) {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		mc.renderEngine.bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-		if(present.userFor==null){
+		if(present.getReceiver()==null){
 			mc.renderEngine.bindTexture(texture);
 			drawTexturedModalRect(guiLeft + 38, guiTop + 33, 0, 166, 100, 16);
 		}
@@ -45,23 +46,16 @@ public class GuiPresent extends GuiContainer{
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
+		super.drawGuiContainerForegroundLayer(x, y);
 		fontRendererObj.drawString("Present", 15, 6, 0x404040);
 		fontRendererObj.drawString("From:", 22, 20, 0x404040);
 		fontRendererObj.drawString("To:", 22, 36, 0x404040);
-		fontRendererObj.drawString(present.userSender, 55, 20, 0x404040);
-		if(present.userFor==null){
+		fontRendererObj.drawString(present.getSender(), 55, 20, 0xE65C5C);
+		if(present.getReceiver()==null){
 			this.textfield.drawTextBox();
 		}
-		if(present.userFor!=null){
-			fontRendererObj.drawString(present.userFor, 40, 36, 0x404040);
-		}
-	}
-	
-	public boolean renderfield(){
-		if(present.userFor==null){
-			return true;
-		}else{
-			return false;
+		if(present.getReceiver()!=null || set){
+			fontRendererObj.drawString(present.getReceiver(), 40, 36, 0x404040);
 		}
 	}
 	
@@ -72,12 +66,13 @@ public class GuiPresent extends GuiContainer{
 		textfield.setTextColor(0xE65C5C);
 		textfield.setEnableBackgroundDrawing(true);
     	textfield.setFocused(true);
-    	textfield.setMaxStringLength(20);
+    	textfield.setMaxStringLength(15);
     	textfield.setEnableBackgroundDrawing(false);    	
     	buttonMenu menu0 = new buttonMenu(0, guiLeft + 140, guiTop + 34, 90, 12, "Done", 0x999999, 0x565656, false);
-    	if(present.userFor==null){
+    	if(present.getReceiver()==null){
     		buttonList.add(menu0);
-    	}else if(present.userFor!=null){
+    	}
+    	if(present.getReceiver()!=null || set){
     		buttonList.remove(menu0);
     	}
     	
@@ -85,16 +80,14 @@ public class GuiPresent extends GuiContainer{
 	
 	@Override
 	protected void actionPerformed(GuiButton button) {
+		super.actionPerformed(button);
 		switch(button.id){
 		case 0: 
-			if(textfield.getText()!=null){
-				present.userFor = textfield.getText();
-				System.out.println(present.userFor);
-				System.out.println(present.userSender);
+			if(textfield.getText()!=""){
+				present.setReceiver(textfield.getText());
 			}
 		break;
 		}
-		
 	}
 
 	@Override
@@ -108,8 +101,10 @@ public class GuiPresent extends GuiContainer{
         this.textfield.textboxKeyTyped(par1, par2);
     }
 	
+	@Override
 	protected void mouseClicked(int x, int y, int btn){
         super.mouseClicked(x, y, btn);
         this.textfield.mouseClicked(x-guiLeft, y-guiTop, btn);
+        this.initGui();
     }
 }
