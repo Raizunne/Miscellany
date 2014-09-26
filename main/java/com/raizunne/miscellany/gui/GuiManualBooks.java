@@ -20,6 +20,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.gui.button.buttonLeft;
 import com.raizunne.miscellany.gui.button.buttonMenu;
@@ -90,13 +91,13 @@ public class GuiManualBooks extends GuiScreen{
 			fontrenderer.drawSplitString(bookResources.chalice1, posX + 10, posY + 80, 98, 0);
 			fontrenderer.drawSplitString(bookResources.chalice2, posX + 121, posY + 17, 98, 0);
 			Item goldBlock = Blocks.gold_block.getItemDropped(Blocks.gold_block.getIdFromBlock(Blocks.gold_block), new Random(), 1);
-			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, goldBlock, null, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, Miscellany.sacredChalice, 20, 20, x, y);	
+			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, goldBlock, null, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, MiscItems.sacredChalice, 20, 20, x, y);	
 		}else if(entry && currentSection=="shake" && subSection==0){
 			fontrenderer.drawString("Shake", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(bookResources.shake1, posX + 10, posY + 80, 98, 0);
 			fontrenderer.drawSplitString(bookResources.shake2, posX + 121, posY + 17, 98, 0);
-			drawCrafting(Miscellany.breadLoaf, Miscellany.breadLoaf, Miscellany.breadLoaf, Items.ender_eye, Items.glass_bottle, Items.ender_eye, Miscellany.breadLoaf,
-					Miscellany.breadLoaf, Miscellany.breadLoaf, Miscellany.Shake, 20, 20, x, y);	
+			drawCrafting(MiscItems.breadLoaf, MiscItems.breadLoaf, MiscItems.breadLoaf, Items.ender_eye, Items.glass_bottle, Items.ender_eye, MiscItems.breadLoaf,
+					MiscItems.breadLoaf, MiscItems.breadLoaf, MiscItems.Shake, 20, 20, x, y);	
 		}
 		
 		super.drawScreen(x, y, f);

@@ -30,7 +30,7 @@ public class AdvReactBrewer extends BlockContainer{
 		setBlockTextureName("miscellany:advBrewer");
 		setHarvestLevel("pickaxe", 0);
 		setHardness(1.0F);
-		setBlockBounds(0.1875F, 0F, 0.1875F, 0.8125F, 0.75F, 0.8125F);
+		setBlockBounds(0.1875F, 0F, 0.1875F, 0.8125F, 1F, 0.8125F);
 	}
 
 	@Override

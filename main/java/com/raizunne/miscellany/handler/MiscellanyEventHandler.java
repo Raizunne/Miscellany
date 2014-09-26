@@ -1,16 +1,12 @@
 package com.raizunne.miscellany.handler;
 
-import ibxm.Player;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -29,14 +25,14 @@ public class MiscellanyEventHandler {
 			boolean equipped = false;
 			ItemStack boots = player.inventory.armorInventory[0];
 			if(boots!=null){
-				if(boots.getItem() == Miscellany.redstonicBoots){	
+				if(boots.getItem() == MiscItems.redstonicBoots){	
 					player.stepHeight = 1;
 					player.capabilities.setPlayerWalkSpeed(0.15F);
 					player.jumpMovementFactor = 0.05F;
 					equipped=true;	
 				}
 			}
-			if(equipped==true && boots.getItem()!=Miscellany.redstonicBoots){
+			if(equipped==true && boots.getItem()!=MiscItems.redstonicBoots){
 				player.stepHeight=player.stepHeight-1F;
 				player.capabilities.setPlayerWalkSpeed(player.capabilities.getWalkSpeed()-0.15F);
 				player.jumpMovementFactor = player.jumpMovementFactor - 0.05F;
@@ -48,15 +44,15 @@ public class MiscellanyEventHandler {
 			EntityPlayer player = (EntityPlayer)event.entity;
 			boolean world = event.entity.worldObj.isRemote;
 			boolean flying = false;
-			if(player.isPotionActive(Miscellany.flightPotion.getId())){
+			if(player.isPotionActive(MiscItems.flightPotion.getId())){
 				player.capabilities.allowFlying=true;
 				flying=true;
-				if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()==200){
+				if(player.getActivePotionEffect(MiscItems.flightPotion).getDuration()==200){
 					if(!world){
 						player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.YELLOW + "Flight about to end! Floor it!"));
 					}
 				}
-				if(player.getActivePotionEffect(Miscellany.flightPotion).getDuration()==1){
+				if(player.getActivePotionEffect(MiscItems.flightPotion).getDuration()==1){
 					if(!player.capabilities.isCreativeMode){
 						player.capabilities.isFlying=false;
 						player.capabilities.allowFlying=false;
@@ -70,11 +66,11 @@ public class MiscellanyEventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)event.entity;
 			boolean world = event.entity.worldObj.isRemote;
-			if(player.isPotionActive(Miscellany.knowledgePotion.getId())){
+			if(player.isPotionActive(MiscItems.knowledgePotion.getId())){
 				player.addExperience(6);
-				if(player.getActivePotionEffect(Miscellany.knowledgePotion).getDuration()==1){
+				if(player.getActivePotionEffect(MiscItems.knowledgePotion).getDuration()==1){
 					player.experienceLevel=0;
-					player.removePotionEffect(Miscellany.knowledgePotion.getId());
+					player.removePotionEffect(MiscItems.knowledgePotion.getId());
 				}
 			}
 		}
@@ -83,7 +79,7 @@ public class MiscellanyEventHandler {
 	public void onPlayerLogin(EntityPlayer player){
 		if(!player.getEntityData().getBoolean("hasPamphlet")){
 			if(!player.worldObj.isRemote){
-				player.inventory.addItemStackToInventory(new ItemStack(Miscellany.pamphlet));
+				player.inventory.addItemStackToInventory(new ItemStack(MiscItems.pamphlet));
 				player.getEntityData().setBoolean("hasPamphlet", true);
 				player.addChatComponentMessage(new ChatComponentText("Miscellany welcomes you to a new world of Minecraft"));
 				player.addChatComponentMessage(new ChatComponentText("Have a nice stay."));

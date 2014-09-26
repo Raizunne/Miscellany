@@ -26,17 +26,38 @@ public class Package extends Item{
 		setTextureName("miscellany:thepackage");
 		setCreativeTab(Miscellany.miscTab);
 		setMaxDamage(1);
-		nbt.setInteger("item", 24);
-		nbt.setInteger("number", 300);
+		
+	}
+	
+	@Override
+	public void onCreated(ItemStack itemstack, World p_77622_2_,
+			EntityPlayer p_77622_3_) {
+		if(itemstack.stackTagCompound==null){
+			itemstack.stackTagCompound = new NBTTagCompound();
+		}
+	}
+	
+	@Override
+	public void onUpdate(ItemStack itemstack, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
+		if(itemstack.stackTagCompound==null){
+			itemstack.stackTagCompound = new NBTTagCompound();
+		}
 	}
 	
 	@Override
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean what) {
 		super.addInformation(itemstack, player, list, what);
+		
 		list.add(StringResources.pack);
-		if(nbt.getInteger("item")!=0){
-			Item thisitem = getItemById(nbt.getInteger("item"));
-			list.add("Currently Contains: " + nbt.getInteger("number") + " of " + getItemStackDisplayName(new ItemStack(thisitem)));
+		if(itemstack.stackTagCompound!=null){
+			if(itemstack.stackTagCompound.getInteger("item")!=0){
+				int id = itemstack.stackTagCompound.getInteger("item");
+				int count = itemstack.stackTagCompound.getInteger("number");
+				Item thisitem = getItemById(id);
+				list.add("Currently Contains: " + count + " of " + getItemStackDisplayName(new ItemStack(thisitem)));
+			}else{
+				list.add("Currently Empty");
+			}
 		}else{
 			list.add("Currently Empty");
 		}
@@ -44,18 +65,31 @@ public class Package extends Item{
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-		if(nbt.getInteger("item")==0){
+		if(itemstack.stackTagCompound!=null || itemstack.stackTagCompound.getInteger("item")==0){
 			if(!world.isRemote){
 				player.addChatComponentMessage(new ChatComponentText("Package is empty"));
 			} 
 			return itemstack;
 		}else{
-			for(int i=0; i < nbt.getInteger("number"); i++ ){
-				player.inventory.addItemStackToInventory(new ItemStack(getItemById(nbt.getInteger("item"))));		
+			
+			int id = itemstack.stackTagCompound.getInteger("item");
+			int count = itemstack.stackTagCompound.getInteger("number");
+			
+			for(int i=0; i < count; i++ ){
+				player.inventory.addItemStackToInventory(new ItemStack(getItemById(id)));		
 			}
 			player.inventory.decrStackSize(player.inventory.currentItem, 1);
 		}
-		return itemstack;
+		return itemstack;	
+	}
+	
+	@Override
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+		if(!entityLiving.worldObj.isRemote){
+			System.out.println(stack.stackTagCompound.getInteger("item"));
+			System.out.println(stack.stackTagCompound.getInteger("number"));
+		}
 		
+		return false;
 	}
 }

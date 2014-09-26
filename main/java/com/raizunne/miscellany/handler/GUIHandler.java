@@ -1,21 +1,25 @@
 package com.raizunne.miscellany.handler;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.gui.ContainerAdvReactBrewer;
 import com.raizunne.miscellany.gui.ContainerFoodPackager;
+import com.raizunne.miscellany.gui.ContainerPackage;
 import com.raizunne.miscellany.gui.ContainerPresent;
 import com.raizunne.miscellany.gui.GuiAdvReactBrewer;
 import com.raizunne.miscellany.gui.GuiFoodPackager;
 import com.raizunne.miscellany.gui.GuiManualBooks;
+import com.raizunne.miscellany.gui.GuiPackage;
 import com.raizunne.miscellany.gui.GuiPamphlet;
 import com.raizunne.miscellany.gui.GuiPresent;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
+import com.raizunne.miscellany.tileentities.TileEntityPackage;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
@@ -41,6 +45,10 @@ public class GUIHandler implements IGuiHandler {
 				return new ContainerPresent(player.inventory, (TileEntityPresent)te);
 			}
 			break;
+			case 5: if(te != null && te instanceof TileEntityPackage){
+				return new ContainerPackage(player.inventory, (TileEntityPackage)te);
+			}
+			break;
 			default: return null;
 		}
 		return null;
@@ -62,6 +70,10 @@ public class GUIHandler implements IGuiHandler {
 			case 3: return new GuiPamphlet();
 			case 4: if(te != null && te instanceof TileEntityPresent){
 				return new GuiPresent(player.inventory, (TileEntityPresent)te);
+			}
+			break;
+			case 5: if(te != null && te instanceof TileEntityPackage){
+				return new GuiPackage(player.inventory, (TileEntityPackage)te);
 			}
 			break;
 			default: return null;

@@ -7,6 +7,7 @@ item.pamphlet.name=Miscellany Pamphlet 0.1a
 item.shake.name=Shake
 item.debugHunger.name=Debug Hunger
 item.breadLoaf.name=Bread Loaf
+item.package.name=Packaged
 
 item.emptyFlask.name=Empty Flask
 item.flightFlask.name=Flight Flask
@@ -17,6 +18,8 @@ item.sacredChalice.documentation=Consumes cobblestone, receives water.
 item.manualBook.documentation=Manual for the Raizunne's Miscellany.
 item.pamphlet.documentation=Free propaganda given to the player when spawned or a new version comes out!
 item.debugHunger.doumentation=Creative item that decreases hunger for debuging.
+item.shake.documentation=New technology for ingesting food, Shake to Eat! (Left click to ingest food and saturation, for the boring ones.)
+item.package.documentation=Compressing items into one.
 
 emptyPotionFlask.name=Empty Potion Flask
 flightPotionFlask.name=Potion of Flight
@@ -28,13 +31,12 @@ flightPotion=Flight
 flightPotion.postfix=Flight
 
 item.packagedFood.name=Packaged Food
-
 tile.foodPackager.name=Food Packager
-tile.foodPackager.documentation=Generate better food from poor food!
-
 tile.advBrew.name=Advanced Reactive Brewer
-
-
 tile.present.name=Present
-tile.present.documentation=Insert items and place this block for giving presents to your friends!
+tile.thepackage.name=Packager
+tile.nonite.name=No Nite
 
+tile.foodPackager.documentation=Generate better food from poor food!
+tile.advBrew.documentation=Reactive brewing is best brewing, at least that's what they say.
+tile.present.documentation=Insert items and place this block for giving presents to your friends!

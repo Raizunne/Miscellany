@@ -13,6 +13,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.proxies.ClientProxy;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
@@ -38,7 +39,7 @@ public class FoodPackager extends BlockContainer{
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int h, float f1, float f2, float f3) {
 		if(!world.isRemote){
-			if(player.isSneaking() == true && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == Miscellany.packagedFood){
+			if(player.isSneaking() == true && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == MiscItems.packagedFood){
 				world.setBlockToAir(x, y, z);
 			}
 			

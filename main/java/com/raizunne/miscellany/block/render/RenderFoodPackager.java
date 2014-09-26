@@ -20,8 +20,6 @@ public class RenderFoodPackager extends TileEntitySpecialRenderer{
 		this.model = new ModelFoodPackager();
 	}
 	
-	
-	
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
 		TileEntityFoodPackager te = (TileEntityFoodPackager)tileentity;

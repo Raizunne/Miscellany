@@ -1,19 +1,15 @@
 package com.raizunne.miscellany.tileentities;
 
-import com.raizunne.miscellany.Miscellany;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+
+import com.raizunne.miscellany.MiscItems;
 
 public class TileEntityFoodPackager extends TileEntity implements IInventory{
 
@@ -147,7 +143,7 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory{
 	}
 	
 	public boolean canExtractItem(int i, ItemStack itemstack, int j){
-		return j != 0 || i != 7 || itemstack.getItem() == Miscellany.packagedFood;		
+		return j != 0 || i != 7 || itemstack.getItem() == MiscItems.packagedFood;		
 	}
 	
 }

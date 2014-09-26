@@ -32,7 +32,6 @@ public class GuiFoodPackager extends GuiContainer{
 		GL11.glColor4f(1F, 1F, 1F, 1F);		
 		mc.renderEngine.bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-		
 	}
 	
 	public void drawGuiContainerForegroundLayer(int x, int y){

@@ -88,6 +88,7 @@ public class GuiPresent extends GuiContainer{
 			}
 		break;
 		}
+		initGui();
 	}
 
 	@Override

@@ -5,12 +5,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.MiscItems;
 
 public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 
@@ -42,7 +41,7 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 		
 		if(!this.worldObj.isRemote){
 			if(slot1 == (new ItemStack(Items.book)) && slot2==(new ItemStack(Blocks.emerald_block)) && slot3==(new ItemStack(Items.book))){
-				slot3 = new ItemStack(Miscellany.knowledgeFlask);
+				slot3 = new ItemStack(MiscItems.knowledgeFlask);
 				
 			}
 		}

@@ -21,34 +21,26 @@ public class buttonMenu extends GuiButton {
 	public String text;
 	public boolean enabled;
 	public boolean visible;
-	public int colors;
-	public int colors2;
 	public int color;
 	public int color2;
 	public boolean page;
-	public boolean page2;
-	
-	public buttonMenu(int id, int posX, int posY, String text, int colors, int colors2, boolean page)
-    {
-        this(id, posX, posY, 200, 12, text, colors, colors2, page);
-    }
 
-	public buttonMenu(int id2, int posX2, int posY2, int i, int j, String text2, int color, int color2, boolean page2) {
-		super(id2, posX2, posY2, i, j, text2);
-		this.width = 200;
-        this.height = 12;
+	public buttonMenu(int id, int posX, int posY, int i, int j, String text, int color, int color2, boolean page) {
+		super(id, posX, posY, i, j, text);
+		this.width = i;
+        this.height = j;
         this.enabled = true;
         this.visible = true;
-        this.id = id2;
-        this.xPosition = posX2;
-        this.yPosition = posY2;
+        this.id = id;
+        this.xPosition = posX;
+        this.yPosition = posY;
         this.width = i;
         this.height = j;
-        this.displayString = text2;
+        this.displayString = text;
         boolean h1 = true;
-        this.colors = color;
-        this.colors2 = color2;
-        this.page2 = page;
+        this.color = color;
+        this.color2 = color2;
+        this.page = page;
         
 	}
 	
@@ -76,7 +68,7 @@ public class buttonMenu extends GuiButton {
         {
         	FontRenderer fontrenderer = p_146112_1_.fontRenderer;
         	/*Color used when not hovered*/
-            int l = this.colors;
+            int l = this.color;
             this.field_146123_n = p_146112_2_ >= this.xPosition && p_146112_3_ >= this.yPosition && p_146112_2_ < this.xPosition + this.width && p_146112_3_ < this.yPosition + this.height;
             int hover = this.getHoverState(this.field_146123_n);
             boolean hovering = false;
@@ -84,11 +76,14 @@ public class buttonMenu extends GuiButton {
             if (hover==2)
             {
             	/*Color used when WHEN hovered*/
-                l = this.colors2;
+                l = this.color2;
                 
             }
-                            
-			this.drawString(fontrenderer, this.displayString, this.xPosition + (hover == 2 ? 2 : 0), this.yPosition + (this.height - 8) / 2, l);
+            if(this.enabled){
+            	this.drawString(fontrenderer, this.displayString, this.xPosition + (hover == 2 ? 2 : 0), this.yPosition + (this.height - 8) / 2, l);
+            }else if(!this.enabled){
+            	this.drawString(fontrenderer, "BUTTON NOT", this.xPosition + (hover == 2 ? 2 : 0), this.yPosition + (this.height - 8) / 2, l);
+            }
         }
     }
 	
