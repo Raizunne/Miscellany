@@ -25,11 +25,11 @@ public class MiscBlocks {
    	 	noNite = new NoNite(Material.ground);
    	 	thepackage = new ThePackage(Material.ground);
    	 	
-   	 	GameRegistry.registerBlock(noNite, "nonite");
-   	 	GameRegistry.registerBlock(thepackage, "thepackage");
+//   	 	GameRegistry.registerBlock(noNite, "nonite");
+//   	 	GameRegistry.registerBlock(thepackage, "thepackage");
 	 	GameRegistry.registerBlock(brewer, "advBrew");
-	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
-	 	GameRegistry.registerBlock(present, "present");
+//	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
+//	 	GameRegistry.registerBlock(present, "present");
 	 	
 	}
 	

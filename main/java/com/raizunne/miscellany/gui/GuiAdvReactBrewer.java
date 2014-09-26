@@ -12,8 +12,11 @@ import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 
 public class GuiAdvReactBrewer extends GuiContainer{
 
-	public GuiAdvReactBrewer(InventoryPlayer invplayer, TileEntityAdvReactBrewer advbrewer) {
-		super(new ContainerAdvReactBrewer(invplayer, advbrewer));
+	TileEntityAdvReactBrewer advbrewer;
+	
+	public GuiAdvReactBrewer(InventoryPlayer invplayer, TileEntityAdvReactBrewer advbrew) {
+		super(new ContainerAdvReactBrewer(invplayer, advbrew));
+		this.advbrewer = advbrew;
 		xSize = 176;
 		ySize = 166;
 	}
@@ -25,11 +28,13 @@ public class GuiAdvReactBrewer extends GuiContainer{
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		mc.renderEngine.bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		drawTexturedModalRect(guiLeft+70, guiTop+32, 176, 0, 36, this.advbrewer.getScaledProgress(27));
 	}
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
 		fontRendererObj.drawString("Advanced Reactive Brewer", 22, 6, 0x404040);
-	}
-
+		mc.renderEngine.bindTexture(texture);
+		
+	}	
 }

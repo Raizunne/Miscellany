@@ -1,15 +1,17 @@
 package com.raizunne.miscellany.tileentities;
 
+import com.raizunne.miscellany.MiscItems;
+import com.raizunne.miscellany.util.RecipeUtil;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-
-import com.raizunne.miscellany.MiscItems;
 
 public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 
@@ -22,40 +24,46 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 		
 	}
 	
-	public ItemStack checkSlots(ItemStack top, ItemStack right, ItemStack bottom, ItemStack left, ItemStack center){
-		if(top==new ItemStack(Items.apple)&& right==null && bottom==null && left==null && center==new ItemStack(Items.glass_bottle)){
-			return new ItemStack(Items.apple);
-		}else{
-			return null;
-		}
-		
-		
-	}
-	
 	@Override
 	public void updateEntity() {
+		super.updateEntity();
 		ItemStack slot1 = getStackInSlot(0);
 		ItemStack slot2 = getStackInSlot(1);
 		ItemStack slot3 = getStackInSlot(2);
 		ItemStack slot4 = getStackInSlot(3);
 		
-		if(!this.worldObj.isRemote){
-			if(slot1 == (new ItemStack(Items.book)) && slot2==(new ItemStack(Blocks.emerald_block)) && slot3==(new ItemStack(Items.book))){
-				slot3 = new ItemStack(MiscItems.knowledgeFlask);
-				
+		if(slot1!=null && slot2!=null && slot3!=null && slot4!=null){
+			switch(RecipeUtil.advBrew(slot1.getItem(), slot2.getItem(), slot3.getItem(), slot4.getItem())){
+				case 1: doProcess(new ItemStack(MiscItems.knowledgeFlask));
+				break;
+				case 2: doProcess(new ItemStack(MiscItems.flightFlask));
+				break;
 			}
 		}
-		super.updateEntity();
-		
-		
 	}
 	
-	public void doProgress(ItemStack itemstack){
-		for(int i=0; i<600; i++){
+	public void doProcess(ItemStack itemstack){
+		if(itemstack!=null){
 			progress++;
 		}
-		if(progress==600){
-			
+		if(progress==200){
+			setInventorySlotContents(3, itemstack);
+			for(int i=0; i<3; i++){
+				decrStackSize(i, 1);
+			}
+			progress=0;
+		}
+	}
+	
+	public int getProgress(){
+		return progress;
+	}
+	
+	public int getScaledProgress(int i){
+		if(getProgress()!=0){
+			return getProgress() * i / 200;
+		}else{
+			return 0;
 		}
 	}
 	
@@ -75,8 +83,8 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 				items.appendTag(item);
 			}
 		}
-
 		compound.setTag("Items", items);
+		compound.setInteger("progress", progress);
 	}
 
 	@Override
@@ -92,6 +100,7 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
 			}
 		}
+		progress = compound.getInteger("progress");		
 	}
 
 	@Override

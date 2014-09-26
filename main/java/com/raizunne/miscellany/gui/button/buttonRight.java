@@ -92,16 +92,9 @@ public class buttonRight extends GuiButton {
 		ResourceLocation page2 = new ResourceLocation("miscellany:pageflip2");
 		ResourceLocation page3 = new ResourceLocation("miscellany:pageflip3");
 		ResourceLocation page4 = new ResourceLocation("miscellany:pageflip4");
-		ResourceLocation page5 = new ResourceLocation("miscellany:pageflip5");
-		ResourceLocation page6 = new ResourceLocation("miscellany:pageflip6");
-		ResourceLocation page7 = new ResourceLocation("miscellany:pageflip7");
-		ResourceLocation page8 = new ResourceLocation("miscellany:pageflip8");
-		ResourceLocation page9 = new ResourceLocation("miscellany:pageflip9");
-		ResourceLocation page10 = new ResourceLocation("miscellany:pageflip10");
 		
 		Random r = new Random();
-		int n = r.nextInt(10) + 1;
-		
+		int n = r.nextInt(4) + 1;
 		if(n==1){
 			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page1, 1.0F));
 		}else if(n==2){
@@ -110,18 +103,6 @@ public class buttonRight extends GuiButton {
 			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page3, 1.0F));
 		}else if(n==4){
 			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page4, 1.0F));
-		}else if(n==5){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page5, 1.0F));
-		}else if(n==6){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page6, 1.0F));
-		}else if(n==7){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page7, 1.0F));
-		}else if(n==8){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page8, 1.0F));
-		}else if(n==9){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page9, 1.0F));
-		}else if(n==10){
-			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page10, 1.0F));
 		}
     }
 }

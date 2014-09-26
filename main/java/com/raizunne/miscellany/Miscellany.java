@@ -80,7 +80,7 @@ public class Miscellany
    	 	
    	 	MiscItems.init();
    	 	MiscBlocks.init();
-   		registerRecipes.init();
+   		MiscRecipes.init();
    		proxy.initRenderers();
    		
    	 	GameRegistry.registerTileEntity(TileEntityAdvReactBrewer.class, "advreactbrewer");

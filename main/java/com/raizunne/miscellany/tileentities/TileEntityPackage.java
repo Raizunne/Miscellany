@@ -1,13 +1,14 @@
 package com.raizunne.miscellany.tileentities;
 
-import com.raizunne.miscellany.MiscItems;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+
+import com.raizunne.miscellany.MiscItems;
 
 public class TileEntityPackage extends TileEntity implements IInventory{
 
@@ -32,17 +33,7 @@ public class TileEntityPackage extends TileEntity implements IInventory{
 	public void updateEntity() {
 		super.updateEntity();
 		if(pack){
-			if(getStackInSlot(9)!=null && getStackInSlot(9).getItem()==MiscItems.pack){
-				ItemStack item = getStackInSlot(9);
-				item.stackTagCompound.setInteger("item", 3);
-				item.stackTagCompound.setInteger("number", 64);
-				item.stackSize = 1;
-				setInventorySlotContents(3, item);
-				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
-				pack = false;
-			}else{
-				pack=false;
-			}
+			
 		}
 	}
 	

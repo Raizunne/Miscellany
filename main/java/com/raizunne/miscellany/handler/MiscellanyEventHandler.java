@@ -66,8 +66,10 @@ public class MiscellanyEventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer)event.entity;
 			boolean world = event.entity.worldObj.isRemote;
+			boolean active;
 			if(player.isPotionActive(MiscItems.knowledgePotion.getId())){
-				player.addExperience(6);
+				active=true;
+				player.addExperience(5);
 				if(player.getActivePotionEffect(MiscItems.knowledgePotion).getDuration()==1){
 					player.experienceLevel=0;
 					player.removePotionEffect(MiscItems.knowledgePotion.getId());

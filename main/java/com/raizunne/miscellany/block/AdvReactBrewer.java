@@ -27,7 +27,7 @@ public class AdvReactBrewer extends BlockContainer{
 		super(material);
 		setBlockName("advBrew");
 		setCreativeTab(Miscellany.miscTab);
-		setBlockTextureName("miscellany:advBrewer");
+		setBlockTextureName("miscellany:purpleColor");
 		setHarvestLevel("pickaxe", 0);
 		setHardness(1.0F);
 		setBlockBounds(0.1875F, 0F, 0.1875F, 0.8125F, 1F, 0.8125F);

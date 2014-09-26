@@ -24,10 +24,10 @@ public class ContainerAdvReactBrewer extends Container{
 				addSlotToContainer(new Slot(invplayer, x + y * 9 + 9, 8 + 18 * x, 84 + y * 18));
 			}
 		}
-		addSlotToContainer(new Slot(advbrewer, 0, 53, 25));
-		addSlotToContainer(new Slot(advbrewer, 1, 79, 15));
-		addSlotToContainer(new Slot(advbrewer, 2, 105, 25));
-		addSlotToContainer(new Slot(advbrewer, 3, 79, 58));
+		addSlotToContainer(new Slot(advbrewer, 0, 54, 26));
+		addSlotToContainer(new Slot(advbrewer, 1, 80, 16));
+		addSlotToContainer(new Slot(advbrewer, 2, 106, 26));
+		addSlotToContainer(new Slot(advbrewer, 3, 80, 59));
 	}
 	
 	
@@ -38,7 +38,35 @@ public class ContainerAdvReactBrewer extends Container{
 	
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int i) {
-		return null;
-	}
+		ItemStack stack = null;
+		Slot slotObject = (Slot) inventorySlots.get(i);
+		
+		if(slotObject != null && slotObject.getHasStack()){
+			ItemStack stackInSlot = slotObject.getStack();
+            stack = stackInSlot.copy();
 
+            //merges the item into player inventory since its in the tileEntity
+            if (i < 9) {
+                    if (!this.mergeItemStack(stackInSlot, 0, 35, true)) {
+                            return null;
+                    }
+            }
+            //places it into the tileEntity is possible since its in the player inventory
+            else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+                    return null;
+            }
+
+            if (stackInSlot.stackSize == 0) {
+                    slotObject.putStack(null);
+            } else {
+                    slotObject.onSlotChanged();
+            }
+
+            if (stackInSlot.stackSize == stack.stackSize) {
+                    return null;
+            }
+            slotObject.onPickupFromSlot(player, stackInSlot);
+		}
+    return stack;
+	}	
 }

@@ -22,7 +22,7 @@ public class Flight extends Item{
 	public Flight() {
 		setUnlocalizedName("flightFlask");
 		setMaxStackSize(1);
-		setMaxDamage(3);
+		setMaxDamage(1);
 		setCreativeTab(Miscellany.miscTab);
 		setNoRepair();
 	}
@@ -39,7 +39,7 @@ public class Flight extends Item{
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
 		player.addPotionEffect(new PotionEffect(MiscItems.flightPotion.getId(), 3000, 0));
 		itemstack.damageItem(1, player);
-		if(itemstack.getItemDamage()==3){
+		if(itemstack.getItemDamage()==1){
 			return null;
 		}else{
 			return itemstack;
@@ -50,17 +50,7 @@ public class Flight extends Item{
 	public void addInformation(ItemStack itemstack, EntityPlayer p_77624_2_,
 			List list, boolean p_77624_4_) {
 		list.add(EnumChatFormatting.LIGHT_PURPLE + "Invisible wings...");
-		switch(getDamage(itemstack)){
-		case 0:
-			list.add(EnumChatFormatting.GRAY + "Potations Left: 3");
-			break;
-		case 1:
-			list.add(EnumChatFormatting.GRAY + "Potations Left: 2");
-			break;
-		case 2:
-			list.add(EnumChatFormatting.GRAY + "Potations Left: 3");
-			break;
-		}
+		list.add(EnumChatFormatting.GRAY + "Potations Left: 1");
 	}
 	
 	@Override

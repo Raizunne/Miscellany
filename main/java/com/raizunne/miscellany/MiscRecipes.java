@@ -5,7 +5,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class registerRecipes {
+public class MiscRecipes {
 
 	public static void init(){
 		GameRegistry.addRecipe(new ItemStack(MiscItems.sacredChalice), new Object[]{

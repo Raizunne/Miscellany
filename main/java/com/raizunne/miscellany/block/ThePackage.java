@@ -23,7 +23,7 @@ public class ThePackage extends BlockContainer{
 		super(material);
 		setBlockName("thepackage");
 		setStepSound(soundTypeStone);
-		setBlockTextureName("miscellany:thepackage");
+		setBlockTextureName("miscellany:purpleColor");
 		setHarvestLevel("pickaxe", 0);
 		setHardness(1.0F);
 		setCreativeTab(Miscellany.miscTab);

@@ -47,7 +47,7 @@ public class MiscItems {
    	 	manualBook = new manualBook();
    	 	Shake = new Shake();
    	 	pamphlet = new Pamphlet();
-   	 	breadLoaf = new breadLoaf(12, 10, false);
+   	 	breadLoaf = new breadLoaf(6, 6, false);
    	 	pack = new Package();
    	 	
    	 	potionFlask = new PotionFlask();
@@ -62,14 +62,14 @@ public class MiscItems {
 	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(pamphlet, pamphlet.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(breadLoaf, breadLoaf.getUnlocalizedName().substring(5));
-	 	GameRegistry.registerItem(pack, pack.getUnlocalizedName().substring(5));
+//	 	GameRegistry.registerItem(pack, pack.getUnlocalizedName().substring(5));
 	 	
 	 	//Potions
 	 	PotionHandler.initPotions();
    	 	knowledgePotion = (new PotionKnowledge(45, false, 0));
    	 	flightPotion = (new PotionFlight(46, false, 0));
-//	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
-//	 	GameRegistry.registerItem(flightFlask, flightFlask.getUnlocalizedName().substring(5));
-//	 	GameRegistry.registerItem(knowledgeFlask, knowledgeFlask.getUnlocalizedName().substring(5));
+	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
+	 	GameRegistry.registerItem(flightFlask, flightFlask.getUnlocalizedName().substring(5));
+	 	GameRegistry.registerItem(knowledgeFlask, knowledgeFlask.getUnlocalizedName().substring(5));
 	}
 }
