@@ -12,6 +12,7 @@ item.package.name=Packaged
 item.emptyFlask.name=Empty Flask
 item.flightFlask.name=Flight Flask
 item.knowledgeFlask.name=Knowledge Flask
+item.antiwither.name=Anti-Wither Flask
 
 item.redstonicBoots.documentation=Can step-up a single block, increases speed and gives double jump.
 item.sacredChalice.documentation=Consumes cobblestone, receives water.

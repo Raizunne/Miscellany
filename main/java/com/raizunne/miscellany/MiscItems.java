@@ -10,6 +10,7 @@ import com.raizunne.miscellany.item.breadLoaf;
 import com.raizunne.miscellany.item.manualBook;
 import com.raizunne.miscellany.item.redstonicJetBoots;
 import com.raizunne.miscellany.item.sacredChalice;
+import com.raizunne.miscellany.item.PotionFlasks.AntiWither;
 import com.raizunne.miscellany.item.PotionFlasks.Flight;
 import com.raizunne.miscellany.item.PotionFlasks.Knowledge;
 import com.raizunne.miscellany.item.potions.PotionFlight;
@@ -35,6 +36,7 @@ public class MiscItems {
 	public static Item potionFlask;
 	public static Item flightFlask;
 	public static Item knowledgeFlask;
+	public static Item WitherAnti;
 	
 	public static Potion knowledgePotion;
     public static Potion flightPotion;
@@ -53,6 +55,7 @@ public class MiscItems {
    	 	potionFlask = new PotionFlask();
    	 	flightFlask = new Flight();
    	 	knowledgeFlask = new Knowledge();
+   	 	WitherAnti = new AntiWither();
    	 	
 //	 	GameRegistry.registerItem(packagedFood, packagedFood.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));
@@ -71,5 +74,6 @@ public class MiscItems {
 	 	GameRegistry.registerItem(potionFlask, potionFlask.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(flightFlask, flightFlask.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(knowledgeFlask, knowledgeFlask.getUnlocalizedName().substring(5));
+	 	GameRegistry.registerItem(WitherAnti, WitherAnti.getUnlocalizedName().substring(5));
 	}
 }

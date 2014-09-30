@@ -35,12 +35,13 @@ public class AdvReactBrewer extends BlockContainer{
 
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
-		
-		world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.15F, 0, 0, 0);
-		world.spawnParticle("smoke", (float)x + 0.05F, (float)y + 0.87F, (float)z + 0.5F, 0, 0, 0);
-		world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.83F, 0, 0, 0);
-		world.spawnParticle("smoke", (float)x + 0.5F, (float)y + 1.1F, (float)z + 0.5F, 0, 0, 0);
-		
+		TileEntityAdvReactBrewer tileentity = (TileEntityAdvReactBrewer)world.getTileEntity(x, y, z);
+		if(tileentity.getProgress()!=0){
+			world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.15F, 0, 0, 0);
+			world.spawnParticle("smoke", (float)x + 0.05F, (float)y + 0.87F, (float)z + 0.5F, 0, 0, 0);
+			world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.83F, 0, 0, 0);
+			world.spawnParticle("smoke", (float)x + 0.5F, (float)y + 1.1F, (float)z + 0.5F, 0, 0, 0);
+		}
 	}
 	
 	@Override

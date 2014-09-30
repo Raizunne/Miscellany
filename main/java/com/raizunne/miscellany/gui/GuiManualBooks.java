@@ -43,8 +43,7 @@ public class GuiManualBooks extends GuiScreen{
 	public boolean entry;
 	public int maxPages;
 	public String prevSection;
-	
-
+	public boolean brew;
 	
 	public GuiManualBooks(){
 		super();
@@ -118,14 +117,28 @@ public class GuiManualBooks extends GuiScreen{
 			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
 			drawAlchemy(new ItemStack(Blocks.emerald_block), new ItemStack(Items.book), new ItemStack(Blocks.emerald_block), new ItemStack(MiscItems.knowledgeFlask), 20, 20, x, y);
 		}else if(entry && currentSection=="flight" && subSection==0){
-			//KNOWLEDGE
+			//FLIGHT
 			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
 			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
 			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.feather), new ItemStack(Items.diamond), new ItemStack(MiscItems.flightFlask), 20, 20, x, y);
+		}else if(entry && currentSection=="anit-wither" && subSection==0){
+			//ANTIWITHER
+			fontrenderer.drawString("Anti-Wither Flask", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
+			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.skull, 1, 1), new ItemStack(Blocks.red_flower), new ItemStack(MiscItems.WitherAnti), 20, 20, x, y);
 		}
-		
+		if(brew){
+			if(x > posX + 12 && x < posX + 104 && y > posY + 80 && y < posY + 86){
+				String[] desc = { "Put the top three", "items inside of the", "Brewer and a Potion", "Flask on the bottom slot." };
+	            @SuppressWarnings("rawtypes")
+	            List temp = Arrays.asList(desc);
+	            drawHoveringText(temp, x, y, fontrenderer);
+			}
+		}
 		super.drawScreen(x, y, f);
 	}
 	
@@ -165,6 +178,7 @@ public class GuiManualBooks extends GuiScreen{
 		buttonMenu alchemy1 = new buttonMenu(12, posX + 124, posY + 18, 90, 12, "Reactive Brewer", color1, color2, true);
 		buttonMenu alchemy2 = new buttonMenu(13, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2, true);
 		buttonMenu alchemy3 = new buttonMenu(14, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
+		buttonMenu alchemy4 = new buttonMenu(16, posX + 124, posY + 54, 90, 12, "Anti-Wither Potion", color1, color2, true);
 			
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);
@@ -210,6 +224,7 @@ public class GuiManualBooks extends GuiScreen{
 			buttonList.add(alchemy1);
 			buttonList.add(alchemy2);
 			buttonList.add(alchemy3);
+			buttonList.add(alchemy4);
 		}
 	}
 		
@@ -235,6 +250,7 @@ public class GuiManualBooks extends GuiScreen{
 			}
 			subSection=0;
 			entry=false;
+			brew=false;
 		break;
 		case 3:
 			currentSection="items";
@@ -294,6 +310,7 @@ public class GuiManualBooks extends GuiScreen{
 			entry=true;
 			maxPages=0;
 			prevSection="alchemy";
+			brew=true;
 		break;
 		
 		//Flight
@@ -303,6 +320,7 @@ public class GuiManualBooks extends GuiScreen{
 			entry=true;
 			maxPages=0;
 			prevSection="alchemy";
+			brew=true;
 		break;
 		
 		case 15:
@@ -313,13 +331,27 @@ public class GuiManualBooks extends GuiScreen{
 			maxPages=0;
 		break;
 		
+		case 16:
+			currentSection="anit-wither";
+			prevSection="alchemy";
+			subSection=0;
+			entry=true;
+			maxPages=0;
+			brew=true;
 		}
 		
 	}
 	@Override
 		protected void mouseClicked(int x, int y, int mouseId) {
+			
+		int posX = (width - xSizeofTexture) / 2;
+		int posY = (height - ySizeofTexture) / 2;
+		int totalx = x - posX;
+		int totaly = y - posY;
+		
 			super.mouseClicked(x, y, mouseId);
 			this.initGui();
+//			System.out.println("" + totalx + ", " + totaly);
 			if(mouseId==1){
 //				String s = currentSection;
 //				if(s=="items" || s=="blocks" || s=="machines" || s=="alchemy" || s=="equipment"){

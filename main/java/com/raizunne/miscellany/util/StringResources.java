@@ -14,5 +14,6 @@ public class StringResources {
 	public static final String redstonicJetBoots = EnumChatFormatting.LIGHT_PURPLE + "Powered by Redstone.";
 	public static final String shake = EnumChatFormatting.LIGHT_PURPLE + "Shake2Eat!";
 	public static final String pack = EnumChatFormatting.LIGHT_PURPLE + "Gifts!";
+	public static final String flask = EnumChatFormatting.LIGHT_PURPLE + "Does not stack.";
 	
 }

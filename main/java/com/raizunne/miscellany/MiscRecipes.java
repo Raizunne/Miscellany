@@ -32,6 +32,11 @@ public class MiscRecipes {
    	 		"CCC",
    	 		'S', Blocks.stone_slab, 'C', Blocks.hardened_clay});
    	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscItems.potionFlask), new Object[]{
+   	 		"I",
+   	 		"W",
+   	 		"B",'I', Items.iron_ingot, 'W', Blocks.log, 'B', Items.glass_bottle});
+   	 	
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.manualBook), Items.book, Items.flint);
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.pamphlet), Items.paper, Items.flint);
 	}
