@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+import com.raizunne.miscellany.util.StringResources;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
@@ -60,9 +61,9 @@ public class AdvReactBrewer extends BlockContainer{
 	}
 	
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer player, List list, boolean p_77624_4_) {
-		list.add(EnumChatFormatting.LIGHT_PURPLE + "Infuse different");
+		list.add(StringResources.advbrew);
 	}
-	
+		
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
 		TileEntityAdvReactBrewer tile = (TileEntityAdvReactBrewer)world.getTileEntity(x, y, z);

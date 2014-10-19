@@ -31,11 +31,12 @@ public class PackagedFood extends ItemFood{
         }
         return itemstack;
     }
-@Override
-public int getMaxItemUseDuration(ItemStack p_77626_1_) {
-	// TODO Auto-generated method stub
-	return 48;
-}	
+	
+	@Override
+	public int getMaxItemUseDuration(ItemStack p_77626_1_) {
+		// TODO Auto-generated method stub
+		return 48;
+	}	
 
 	@Override
 	public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_,

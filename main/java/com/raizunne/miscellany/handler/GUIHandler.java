@@ -6,17 +6,14 @@ import net.minecraft.world.World;
 
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.gui.ContainerAdvReactBrewer;
-import com.raizunne.miscellany.gui.ContainerFoodPackager;
 import com.raizunne.miscellany.gui.ContainerPackage;
 import com.raizunne.miscellany.gui.ContainerPresent;
 import com.raizunne.miscellany.gui.GuiAdvReactBrewer;
-import com.raizunne.miscellany.gui.GuiFoodPackager;
 import com.raizunne.miscellany.gui.GuiManualBooks;
 import com.raizunne.miscellany.gui.GuiPackage;
 import com.raizunne.miscellany.gui.GuiPamphlet;
 import com.raizunne.miscellany.gui.GuiPresent;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
-import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 import com.raizunne.miscellany.tileentities.TileEntityPackage;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
@@ -32,9 +29,7 @@ public class GUIHandler implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(ID){
-			case 0: if(te != null && te instanceof TileEntityFoodPackager){
-				return new ContainerFoodPackager(player.inventory, (TileEntityFoodPackager)te);
-			}
+			case 0:
 			break;
 			case 1: if(te != null && te instanceof TileEntityAdvReactBrewer){
 				return new ContainerAdvReactBrewer(player.inventory, (TileEntityAdvReactBrewer)te);
@@ -58,9 +53,7 @@ public class GUIHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(ID){
-			case 0: if(te != null && te instanceof TileEntityFoodPackager){
-				return new GuiFoodPackager(player.inventory, (TileEntityFoodPackager)te);
-			}
+			case 0:
 			break;	
 			case 1: if(te != null && te instanceof TileEntityAdvReactBrewer){
 				return new GuiAdvReactBrewer(player.inventory,  (TileEntityAdvReactBrewer)te);

@@ -9,7 +9,6 @@ import org.lwjgl.opengl.GL11;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.block.model.ModelFoodPackager;
 import com.raizunne.miscellany.block.model.modelPresent;
-import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 
 public class RenderPresent extends TileEntitySpecialRenderer{
 

@@ -10,6 +10,7 @@ import com.raizunne.miscellany.item.breadLoaf;
 import com.raizunne.miscellany.item.manualBook;
 import com.raizunne.miscellany.item.redstonicJetBoots;
 import com.raizunne.miscellany.item.sacredChalice;
+import com.raizunne.miscellany.item.ExplosiveCatalyst;
 import com.raizunne.miscellany.item.PotionFlasks.AntiWither;
 import com.raizunne.miscellany.item.PotionFlasks.Flight;
 import com.raizunne.miscellany.item.PotionFlasks.Knowledge;
@@ -32,6 +33,7 @@ public class MiscItems {
 	public static Item pamphlet;
 	public static Item breadLoaf;
 	public static Item pack;
+	public static Item ExplosiveCatalyst;
 	
 	public static Item potionFlask;
 	public static Item flightFlask;
@@ -51,22 +53,24 @@ public class MiscItems {
    	 	pamphlet = new Pamphlet();
    	 	breadLoaf = new breadLoaf(6, 6, false);
    	 	pack = new Package();
+   	 	ExplosiveCatalyst = new ExplosiveCatalyst();
    	 	
    	 	potionFlask = new PotionFlask();
    	 	flightFlask = new Flight();
    	 	knowledgeFlask = new Knowledge();
    	 	WitherAnti = new AntiWither();
    	 	
+//	 	GameRegistry.registerItem(pack, pack.getUnlocalizedName().substring(5));
+//	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
 //	 	GameRegistry.registerItem(packagedFood, packagedFood.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));
-//	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(sacredChalice, sacredChalice.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(manualBook, manualBook.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(Shake, Shake.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(pamphlet, pamphlet.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(breadLoaf, breadLoaf.getUnlocalizedName().substring(5));
-//	 	GameRegistry.registerItem(pack, pack.getUnlocalizedName().substring(5));
-	 	
+	 	GameRegistry.registerItem(ExplosiveCatalyst, ExplosiveCatalyst.getUnlocalizedName().substring(5));
+
 	 	//Potions
 	 	PotionHandler.initPotions();
    	 	knowledgePotion = (new PotionKnowledge(45, false, 0));

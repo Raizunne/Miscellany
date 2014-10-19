@@ -32,10 +32,8 @@ public class Present extends BlockContainer{
 			TileEntity te = world.getTileEntity(x, y, z);
 			if(te != null && te instanceof TileEntityPresent){
 				TileEntityPresent present = (TileEntityPresent) te;
-				System.out.println(present.getSender());
-				System.out.println(present.getReceiver());
-				if(present.getSender()==null){
-					present.setSender(player.getDisplayName());
+				if(present.userSender==null){
+					present.userSender=player.getDisplayName();
 				}
 			}
 			return true;

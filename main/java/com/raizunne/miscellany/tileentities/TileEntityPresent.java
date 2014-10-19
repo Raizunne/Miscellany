@@ -10,8 +10,8 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityPresent extends TileEntity implements IInventory{
 
 	private ItemStack[] items;
-	private String userSender;
-	private String userFor;
+	public String userSender;
+	public String userFor;
 	
 	public TileEntityPresent(){
 		items = new ItemStack[7];
@@ -23,11 +23,11 @@ public class TileEntityPresent extends TileEntity implements IInventory{
 	}
 
 	public void setSender(String sender){
-		this.userSender = sender;
+		userSender = sender;
 	}
 	
 	public void setReceiver(String receiver){
-		this.userFor = receiver;
+		userFor = receiver;
 	}
 	
 	public String getSender(){
@@ -125,14 +125,14 @@ public class TileEntityPresent extends TileEntity implements IInventory{
 				stack.writeToNBT(item);
 				items.appendTag(item);
 			}
-			if(userFor!=null){
-				compound.setString("userFor", userFor);
-			}
-			if(userSender!=null){
-				compound.setString("userSender", userSender);
-			}
 		}
 		compound.setTag("Items", items);
+		if(userFor!=null){
+			compound.setString("for", userFor);
+		}
+		if(userSender!=null){
+			compound.setString("sender", userSender);
+		}
 	}
 	
 	@Override
@@ -147,9 +147,13 @@ public class TileEntityPresent extends TileEntity implements IInventory{
 			if (slot >= 0 && slot < getSizeInventory()) {
 				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
 			}
-		userFor = compound.getString("userFor");
-		userSender = compound.getString("userSender");
+		}	
+		if(compound.getString("userFor")!=null){
+			userFor = compound.getString("userFor");
+		}
+		if(compound.getString("userFor")!=null){
+			userSender = compound.getString("userSender");	
 		}
 	}
-	
 }
+	

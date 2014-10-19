@@ -1,7 +1,6 @@
 package com.raizunne.miscellany;
 
 import com.raizunne.miscellany.block.AdvReactBrewer;
-import com.raizunne.miscellany.block.FoodPackager;
 import com.raizunne.miscellany.block.NoNite;
 import com.raizunne.miscellany.block.Present;
 import com.raizunne.miscellany.block.ThePackage;
@@ -19,7 +18,6 @@ public class MiscBlocks {
     public static Block thepackage;
     
 	public static void init(){
-		foodPackager = new FoodPackager(Material.ground);
    	 	present = new Present(Material.ground);
    	 	brewer = new AdvReactBrewer(Material.ground);
    	 	noNite = new NoNite(Material.ground);
@@ -28,8 +26,7 @@ public class MiscBlocks {
 //   	 	GameRegistry.registerBlock(noNite, "nonite");
 //   	 	GameRegistry.registerBlock(thepackage, "thepackage");
 	 	GameRegistry.registerBlock(brewer, "advBrew");
-//	 	GameRegistry.registerBlock(foodPackager, "foodPackager");
-//	 	GameRegistry.registerBlock(present, "present");
+	 	GameRegistry.registerBlock(present, "present");
 	 	
 	}
 	

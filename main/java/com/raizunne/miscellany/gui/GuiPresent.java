@@ -1,21 +1,14 @@
 package com.raizunne.miscellany.gui;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import com.raizunne.miscellany.gui.button.buttonMenu;
-import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
 public class GuiPresent extends GuiContainer{
@@ -50,7 +43,7 @@ public class GuiPresent extends GuiContainer{
 		fontRendererObj.drawString("Present", 15, 6, 0x404040);
 		fontRendererObj.drawString("From:", 22, 20, 0x404040);
 		fontRendererObj.drawString("To:", 22, 36, 0x404040);
-		fontRendererObj.drawString(present.getSender(), 55, 20, 0xE65C5C);
+		fontRendererObj.drawString(present.getSender(), 55, 20, 0x404040);
 		if(present.getReceiver()==null){
 			this.textfield.drawTextBox();
 		}
@@ -69,6 +62,8 @@ public class GuiPresent extends GuiContainer{
     	textfield.setMaxStringLength(15);
     	textfield.setEnableBackgroundDrawing(false);    	
     	buttonMenu menu0 = new buttonMenu(0, guiLeft + 140, guiTop + 34, 90, 12, "Done", 0x999999, 0x565656, false);
+    	buttonMenu test = new buttonMenu(1, guiLeft + 50, guiTop + 10, 90, 12, "Hey", 0x999999, 0x565656, false);
+    	buttonList.add(test);
     	if(present.getReceiver()==null){
     		buttonList.add(menu0);
     	}
@@ -87,8 +82,10 @@ public class GuiPresent extends GuiContainer{
 				present.setReceiver(textfield.getText());
 			}
 		break;
+		case 1:
+			System.out.println("For:" + present.getReceiver());
+			System.out.println("From" + present.getSender());
 		}
-		initGui();
 	}
 
 	@Override

@@ -15,5 +15,6 @@ public class StringResources {
 	public static final String shake = EnumChatFormatting.LIGHT_PURPLE + "Shake2Eat!";
 	public static final String pack = EnumChatFormatting.LIGHT_PURPLE + "Gifts!";
 	public static final String flask = EnumChatFormatting.LIGHT_PURPLE + "Does not stack.";
-	
+	public static final String explcatalyst = EnumChatFormatting.LIGHT_PURPLE + "Trinitrotoluene is not enough.";
+	public static final String advbrew = EnumChatFormatting.LIGHT_PURPLE + "Infuse Different";
 }

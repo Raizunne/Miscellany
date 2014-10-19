@@ -9,8 +9,6 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.block.render.ItemFoodPackager;
-import com.raizunne.miscellany.block.render.RenderFoodPackager;
-import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
