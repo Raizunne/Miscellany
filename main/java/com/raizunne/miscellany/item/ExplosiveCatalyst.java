@@ -35,6 +35,7 @@ public class ExplosiveCatalyst extends Item{
 		if(itemstack.stackTagCompound == null){
 			itemstack.stackTagCompound = new NBTTagCompound();
 			itemstack.stackTagCompound.setBoolean("enabled", true);
+			itemstack.stackTagCompound.setInteger("uses", 8);
 		}
 	}
 	
@@ -43,6 +44,7 @@ public class ExplosiveCatalyst extends Item{
 		if(itemstack.stackTagCompound==null){
 			itemstack.stackTagCompound = new NBTTagCompound();
 			itemstack.stackTagCompound.setBoolean("enabled", true);
+			itemstack.stackTagCompound.setInteger("uses", 8);
 		}
 		if(itemstack.stackTagCompound!=null){
 			if(entity instanceof EntityPlayer){
@@ -54,6 +56,7 @@ public class ExplosiveCatalyst extends Item{
 						if(!world.isRemote){
 							player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now disabled"));
 						}
+						player.playSound("fire.ignite", 2.0F, 1.0F);
 						itemstack.stackTagCompound.setInteger("timer", 0);
 					}
 				}
@@ -69,11 +72,13 @@ public class ExplosiveCatalyst extends Item{
 					if(!world.isRemote){
 						player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now ENABLED for 20 seconds, " + EnumChatFormatting.YELLOW + "BE CAREFUL"));
 					}
+					player.playSound("mob.enderdragon.wings", 2.0F, 2.0F);
 					itemstack.stackTagCompound.setBoolean("enabled", false);
 				}else{
 					if(!world.isRemote){
 						player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now disabled"));
 					}
+					player.playSound("mob.irongolem.death", 0.1F, 1.0F);
 					itemstack.stackTagCompound.setBoolean("enabled", true);
 					itemstack.stackTagCompound.setInteger("timer", 0);
 				}
@@ -90,6 +95,7 @@ public class ExplosiveCatalyst extends Item{
 			if(!itemstack.stackTagCompound.getBoolean("enabled") && pos.typeOfHit == MovingObjectType.BLOCK){
 				if(pos.typeOfHit == MovingObjectType.BLOCK && pos.sideHit!=1 && pos.sideHit!=0){
 					itemstack.damageItem(1, player);
+					itemstack.stackTagCompound.setInteger("uses", itemstack.stackTagCompound.getInteger("uses")-1);
 					player.playSound("mob.enderdragon.hit", 1.0F, 1.0F);
 				}
 				
@@ -138,6 +144,7 @@ public class ExplosiveCatalyst extends Item{
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean whatthehellisthisreallyplssomeonetellme) {
 		list.add(StringResources.explcatalyst);
 		if(itemstack.stackTagCompound !=null){
+			list.add("Explotations left: " + itemstack.stackTagCompound.getInteger("uses"));
 			if(!itemstack.stackTagCompound.getBoolean("enabled")){
 				list.add(EnumChatFormatting.YELLOW + "ENABLED");
 			}else{

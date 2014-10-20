@@ -31,7 +31,7 @@ public class GuiPresent extends GuiContainer{
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		mc.renderEngine.bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-		if(present.getReceiver()==null){
+		if(present.userFor==null){
 			mc.renderEngine.bindTexture(texture);
 			drawTexturedModalRect(guiLeft + 38, guiTop + 33, 0, 166, 100, 16);
 		}
@@ -43,12 +43,12 @@ public class GuiPresent extends GuiContainer{
 		fontRendererObj.drawString("Present", 15, 6, 0x404040);
 		fontRendererObj.drawString("From:", 22, 20, 0x404040);
 		fontRendererObj.drawString("To:", 22, 36, 0x404040);
-		fontRendererObj.drawString(present.getSender(), 55, 20, 0x404040);
-		if(present.getReceiver()==null){
+		fontRendererObj.drawString(present.userSender, 55, 20, 0x404040);
+		if(present.userFor==null){
 			this.textfield.drawTextBox();
 		}
-		if(present.getReceiver()!=null || set){
-			fontRendererObj.drawString(present.getReceiver(), 40, 36, 0x404040);
+		if(present.userFor!=null || set){
+			fontRendererObj.drawString(present.userFor, 40, 36, 0x404040);
 		}
 	}
 	
@@ -64,10 +64,10 @@ public class GuiPresent extends GuiContainer{
     	buttonMenu menu0 = new buttonMenu(0, guiLeft + 140, guiTop + 34, 90, 12, "Done", 0x999999, 0x565656, false);
     	buttonMenu test = new buttonMenu(1, guiLeft + 50, guiTop + 10, 90, 12, "Hey", 0x999999, 0x565656, false);
     	buttonList.add(test);
-    	if(present.getReceiver()==null){
+    	if(present.userFor==null){
     		buttonList.add(menu0);
     	}
-    	if(present.getReceiver()!=null || set){
+    	if(present.userFor!=null || set){
     		buttonList.remove(menu0);
     	}
     	
@@ -79,12 +79,12 @@ public class GuiPresent extends GuiContainer{
 		switch(button.id){
 		case 0: 
 			if(textfield.getText()!=""){
-				present.setReceiver(textfield.getText());
+				present.userFor=textfield.getText();
 			}
 		break;
 		case 1:
-			System.out.println("For:" + present.getReceiver());
-			System.out.println("From" + present.getSender());
+			System.out.println("For:" + present.userFor);
+			System.out.println("From" + present.userSender);
 		}
 	}
 

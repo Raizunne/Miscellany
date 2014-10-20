@@ -9,11 +9,13 @@ item.debugHunger.name=Debug Hunger
 item.breadLoaf.name=Bread Loaf
 item.package.name=Packaged
 item.explosivecatalyst.name=Explosive Catalyst
+item.theflute.name=The Flute
 
 item.emptyFlask.name=Empty Flask
 item.flightFlask.name=Flight Flask
 item.knowledgeFlask.name=Knowledge Flask
 item.antiwither.name=Anti-Wither Flask
+item.theheart.name=Heart Flask
 
 item.redstonicBoots.documentation=Can step-up a single block, increases speed and gives double jump.
 item.sacredChalice.documentation=Consumes cobblestone, receives water.

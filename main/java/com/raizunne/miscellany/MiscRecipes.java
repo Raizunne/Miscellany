@@ -37,6 +37,11 @@ public class MiscRecipes {
    	 		"W",
    	 		"B",'I', Items.iron_ingot, 'W', Blocks.log, 'B', Items.glass_bottle});
    	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscItems.ExplosiveCatalyst), new Object[]{
+   	 		"TTT",
+   	 		"TCT",
+   	 		"TTT", 'T', Blocks.tnt, 'C', Items.coal});
+   	 	
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.manualBook), Items.book, Items.flint);
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.pamphlet), Items.paper, Items.flint);
 	}

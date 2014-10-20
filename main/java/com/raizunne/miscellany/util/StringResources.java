@@ -17,4 +17,6 @@ public class StringResources {
 	public static final String flask = EnumChatFormatting.LIGHT_PURPLE + "Does not stack.";
 	public static final String explcatalyst = EnumChatFormatting.LIGHT_PURPLE + "Trinitrotoluene is not enough.";
 	public static final String advbrew = EnumChatFormatting.LIGHT_PURPLE + "Infuse Different";
+	public static final String theheart = EnumChatFormatting.LIGHT_PURPLE + "Answer to healing.";
+	public static final String theflute = EnumChatFormatting.LIGHT_PURPLE + "Sound of growth.";
 }

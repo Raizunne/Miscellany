@@ -18,27 +18,6 @@ public class TileEntityPresent extends TileEntity implements IInventory{
 	}
 	
 	@Override
-	public int getSizeInventory() {
-		return items.length;
-	}
-
-	public void setSender(String sender){
-		userSender = sender;
-	}
-	
-	public void setReceiver(String receiver){
-		userFor = receiver;
-	}
-	
-	public String getSender(){
-		return this.userSender;
-	}
-	
-	public String getReceiver(){
-		return this.userFor;
-	}
-	
-	@Override
 	public ItemStack getStackInSlot(int i) {
 		return items[i];
 	}
@@ -114,7 +93,7 @@ public class TileEntityPresent extends TileEntity implements IInventory{
 	
 	@Override
 	public void writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+		
 		NBTTagList items = new NBTTagList();
 		for (int i = 0; i < getSizeInventory(); i++) {		
 			ItemStack stack = getStackInSlot(i);
@@ -127,17 +106,14 @@ public class TileEntityPresent extends TileEntity implements IInventory{
 			}
 		}
 		compound.setTag("Items", items);
-		if(userFor!=null){
-			compound.setString("for", userFor);
-		}
-		if(userSender!=null){
-			compound.setString("sender", userSender);
-		}
+		compound.setString("for", userFor);
+		compound.setString("sender", userSender);
+		super.writeToNBT(compound);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+		
 		NBTTagList items = compound.getTagList("Items", 10);
 
 		for (int i = 0; i < items.tagCount(); i++) {
@@ -148,12 +124,15 @@ public class TileEntityPresent extends TileEntity implements IInventory{
 				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
 			}
 		}	
-		if(compound.getString("userFor")!=null){
-			userFor = compound.getString("userFor");
-		}
-		if(compound.getString("userFor")!=null){
-			userSender = compound.getString("userSender");	
-		}
+		userFor = compound.getString("userFor");
+		userSender = compound.getString("userSender");
+		super.readFromNBT(compound);
+	}
+
+	@Override
+	public int getSizeInventory() {
+		// TODO Auto-generated method stub
+		return items.length;
 	}
 }
 	

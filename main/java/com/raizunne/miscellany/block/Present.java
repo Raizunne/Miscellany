@@ -8,7 +8,11 @@ import com.raizunne.miscellany.tileentities.TileEntityPresent;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -42,8 +46,17 @@ public class Present extends BlockContainer{
 	}
 	
 	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity,	ItemStack itemstack) {
+		TileEntity te = world.getTileEntity(x, y, z);
+		if(te != null && te instanceof TileEntityPresent){
+			TileEntityPresent present = (TileEntityPresent)te;
+			present.userSender="From";
+			present.userFor="For";
+		}
+	}
+	
+	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
-
 	}
 	
 	@Override

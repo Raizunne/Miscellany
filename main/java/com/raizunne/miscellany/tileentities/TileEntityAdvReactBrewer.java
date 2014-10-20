@@ -39,6 +39,9 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 				case 2: doProcess(new ItemStack(MiscItems.flightFlask));
 				break;
 				case 3: doProcess(new ItemStack(MiscItems.WitherAnti));
+				break;
+				case 4: doProcess(new ItemStack(MiscItems.theheart));
+				break;
 			}
 		}
 	}
@@ -85,7 +88,7 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 			}
 		}
 		compound.setTag("Items", items);
-		compound.setInteger("progress", progress);
+		compound.setInteger("progress", this.progress);
 	}
 
 	@Override
@@ -101,7 +104,7 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 				setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item));
 			}
 		}
-		progress = compound.getInteger("progress");		
+		this.progress = compound.getInteger("progress");		
 	}
 
 	@Override
