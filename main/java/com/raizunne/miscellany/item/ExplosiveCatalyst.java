@@ -51,6 +51,9 @@ public class ExplosiveCatalyst extends Item{
 				EntityPlayer player = (EntityPlayer)entity;
 				if(!itemstack.stackTagCompound.getBoolean("enabled")){
 					itemstack.stackTagCompound.setInteger("timer", itemstack.stackTagCompound.getInteger("timer")+1);
+					if(itemstack.stackTagCompound.getInteger("timer")==100 || itemstack.stackTagCompound.getInteger("timer")==200 || itemstack.stackTagCompound.getInteger("timer")==300){
+						player.playSound("note.harp", 0.5F, 1.0F);
+					}
 					if(itemstack.stackTagCompound.getInteger("timer")==400){
 						itemstack.stackTagCompound.setBoolean("enabled", true);
 						if(!world.isRemote){
