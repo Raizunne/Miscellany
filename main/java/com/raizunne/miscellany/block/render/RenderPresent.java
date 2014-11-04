@@ -1,8 +1,11 @@
 package com.raizunne.miscellany.block.render;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import org.lwjgl.opengl.GL11;
 
@@ -19,9 +22,7 @@ public class RenderPresent extends TileEntitySpecialRenderer{
 	public RenderPresent() {
 		this.model = new modelPresent();
 	}
-	
-	
-	
+		
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
 		GL11.glPushMatrix();
@@ -32,5 +33,6 @@ public class RenderPresent extends TileEntitySpecialRenderer{
 				this.model.renderModel(0.0625F);
 			GL11.glPopMatrix();
 		GL11.glPopMatrix();
+		
 	}
 }

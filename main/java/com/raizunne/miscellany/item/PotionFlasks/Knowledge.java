@@ -77,7 +77,7 @@ public class Knowledge extends Item{
 	
 	@Override
 	public void registerIcons(IIconRegister register) {
-		icons = register.registerIcon("miscellany:knowledgeFlask");
+		icons = register.registerIcon("miscellany:FlaskKnowledge");
 	}
 	
 	@Override

@@ -45,7 +45,7 @@ public class TheHeart extends Item{
 				World world = player.worldObj;
 				if(player.getHealth()<20 && pos==null){
 					player.setHealth(player.getHealth()+4);
-					world.playSoundAtEntity(player, "mob.blaze.hit", 0.5F, 1.3F);
+					world.playSoundAtEntity(player, "mob.blaze.hit", 1F, 1.3F);
 					if(!player.capabilities.isCreativeMode){
 						itemstack.stackTagCompound.setInteger("uses", itemstack.stackTagCompound.getInteger("uses")-1);
 						itemstack.damageItem(1, entityLiving);
@@ -77,7 +77,7 @@ public class TheHeart extends Item{
 	
 	@Override
 	public void registerIcons(IIconRegister register) {
-		icons = register.registerIcon("miscellany:theheart");
+		icons = register.registerIcon("miscellany:FlaskHeart");
 	}
 	
 	@Override

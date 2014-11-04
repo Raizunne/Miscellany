@@ -16,6 +16,6 @@ public class bookResources {
 	public static final String knowledge2 = "As soon as the effect of the temporary knowlege that is given to you by using an ancient recipe from the sages the user returns to its "
 			+ "normal intelectual level.";
 	
-	public static final String flight1 = "Potion that gives you temporary invisible to the human eye wings";
-	public static final String flight2 = "When the effect of the bull of the color red is gone, the human will drop to the ground, causing posible death. Use with caution.";
+	public static final String flight1 = "Potion that gives you temporary invisible wings, to the human eye at least.";
+	public static final String flight2 = "When the effect of the bull in the red is gone, the human will drop to the ground, causing posible death. Use with caution.";
 }

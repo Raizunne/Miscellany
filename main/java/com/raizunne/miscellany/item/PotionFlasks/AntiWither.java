@@ -74,7 +74,7 @@ public class AntiWither extends Item{
 	
 	@Override
 	public void registerIcons(IIconRegister register) {
-		icons = register.registerIcon("miscellany:antiWitherFlask");
+		icons = register.registerIcon("miscellany:FlaskWither");
 	}
 	
 	@Override

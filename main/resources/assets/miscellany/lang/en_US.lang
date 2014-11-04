@@ -10,10 +10,11 @@ item.breadLoaf.name=Bread Loaf
 item.package.name=Packaged
 item.explosivecatalyst.name=Explosive Catalyst
 item.theflute.name=The Flute
+item.knowledgegem.name=§aKnowledge Gem
 
 item.emptyFlask.name=Empty Flask
 item.flightFlask.name=Flight Flask
-item.knowledgeFlask.name=Knowledge Flask
+item.knowledgeFlask.name=§aKnowledge Flask
 item.antiwither.name=Anti-Wither Flask
 item.theheart.name=Heart Flask
 

@@ -115,27 +115,35 @@ public class GuiManualBooks extends GuiScreen{
 			fontrenderer.drawSplitString(bookResources.knowledge1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(bookResources.knowledge2, posX + 121, posY + 17, 98, 0);
 			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
-			drawAlchemy(new ItemStack(Blocks.emerald_block), new ItemStack(Items.book), new ItemStack(Blocks.emerald_block), new ItemStack(MiscItems.knowledgeFlask), 20, 20, x, y);
+			drawAlchemy(new ItemStack(Blocks.emerald_block), new ItemStack(Items.book), new ItemStack(Blocks.emerald_block), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.knowledgeFlask), 20, 20, x, y);
 		}else if(entry && currentSection=="flight" && subSection==0){
 			//FLIGHT
 			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
 			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
-			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.feather), new ItemStack(Items.diamond), new ItemStack(MiscItems.flightFlask), 20, 20, x, y);
+			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.feather), new ItemStack(Items.diamond), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.flightFlask), 20, 20, x, y);
 		}else if(entry && currentSection=="anit-wither" && subSection==0){
 			//ANTIWITHER
 			fontrenderer.drawString("Anti-Wither Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
 			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
-			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.skull, 1, 1), new ItemStack(Blocks.red_flower), new ItemStack(MiscItems.WitherAnti), 20, 20, x, y);
+			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.skull, 1, 1), new ItemStack(Blocks.red_flower), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.WitherAnti), 20, 20, x, y);
+		}else if(entry && currentSection=="heart" && subSection==0){
+			//ANTIWITHER
+			fontrenderer.drawString("Heart Flask", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
+			drawAlchemy(new ItemStack(Items.speckled_melon), new ItemStack(Items.blaze_powder, 1, 1), new ItemStack(Items.speckled_melon), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.theheart), 20, 20, x, y);
 		}
 		if(brew){
 			if(x > posX + 12 && x < posX + 104 && y > posY + 80 && y < posY + 86){
 				String[] desc = { "Put the top three", "items inside of the", "Brewer and a Potion", "Flask on the bottom slot." };
 	            @SuppressWarnings("rawtypes")
 	            List temp = Arrays.asList(desc);
+	            zLevel = 2;
 	            drawHoveringText(temp, x, y, fontrenderer);
 			}
 		}
@@ -154,8 +162,8 @@ public class GuiManualBooks extends GuiScreen{
 		int posY = (height - ySizeofTexture) / 2;	
 //		System.out.println(currentSection);
 		
-		int color1 = 0xCC66FF;
-		int color2 = 0xCC6699;
+		int color1 = 0xA3007A;
+		int color2 = 0x720056;
 		
 		buttonLeft prevButton = new buttonLeft(0, posX + 0, posY + 167, 18, 12, "Prev");
 		buttonRight nextButton = new buttonRight(1, posX + 210, posY + 167, 18, 12, "Next");
@@ -179,6 +187,7 @@ public class GuiManualBooks extends GuiScreen{
 		buttonMenu alchemy2 = new buttonMenu(13, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2, true);
 		buttonMenu alchemy3 = new buttonMenu(14, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
 		buttonMenu alchemy4 = new buttonMenu(16, posX + 124, posY + 54, 90, 12, "Anti-Wither Potion", color1, color2, true);
+		buttonMenu alchemy5 = new buttonMenu(17, posX + 124, posY + 66, 90, 12, "Heart Potion", color1, color2, true);
 			
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);
@@ -225,6 +234,7 @@ public class GuiManualBooks extends GuiScreen{
 			buttonList.add(alchemy2);
 			buttonList.add(alchemy3);
 			buttonList.add(alchemy4);
+			buttonList.add(alchemy5);
 		}
 	}
 		
@@ -338,6 +348,16 @@ public class GuiManualBooks extends GuiScreen{
 			entry=true;
 			maxPages=0;
 			brew=true;
+		break;
+		
+		case 17:
+			currentSection="heart";
+			prevSection="alchemy";
+			subSection=0;
+			entry=true;
+			maxPages=0;
+			brew=true;
+		break;
 		}
 		
 	}
@@ -494,7 +514,7 @@ public class GuiManualBooks extends GuiScreen{
 	}
 	
 	
-	public void drawAlchemy(ItemStack slot1, ItemStack slot2, ItemStack slot3, ItemStack slot4, int xPos, int yPos, int mousex, int mousey){
+	public void drawAlchemy(ItemStack slot1, ItemStack slot2, ItemStack slot3, ItemStack slot4, ItemStack product, int xPos, int yPos, int mousex, int mousey){
 		FontRenderer itemsInGrid = Minecraft.getMinecraft().fontRenderer;
 		RenderHelper.disableStandardItemLighting();
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -505,7 +525,7 @@ public class GuiManualBooks extends GuiScreen{
 		int yPosCrafting = posY + xPos;
 		
 		Minecraft.getMinecraft().getTextureManager().bindTexture(craftingGrid);
-		drawTexturedModalRect(xPosCrafting, yPosCrafting, 97, 0, 70, 56);		
+		drawTexturedModalRect(xPosCrafting, yPosCrafting, 97, 0, 81, 56);		
 		
 		if(slot1!=null){
 			RenderHelper.disableStandardItemLighting();
@@ -526,6 +546,11 @@ public class GuiManualBooks extends GuiScreen{
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
 					slot4, xPosCrafting + 27, yPosCrafting + 39);	
+		}
+		if(product!=null){
+			RenderHelper.disableStandardItemLighting();
+			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
+					product, xPosCrafting + 64, yPosCrafting + 29);	
 		}
 		
 		if(slot1!=null){
@@ -548,9 +573,14 @@ public class GuiManualBooks extends GuiScreen{
 				renderToolTip(slot4, mousex, mousey);
 			}
 		}
+		if(product!=null){
+			if(mousex>xPosCrafting+64 && mousex<xPosCrafting+80 && mousey>yPosCrafting+29 && mousey<yPosCrafting+45){
+				renderToolTip(product, mousex, mousey);
+			}
+		}
 		
 		if(mousex>xPosCrafting+30 && mousex<xPosCrafting+18 && mousey>yPosCrafting+40 && mousey<yPosCrafting+38){
-			String[] desc = { "Produces" };
+			String[] desc = { "Brews" };
             @SuppressWarnings("rawtypes")
             List temp = Arrays.asList(desc);
             drawHoveringText(temp, mousex, mousey, itemsInGrid);

@@ -6,16 +6,17 @@ import net.minecraft.potion.Potion;
 
 import com.raizunne.miscellany.handler.PotionHandler;
 import com.raizunne.miscellany.item.ExplosiveCatalyst;
+import com.raizunne.miscellany.item.KnowledgeGem;
 import com.raizunne.miscellany.item.Package;
 import com.raizunne.miscellany.item.Pamphlet;
 import com.raizunne.miscellany.item.PotionFlask;
 import com.raizunne.miscellany.item.Shake;
 import com.raizunne.miscellany.item.TheFlute;
 import com.raizunne.miscellany.item.TheHeart;
-import com.raizunne.miscellany.item.breadLoaf;
-import com.raizunne.miscellany.item.manualBook;
-import com.raizunne.miscellany.item.redstonicJetBoots;
-import com.raizunne.miscellany.item.sacredChalice;
+import com.raizunne.miscellany.item.BreadLoaf;
+import com.raizunne.miscellany.item.ManualBook;
+import com.raizunne.miscellany.item.RedstonicJetBoots;
+import com.raizunne.miscellany.item.SacredChalice;
 import com.raizunne.miscellany.item.PotionFlasks.AntiWither;
 import com.raizunne.miscellany.item.PotionFlasks.Flight;
 import com.raizunne.miscellany.item.PotionFlasks.Knowledge;
@@ -36,6 +37,7 @@ public class MiscItems {
 	public static Item ExplosiveCatalyst;
 	public static Item theflute;
 	public static Item theheart;
+	public static Item knowledgegem;
 	
 	public static Item potionFlask;
 	public static Item flightFlask;
@@ -46,17 +48,18 @@ public class MiscItems {
     public static Potion flightPotion;
 	
 	public static void init(){
-   	 	debugHunger = new com.raizunne.miscellany.item.debugHunger();
-   	 	redstonicBoots = new redstonicJetBoots(ArmorMaterial.DIAMOND, 2, 3);
-   	 	sacredChalice = new sacredChalice();
-   	 	manualBook = new manualBook();
+   	 	debugHunger = new com.raizunne.miscellany.item.DebugHunger();
+   	 	redstonicBoots = new RedstonicJetBoots(ArmorMaterial.DIAMOND, 2, 3);
+   	 	sacredChalice = new SacredChalice();
+   	 	manualBook = new ManualBook();
    	 	Shake = new Shake();
    	 	pamphlet = new Pamphlet();
-   	 	breadLoaf = new breadLoaf(6, 6, false);
+   	 	breadLoaf = new BreadLoaf(6, 6, false);
    	 	pack = new Package();
    	 	ExplosiveCatalyst = new ExplosiveCatalyst();
    	 	theheart = new TheHeart();
    	 	theflute = new TheFlute();
+   	 	knowledgegem = new KnowledgeGem();
    	 	
    	 	potionFlask = new PotionFlask();
    	 	flightFlask = new Flight();
@@ -75,6 +78,7 @@ public class MiscItems {
 	 	GameRegistry.registerItem(ExplosiveCatalyst, ExplosiveCatalyst.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(theheart, theheart.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(theflute, theflute.getUnlocalizedName().substring(5));
+	 	GameRegistry.registerItem(knowledgegem, knowledgegem.getUnlocalizedName());
 
 	 	//Potions
 	 	PotionHandler.initPotions();

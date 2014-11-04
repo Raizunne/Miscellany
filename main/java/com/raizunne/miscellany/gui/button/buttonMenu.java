@@ -80,7 +80,7 @@ public class buttonMenu extends GuiButton {
                 
             }
             if(this.enabled){
-            	this.drawString(fontrenderer, this.displayString, this.xPosition + (hover == 2 ? 2 : 0), this.yPosition + (this.height - 8) / 2, l);
+            	fontrenderer.drawString(this.displayString, this.xPosition + (hover == 2 ? 2 : 0), this.yPosition + (this.height - 8) / 2, l);
             }else if(!this.enabled){
             	this.drawString(fontrenderer, "BUTTON NOT", this.xPosition + (hover == 2 ? 2 : 0), this.yPosition + (this.height - 8) / 2, l);
             }

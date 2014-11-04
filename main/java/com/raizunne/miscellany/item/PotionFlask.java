@@ -71,7 +71,7 @@ public class PotionFlask extends Item{
 	
 	@Override
 	public void registerIcons(IIconRegister register) {
-		icons = register.registerIcon("miscellany:emptyFlask");
+		icons = register.registerIcon("miscellany:FlaskEmpty");
 	}
 	
 	@Override

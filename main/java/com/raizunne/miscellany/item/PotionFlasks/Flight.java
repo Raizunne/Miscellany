@@ -70,7 +70,7 @@ public class Flight extends Item{
 	
 	@Override
 	public void registerIcons(IIconRegister register) {
-		icons = register.registerIcon("miscellany:flightFlask");
+		icons = register.registerIcon("miscellany:FlaskFlight");
 	}
 	
 	@Override

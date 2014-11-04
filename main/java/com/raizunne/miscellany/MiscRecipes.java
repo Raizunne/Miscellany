@@ -42,6 +42,11 @@ public class MiscRecipes {
    	 		"TCT",
    	 		"TTT", 'T', Blocks.tnt, 'C', Items.coal});
    	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscItems.knowledgegem), new Object[]{
+   	 		" E ",
+   	 		"EDE",
+   	 		" E ", 'E', Items.emerald, 'D', Items.diamond});
+   	 	
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.manualBook), Items.book, Items.flint);
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.pamphlet), Items.paper, Items.flint);
 	}

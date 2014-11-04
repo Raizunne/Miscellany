@@ -19,4 +19,5 @@ public class StringResources {
 	public static final String advbrew = EnumChatFormatting.LIGHT_PURPLE + "Infuse Different";
 	public static final String theheart = EnumChatFormatting.LIGHT_PURPLE + "Answer to healing.";
 	public static final String theflute = EnumChatFormatting.LIGHT_PURPLE + "Sound of growth.";
+	public static final String knowledgegemerino = EnumChatFormatting.LIGHT_PURPLE + "It hurts.";
 }

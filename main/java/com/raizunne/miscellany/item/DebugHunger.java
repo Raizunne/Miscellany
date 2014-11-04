@@ -17,9 +17,9 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class debugHunger extends Item{
+public class DebugHunger extends Item{
 	
-	public debugHunger(){
+	public DebugHunger(){
 		setUnlocalizedName("debugHunger");
 		setCreativeTab(Miscellany.miscTab).setMaxStackSize(1);
 		setTextureName(Miscellany.MODID + ":" + "debugHunger");

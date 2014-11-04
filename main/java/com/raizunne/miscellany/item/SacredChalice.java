@@ -24,7 +24,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 	
-public class sacredChalice extends Item {
+public class SacredChalice extends Item {
 
 	IIcon emptyChalice;
 	IIcon fullChalice;
@@ -32,7 +32,7 @@ public class sacredChalice extends Item {
 	Item cobbleItem;
 	public static int itemsNeeded;
 	
-	public sacredChalice(){
+	public SacredChalice(){
 		setUnlocalizedName("sacredChalice");
 		setCreativeTab(Miscellany.miscTab);
 		setMaxStackSize(1);

@@ -12,8 +12,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class manualBook extends Item{
-	public manualBook(){
+public class ManualBook extends Item{
+	public ManualBook(){
 		setMaxStackSize(1);
 		setUnlocalizedName("manualBook");
 		setCreativeTab(Miscellany.miscTab);

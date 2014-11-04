@@ -89,7 +89,7 @@ public class Shake extends Item{
 	
 	@Override
 	public void registerIcons(IIconRegister register) {
-		icons = register.registerIcon("miscellany:shake");
+		icons = register.registerIcon("miscellany:FlaskShake");
 	}
 	
 	@Override

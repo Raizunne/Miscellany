@@ -36,6 +36,7 @@ public class ExplosiveCatalyst extends Item{
 			itemstack.stackTagCompound = new NBTTagCompound();
 			itemstack.stackTagCompound.setBoolean("enabled", true);
 			itemstack.stackTagCompound.setInteger("uses", 8);
+			itemstack.stackTagCompound.setBoolean("isthistheexplosivecatalyst", true);
 		}
 	}
 	
@@ -45,6 +46,7 @@ public class ExplosiveCatalyst extends Item{
 			itemstack.stackTagCompound = new NBTTagCompound();
 			itemstack.stackTagCompound.setBoolean("enabled", true);
 			itemstack.stackTagCompound.setInteger("uses", 8);
+			itemstack.stackTagCompound.setBoolean("isthistheexplosivecatalyst", true);
 		}
 		if(itemstack.stackTagCompound!=null){
 			if(entity instanceof EntityPlayer){
@@ -57,7 +59,7 @@ public class ExplosiveCatalyst extends Item{
 					if(itemstack.stackTagCompound.getInteger("timer")==400){
 						itemstack.stackTagCompound.setBoolean("enabled", true);
 						if(!world.isRemote){
-							player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now disabled"));
+//							player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now disabled"));
 						}
 						player.playSound("fire.ignite", 2.0F, 1.0F);
 						itemstack.stackTagCompound.setInteger("timer", 0);
@@ -73,13 +75,13 @@ public class ExplosiveCatalyst extends Item{
 			if(itemstack.stackTagCompound!=null){
 				if(itemstack.stackTagCompound.getBoolean("enabled")){
 					if(!world.isRemote){
-						player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now ENABLED for 20 seconds, " + EnumChatFormatting.YELLOW + "BE CAREFUL"));
+//						player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now ENABLED for 20 seconds, " + EnumChatFormatting.YELLOW + "BE CAREFUL"));
 					}
 					player.playSound("mob.enderdragon.wings", 2.0F, 2.0F);
 					itemstack.stackTagCompound.setBoolean("enabled", false);
 				}else{
 					if(!world.isRemote){
-						player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now disabled"));
+//						player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Catalyst now disabled"));
 					}
 					player.playSound("mob.irongolem.death", 0.1F, 1.0F);
 					itemstack.stackTagCompound.setBoolean("enabled", true);

@@ -39,18 +39,14 @@ public class TheFlute extends Item{
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
 		if(player.isSneaking()){
-			switch(itemstack.stackTagCompound.getInteger("mode")){
-			case 0:
-				itemstack.stackTagCompound.setInteger("mode", 1);
+			String mode = itemstack.stackTagCompound.getString("mode");
+			if(mode.equals("Wacky")){
+				itemstack.stackTagCompound.setString("mode", "Soothing");
 				player.playSound("random.burp", 0.5F, 2.0F);
-				if(world.isRemote){player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Mode now set on " + EnumChatFormatting.GREEN + "Wacky" + EnumChatFormatting.LIGHT_PURPLE + " mode."));}
-			break;
-			case 1:
-				itemstack.stackTagCompound.setInteger("mode", 0);
+			}else if(mode.equals("Soothing")){
+				itemstack.stackTagCompound.setString("mode", "Wacky");
 				player.playSound("random.burp", 0.5F, 2.0F);
-				if(world.isRemote){player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "Mode now set on " + EnumChatFormatting.GREEN + "Soothing" + EnumChatFormatting.LIGHT_PURPLE + " mode."));}
 			}
-//			System.out.println(world.getBlock((int)player.posX, (int)player.posY-1, (int)player.posZ));
 		}else{
 			if(itemstack.getItemDamage()<1){
 				player.setItemInUse(itemstack, getMaxItemUseDuration(itemstack));
@@ -63,7 +59,7 @@ public class TheFlute extends Item{
 	public void onUpdate(ItemStack itemstack, World world, Entity entity, int p_77663_4_, boolean p_77663_5_) {
 		if(itemstack.stackTagCompound==null){
 			itemstack.stackTagCompound = new NBTTagCompound();
-			itemstack.stackTagCompound.setInteger("mode", 0);
+			itemstack.stackTagCompound.setString("mode", "Soothing");
 		}
 		
 		if(entity instanceof EntityPlayer){
@@ -113,8 +109,7 @@ public class TheFlute extends Item{
 		Block block7 = player.worldObj.getBlock(x-1, y-1, z-1);
 		Block block8 = player.worldObj.getBlock(x-1, y-1, z);
 		Block block9 = player.worldObj.getBlock(x, y-1, z-1);
-		switch(itemstack.stackTagCompound.getInteger("mode")){
-		case 0:
+		if(itemstack.stackTagCompound.getString("mode").equals("Soothing")){
 			updateThisBlock(block1, player.worldObj, x, y, z);
 			updateThisBlock(block2, player.worldObj, x+1, y, z);
 			updateThisBlock(block3, player.worldObj, x, y, z+1);
@@ -124,9 +119,7 @@ public class TheFlute extends Item{
 			updateThisBlock(block7, player.worldObj, x-1, y, z+1);
 			updateThisBlock(block8, player.worldObj, x-1, y, z);
 			updateThisBlock(block9, player.worldObj, x, y, z-1);
-		break;
-		
-		case 1:
+		}else if(itemstack.stackTagCompound.getString("mode").equals("Wacky")){
 			breakThisBlock(block1, player.worldObj, x, y, z);
 			breakThisBlock(block2, player.worldObj, x+1, y, z);
 			breakThisBlock(block3, player.worldObj, x, y, z+1);
@@ -153,13 +146,10 @@ public class TheFlute extends Item{
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean donteventryanymore) {
 		list.add(StringResources.theflute);
 		if(itemstack.stackTagCompound!=null){
-			switch(itemstack.stackTagCompound.getInteger("mode")){
-			case 0:
-				list.add("Mode: " + EnumChatFormatting.GREEN + "Soothing");
-			break;
-			case 1:
+			if(itemstack.stackTagCompound.getString("mode").equals("Soothing")){
+				list.add("Mode: " + EnumChatFormatting.GREEN + "Soothing");;
+			}else if(itemstack.stackTagCompound.getString("mode").equals("Wacky")){
 				list.add("Mode: " + EnumChatFormatting.GREEN + "Wacky");
-			break;
 			}
 		}
 	}
@@ -176,6 +166,7 @@ public class TheFlute extends Item{
 		int r = world.rand.nextInt(4);
 		if(block instanceof IPlantable && r == 3){
 			System.out.println("Updated");
+			world.scheduleBlockUpdate(x, y, z, block, 1);
 			block.updateTick(world, x, y-1, z, world.rand);
 		}
 	}

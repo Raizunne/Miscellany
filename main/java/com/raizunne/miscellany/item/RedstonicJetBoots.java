@@ -15,11 +15,11 @@ import net.minecraftforge.common.ISpecialArmor;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.util.StringResources;
 
-public class redstonicJetBoots extends ItemArmor implements ISpecialArmor{
+public class RedstonicJetBoots extends ItemArmor implements ISpecialArmor{
 
 	private String texture = "miscellany:textures/model/redstonicBoots.png";
 	
-	public redstonicJetBoots(ArmorMaterial material, int renderindex, int armortype) {
+	public RedstonicJetBoots(ArmorMaterial material, int renderindex, int armortype) {
 		super(material, renderindex, armortype);
 		armortype = 3;
 		maxStackSize = 1;
