@@ -5,22 +5,16 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCrops;
-import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.BonemealEvent;
 
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
@@ -164,10 +158,13 @@ public class TheFlute extends Item{
 	
 	public void updateThisBlock(Block block, World world, int x, int y, int z){
 		int r = world.rand.nextInt(4);
+		Random random = new Random();
+		Block blockerino = world.getBlock(x, y-1, z);
 		if(block instanceof IPlantable && r == 3){
-			System.out.println("Updated");
-			world.scheduleBlockUpdate(x, y, z, block, 1);
-			block.updateTick(world, x, y-1, z, world.rand);
+			if(!world.isRemote){
+				world.scheduleBlockUpdate(x, y-1, z, blockerino, 20);
+				block.updateTick(world, x, y-1, z, world.rand);
+			}
 		}
 	}
 	
@@ -175,12 +172,14 @@ public class TheFlute extends Item{
 		Random random = new Random();
 		int r = random.nextInt(1);
 		List<ItemStack> items = new ArrayList();
-		if(block instanceof IPlantable && r==0){
-			items.addAll(block.getDrops(world, x, y-1, z, world.getBlockMetadata(x, y-1, z), 1));
-			world.func_147480_a(x, y-1, z, true);
-			for(ItemStack stackerino : items){
-				world.spawnEntityInWorld(new EntityItem(world, x, y, z, stackerino));
+		if(!world.isRemote){
+			if(block instanceof IPlantable && r==0){
+				items.addAll(block.getDrops(world, x, y-1, z, world.getBlockMetadata(x, y-1, z), 1));
+				world.func_147480_a(x, y-1, z, true);
+				for(ItemStack stackerino : items){
+					world.spawnEntityInWorld(new EntityItem(world, x, y, z, stackerino));
+				}
 			}
-		}
+		}	
 	}
 }

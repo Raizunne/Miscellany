@@ -3,7 +3,7 @@ itemGroup.Miscellany=Miscellany
 item.redstonicBoots.name=Redstonic JetBoots
 item.sacredChalice.name=§6Sacred Chalice
 item.manualBook.name=Miscellany Manual
-item.pamphlet.name=Miscellany Pamphlet 0.3a
+item.pamphlet.name=Miscellany Pamphlet 0.4
 item.shake.name=Shake
 item.debugHunger.name=Debug Hunger
 item.breadLoaf.name=Bread Loaf
@@ -37,10 +37,12 @@ flightPotion.postfix=Flight
 
 item.packagedFood.name=Packaged Food
 tile.foodPackager.name=Food Packager
-tile.advBrew.name=Advanced Reactive Brewer
+tile.advBrew.name=Reactive Brewer
 tile.present.name=Present
 tile.thepackage.name=Packager
 tile.nonite.name=No Nite
+tile.hearthealer.name=Heart Healer
+tile.trophybase.name=Trophy Base
 
 tile.foodPackager.documentation=Generate better food from poor food!
 tile.advBrew.documentation=Reactive brewing is best brewing, at least that's what they say.

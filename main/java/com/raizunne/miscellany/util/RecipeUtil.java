@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 
 public class RecipeUtil {
 	 /**
-     * 1 = Knowledge, 2 = Flight, 3 = Anti-Wither, 4 = Heart Potion
+     * 1 = Knowledge, 2 = Flight, 3 = Anti-Wither, 4 = Heart Potion, 5=Shake
      */
 	
 	private Item witherSkull;
@@ -24,6 +24,8 @@ public class RecipeUtil {
 			return 3;
 		}else if(slot1==Items.speckled_melon && slot2==Items.blaze_powder && slot3 == Items.speckled_melon && slot4==MiscItems.potionFlask){
 			return 4;
+		}else if(slot1==Items.speckled_melon && slot2==Items.bread && slot3==Items.sugar && slot4==MiscItems.potionFlask){
+			return 5;
 		}
 		return 0;
 	}

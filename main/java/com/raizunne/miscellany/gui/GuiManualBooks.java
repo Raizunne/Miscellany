@@ -16,6 +16,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -66,7 +67,7 @@ public class GuiManualBooks extends GuiScreen{
 	
 	@Override
 	public void drawScreen(int x, int y, float f) {
-		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
+		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;		
 		RenderItem itemRenderer = new RenderItem();
 		drawDefaultBackground();
 		GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -74,9 +75,6 @@ public class GuiManualBooks extends GuiScreen{
 		int posX = (width - xSizeofTexture) / 2;
 		int posY = (height - ySizeofTexture) / 2;
 		drawTexturedModalRect(posX, posY, 0, 0, xSizeofTexture, ySizeofTexture);
-		
-//		drawCrafting(Item slot1, Item slot2, Item slot3, Item slot4, Item slot5, Item slot6, Item slot7, Item slot8,
-//				Item slot9, Item product, int xPos, int yPos, int mousex, int mousey)
 		
 		if(!entry || currentSection=="index" || currentSection=="items" || currentSection=="machines" || currentSection=="alchemy" ||
 				currentSection=="Blocks" || currentSection=="equipment"){
@@ -95,14 +93,13 @@ public class GuiManualBooks extends GuiScreen{
 			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, goldBlock, null, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, MiscItems.sacredChalice, 20, 20, x, y);	
 		}else if(entry && currentSection=="shake" && subSection==0){
 			//SHAKE
-			fontrenderer.drawString("Shake", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.shake1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(bookResources.shake1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(bookResources.shake2, posX + 121, posY + 17, 98, 0);
-			drawCrafting(MiscItems.breadLoaf, MiscItems.breadLoaf, MiscItems.breadLoaf, Items.ender_eye, Items.glass_bottle, Items.ender_eye, MiscItems.breadLoaf,
-					MiscItems.breadLoaf, MiscItems.breadLoaf, MiscItems.Shake, 20, 20, x, y);	
+			drawAlchemy(new ItemStack(Items.speckled_melon), new ItemStack(Items.bread), new ItemStack(Items.sugar), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.Shake), 20, 20, x, y);
 		}else if(entry && currentSection=="brewer" && subSection==0){
 			//BREWER
-			fontrenderer.drawString("Advanced Brewer", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawString("Reactive Brewer", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(bookResources.brewer1, posX + 10, posY + 80, 98, 0);
 			fontrenderer.drawSplitString(bookResources.brewer2, posX + 121, posY + 17, 98, 0);
 			Item clay = Blocks.hardened_clay.getItemDropped(Blocks.hardened_clay.getIdFromBlock(Blocks.hardened_clay), new Random(), 1);
@@ -114,31 +111,44 @@ public class GuiManualBooks extends GuiScreen{
 			fontrenderer.drawString("Knowledge Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(bookResources.knowledge1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(bookResources.knowledge2, posX + 121, posY + 17, 98, 0);
-			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
 			drawAlchemy(new ItemStack(Blocks.emerald_block), new ItemStack(Items.book), new ItemStack(Blocks.emerald_block), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.knowledgeFlask), 20, 20, x, y);
 		}else if(entry && currentSection=="flight" && subSection==0){
 			//FLIGHT
 			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
-			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
 			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.feather), new ItemStack(Items.diamond), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.flightFlask), 20, 20, x, y);
 		}else if(entry && currentSection=="anit-wither" && subSection==0){
 			//ANTIWITHER
 			fontrenderer.drawString("Anti-Wither Flask", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
-			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
-			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
+			fontrenderer.drawSplitString(bookResources.wither1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(bookResources.wither2, posX + 121, posY + 17, 98, 0);
 			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.skull, 1, 1), new ItemStack(Blocks.red_flower), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.WitherAnti), 20, 20, x, y);
 		}else if(entry && currentSection=="heart" && subSection==0){
-			//ANTIWITHER
+			//Heart Flask
 			fontrenderer.drawString("Heart Flask", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
-			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
-			fontrenderer.drawString("Adv Brewer Recipe", posX+12, posY+80, 0x939393, false);
+			fontrenderer.drawSplitString(bookResources.heart1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(bookResources.heart2, posX + 121, posY + 17, 98, 0);
 			drawAlchemy(new ItemStack(Items.speckled_melon), new ItemStack(Items.blaze_powder, 1, 1), new ItemStack(Items.speckled_melon), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.theheart), 20, 20, x, y);
+		}else if(entry && currentSection=="gem" && subSection==0){
+			//KNOWLEDGE GEM
+			fontrenderer.drawString("Knowledge Gem", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(bookResources.gem1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(bookResources.gem2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(bookResources.gem3, posX + 121, posY + 105, 98, 0);
+			drawCrafting(null, Items.emerald, null, Items.emerald, Items.diamond, Items.emerald, null, Items.emerald, null, MiscItems.knowledgegem, 20, 20, x, y);	
+		}else if(entry && currentSection=="gem" && subSection==1){
+			//KNOWLEDGE GEM PAGE 2
+			fontrenderer.drawString("Knowledge Gem", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(EnumChatFormatting.DARK_PURPLE + "Upgrades", posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(bookResources.gemLevel1, posX + 10, posY + 92, 98, 0);
+			fontrenderer.drawSplitString(bookResources.gemLevel2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(bookResources.gemLevel3, posX + 121, posY + 95, 98, 0);
+			drawCrafting(null, Items.emerald, null, Items.emerald, MiscItems.knowledgegem, Items.emerald, null, Items.emerald, null, MiscItems.knowledgegem, 20, 20, x, y);	
 		}
+		
 		if(brew){
+			fontrenderer.drawString("Brewer Recipe", posX+21, posY+80, 0x939393, false);
 			if(x > posX + 12 && x < posX + 104 && y > posY + 80 && y < posY + 86){
 				String[] desc = { "Put the top three", "items inside of the", "Brewer and a Potion", "Flask on the bottom slot." };
 	            @SuppressWarnings("rawtypes")
@@ -168,40 +178,39 @@ public class GuiManualBooks extends GuiScreen{
 		buttonLeft prevButton = new buttonLeft(0, posX + 0, posY + 167, 18, 12, "Prev");
 		buttonRight nextButton = new buttonRight(1, posX + 210, posY + 167, 18, 12, "Next");
 		buttonNormal returnIndex = new buttonNormal(2, posX + 87, posY + 167, 50, 14, "Return");
-		buttonMenu menu0 = new buttonMenu(3, posX + 124, posY + 18, 90, 12, "Items", color1, color2, true);
-		buttonMenu menu1 = new buttonMenu(4, posX + 124, posY + 30, 90, 12, "Advanced Alchemy", color1, color2, true);
-		buttonMenu menu2 = new buttonMenu(5, posX + 124, posY + 42, 90, 12, "Blocks", color1, color2, true);
-		buttonMenu menu3 = new buttonMenu(6, posX + 124, posY + 54, 90, 12, "Machines", color1, color2, true);
-		buttonMenu menu4 = new buttonMenu(7, posX + 124, posY + 66, 90, 12, "Equipment", color1, color2, true);
+		
+		buttonMenu menu0 = new buttonMenu(11, posX + 124, posY + 18, 90, 12, "Items", color1, color2, true);
+		buttonMenu menu1 = new buttonMenu(12, posX + 124, posY + 30, 90, 12, "Advanced Alchemy", color1, color2, true);
+		buttonMenu menu2 = new buttonMenu(13, posX + 124, posY + 42, 90, 12, "Blocks", color1, color2, true);
+		buttonMenu menu3 = new buttonMenu(14, posX + 124, posY + 54, 90, 12, "Machines", color1, color2, true);
+		buttonMenu menu4 = new buttonMenu(15, posX + 124, posY + 66, 90, 12, "Equipment", color1, color2, true);
 
-		buttonMenu items1 = new buttonMenu(8, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2, true);
-		buttonMenu items2 = new buttonMenu(15, posX + 124, posY + 30, 90, 12, "Shake", color1, color2, true);
+		buttonMenu items1 = new buttonMenu(31, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2, true);
+		buttonMenu items2 = new buttonMenu(32, posX + 124, posY + 30, 90, 12, "Shake", color1, color2, true);
+		buttonMenu items3 = new buttonMenu(33, posX + 124, posY + 42, 90, 12, "Knowledge Gem", color1, color2, true);
 		
-		buttonMenu blocks1 = new buttonMenu(9, posX + 124, posY + 18, 90, 12, "Present", color1, color2, true);
+		buttonMenu blocks1 = new buttonMenu(51, posX + 124, posY + 18, 90, 12, "Present", color1, color2, true);
 		
-		buttonMenu machines1 = new buttonMenu(10, posX + 124, posY + 18, 90, 12, "Food Packager", color1, color2, true);
+		buttonMenu machines1 = new buttonMenu(71, posX + 124, posY + 18, 90, 12, "Food Packager", color1, color2, true);
 		
-		buttonMenu equipment1 = new buttonMenu(11, posX + 124, posY + 18, 90, 12, "Redstonic JetBoots", color1, color2, true);
+		buttonMenu equipment1 = new buttonMenu(91, posX + 124, posY + 18, 90, 12, "Redstonic JetBoots", color1, color2, true);
 		
-		buttonMenu alchemy1 = new buttonMenu(12, posX + 124, posY + 18, 90, 12, "Reactive Brewer", color1, color2, true);
-		buttonMenu alchemy2 = new buttonMenu(13, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2, true);
-		buttonMenu alchemy3 = new buttonMenu(14, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
-		buttonMenu alchemy4 = new buttonMenu(16, posX + 124, posY + 54, 90, 12, "Anti-Wither Potion", color1, color2, true);
-		buttonMenu alchemy5 = new buttonMenu(17, posX + 124, posY + 66, 90, 12, "Heart Potion", color1, color2, true);
+		buttonMenu alchemy1 = new buttonMenu(112, posX + 124, posY + 18, 90, 12, "Reactive Brewer", color1, color2, true);
+		buttonMenu alchemy2 = new buttonMenu(113, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2, true);
+		buttonMenu alchemy3 = new buttonMenu(114, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
+		buttonMenu alchemy4 = new buttonMenu(115, posX + 124, posY + 54, 90, 12, "Anti-Wither Potion", color1, color2, true);
+		buttonMenu alchemy5 = new buttonMenu(116, posX + 124, posY + 66, 90, 12, "Heart Potion", color1, color2, true);
 			
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(menu0);
 			buttonList.add(menu1);
-//			buttonList.add(menu2);
-//			buttonList.add(menu3);
-//			buttonList.add(menu4);
 		}else if(entry){
 			buttonList.removeAll(buttonList);
 			if(maxPages!=subSection){
 				buttonList.add(nextButton);
 			}
-			if(maxPages != 0){
+			if(subSection != 0){
 				buttonList.add(prevButton);
 			}
 			buttonList.add(returnIndex);
@@ -209,24 +218,28 @@ public class GuiManualBooks extends GuiScreen{
 			buttonList.remove(returnIndex);
 		}
 			
-			
 		if(currentSection=="items"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
 			buttonList.add(items1);
 			buttonList.add(items2);
+			buttonList.add(items3);
+			
 		}else if(currentSection=="blocks"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
 			buttonList.add(blocks1);
+			
 		}else if(currentSection=="machines"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
 			buttonList.add(machines1);
+			
 		}else if(currentSection=="equipment"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
 			buttonList.add(equipment1);
+			
 		}else if(currentSection=="alchemy"){
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
@@ -239,16 +252,17 @@ public class GuiManualBooks extends GuiScreen{
 	}
 		
 	@Override
-	protected void actionPerformed(GuiButton button) {
+	protected void actionPerformed(GuiButton button){
+		
 		switch(button.id){
 		case 0: 
-			if(currentSection!="index" && maxPages!=subSection){
-				subSection=-1;
+			if(currentSection!="index" && maxPages==subSection){
+				subSection=subSection-1;
 			}
 		break;
 		case 1:
-			if(currentSection!="index" && subSection!=0){
-				subSection=+1;
+			if(currentSection!="index" && subSection!=maxPages){
+				subSection=subSection+1;
 			}
 		break;
 		case 2:
@@ -262,59 +276,67 @@ public class GuiManualBooks extends GuiScreen{
 			entry=false;
 			brew=false;
 		break;
-		case 3:
+		
+		//MENUS
+		case 11:
 			currentSection="items";
 			subSection=0;
 			entry=false;
 		break;
-		case 4:
+		case 12:
 			currentSection="alchemy";
 			subSection=0;
 			entry=false;
 		break;
-		case 5:
+		case 13:
 			currentSection="blocks";
 			subSection=0;
 			entry=false;
 		break;
-		case 6:
+		case 14:
 			currentSection="machines";
 			subSection=0;
 			entry=false;
 		break;
-		case 7:
+		case 15:
 			currentSection="equipment";
 			subSection=0;
 			entry=false;
 		break;
-		case 8:
+		
+		//ITEMS
+		case 31:
 			currentSection="sacredChalice";
 			subSection=0;
 			entry=true;
 			maxPages=0;
 			prevSection="items";
 		break;
-		case 9:
-			
-		break;	
-		case 10:
-			
-		break;	
-		case 11:
-			
+		case 32:
+			currentSection="shake";
+			prevSection="items";
+			subSection=0;
+			entry=true;
+			maxPages=0;
+			brew = true;
 		break;
-		
-		//Brewer
-		case 12:
+		case 33:
+			currentSection="gem";
+			prevSection="items";
+			subSection=0;
+			entry=true;
+			maxPages=1;
+		break;	
+			
+		//ALCHEMY
+		case 112:
 			currentSection="brewer";
 			subSection=0;
 			entry=true;
 			maxPages=0;
 			prevSection="alchemy";
 		break;
-		
-		//Knowledge
-		case 13:
+		case 113:
 			currentSection="knowledge";
 			subSection=0;
 			entry=true;
@@ -322,9 +344,7 @@ public class GuiManualBooks extends GuiScreen{
 			prevSection="alchemy";
 			brew=true;
 		break;
-		
-		//Flight
-		case 14:
+		case 114:
 			currentSection="flight";
 			subSection=0;
 			entry=true;
@@ -332,16 +352,7 @@ public class GuiManualBooks extends GuiScreen{
 			prevSection="alchemy";
 			brew=true;
 		break;
-		
-		case 15:
-			currentSection="shake";
-			prevSection="items";
-			subSection=0;
-			entry=true;
-			maxPages=0;
-		break;
-		
-		case 16:
+		case 115:
 			currentSection="anit-wither";
 			prevSection="alchemy";
 			subSection=0;
@@ -349,8 +360,7 @@ public class GuiManualBooks extends GuiScreen{
 			maxPages=0;
 			brew=true;
 		break;
-		
-		case 17:
+		case 116:
 			currentSection="heart";
 			prevSection="alchemy";
 			subSection=0;
@@ -359,29 +369,15 @@ public class GuiManualBooks extends GuiScreen{
 			brew=true;
 		break;
 		}
-		
 	}
 	@Override
-		protected void mouseClicked(int x, int y, int mouseId) {
-			
+	protected void mouseClicked(int x, int y, int mouseId) {
 		int posX = (width - xSizeofTexture) / 2;
 		int posY = (height - ySizeofTexture) / 2;
 		int totalx = x - posX;
 		int totaly = y - posY;
-		
-			super.mouseClicked(x, y, mouseId);
-			this.initGui();
-//			System.out.println("" + totalx + ", " + totaly);
-			if(mouseId==1){
-//				String s = currentSection;
-//				if(s=="items" || s=="blocks" || s=="machines" || s=="alchemy" || s=="equipment"){
-//					currentSection="index";
-//				}else{
-//					currentSection=prevSection;
-//				}
-//				subSection=0;
-//				entry=false;
-			}
+		super.mouseClicked(x, y, mouseId);
+		this.initGui();
 	}
 	
 	public void drawCrafting(Item slot1, Item slot2, Item slot3, Item slot4, Item slot5, Item slot6, Item slot7, Item slot8,

@@ -13,6 +13,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
@@ -31,17 +32,64 @@ public class AdvReactBrewer extends BlockContainer{
 		setBlockTextureName("miscellany:purpleColor");
 		setHarvestLevel("pickaxe", 0);
 		setHardness(1.0F);
-		setBlockBounds(0.1875F, 0F, 0.1875F, 0.8125F, 1F, 0.8125F);
+		setBlockBounds(0.3125F, 0F, 0.3125F, 0.6875F, 0.875F, 0.6875F);
 	}
 
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
 		TileEntityAdvReactBrewer tileentity = (TileEntityAdvReactBrewer)world.getTileEntity(x, y, z);
 		if(tileentity.getProgress()!=0){
-			world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.15F, 0, 0, 0);
-			world.spawnParticle("smoke", (float)x + 0.05F, (float)y + 0.87F, (float)z + 0.5F, 0, 0, 0);
-			world.spawnParticle("smoke", (float)x + 0.83F, (float)y + 0.87F, (float)z + 0.83F, 0, 0, 0);
-			world.spawnParticle("smoke", (float)x + 0.5F, (float)y + 1.1F, (float)z + 0.5F, 0, 0, 0);
+			String particle = "smoke"; 
+			switch(random.nextInt(3)){
+			case 0:
+				particle = "smoke";
+				break;
+			case 1:
+				particle = "witchMagic";
+				break;
+			case 2:
+				particle = "smoke";
+				break;
+			}
+			if(world.isRemote){
+				world.spawnParticle(particle, (float)x + 0.5F, (float)y + 0.87F, (float)z + 0.15F, 0, 0, 0);
+				world.spawnParticle(particle, (float)x + 0.22F, (float)y + 0.87F, (float)z + 0.75F, 0, 0, 0);
+				world.spawnParticle(particle, (float)x + 0.80F, (float)y + 0.87F, (float)z + 0.80F, 0, 0, 0);
+				world.spawnParticle(particle, (float)x + 0.5F, (float)y + 1.1F, (float)z + 0.5F, 0, 0, 0);
+				
+				double i = random.nextDouble();
+				double n = random.nextDouble();
+				double r = random.nextDouble();
+				double e = random.nextDouble();
+				
+				String particle2 = "magicCrit";
+				
+				world.spawnParticle(particle2, (double)x+i-n, (double)y+i-n, (double)z+i-n, 0.0D, 0.1D, 0.0D);
+				world.spawnParticle(particle2, (double)x+1+i-n, (double)y+i-n, (double)z+i-n, 0.0D, 0.1D, 0.0D);
+				world.spawnParticle(particle2, (double)x+i-n, (double)y+i-n, (double)z+1+i-n, 0.0D, 0.1D, 0.0D);
+				world.spawnParticle(particle2, (double)x-1+i-n, (double)y+i-n, (double)z+i-n, 0.0D, 0.1D, 0.0D);
+				world.spawnParticle(particle2, (double)x+i-n, (double)y+i-n, (double)z-1+i-n, 0.0D, 0.1D, 0.0D);
+				world.spawnParticle(particle2, (double)x+1+i-n, (double)y+i-n, (double)z+1+i-n, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(particle2, (double)x+1+i-n, (double)y+i-n, (double)z-1+i-n, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(particle2, (double)x-1+i-n, (double)y+i-n, (double)z-1+i-n, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(particle2, (double)x-1+i-n, (double)y+i-n, (double)z+1+i-n, 0.0D, 0.0D, 0.0D);
+			}
+		}
+		
+		if(tileentity.getProgress()!=0){
+			int r = random.nextInt(6);
+			System.out.println(r);
+			if(r==4){
+				EntityPlayer player = world.getClosestPlayer((double)x, (double)y, (double)z, 2);
+				if(player!=null){
+					System.out.println("nNO");
+					if(player.getHealth()>=2){
+						player.setHealth(player.getHealth()-1);
+					}
+					player.performHurtAnimation();
+					player.playSound("mob.zombie.remedy", 1.0F, 1.0F);
+				}
+			}
 		}
 	}
 	
@@ -55,6 +103,19 @@ public class AdvReactBrewer extends BlockContainer{
 		}
 		return true;
 	}	
+	
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random random) {
+		TileEntityAdvReactBrewer tileentity = (TileEntityAdvReactBrewer)world.getTileEntity(x, y, z);
+		int r = random.nextInt(10);
+		System.out.println(r);
+		if(tileentity.getProgress()!=0){
+			if(r==4){
+				EntityPlayer player = world.getClosestPlayer((double)x, (double)y, (double)z, 2);
+				player.setHealth(player.getHealth()-2);
+			}
+		}
+	}
 	
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z) {

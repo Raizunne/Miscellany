@@ -2,32 +2,34 @@ package com.raizunne.miscellany.item;
 
 import java.util.List;
 
-import com.raizunne.miscellany.MiscItems;
-import com.raizunne.miscellany.Miscellany;
-import com.raizunne.miscellany.util.StringResources;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import com.raizunne.miscellany.MiscItems;
+import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.util.Config;
+import com.raizunne.miscellany.util.StringResources;
+
 public class KnowledgeGem extends Item{
 	
-	public KnowledgeGem(){
+	int maxLevel;
+	
+	public KnowledgeGem(int maxLevel){
 		setCreativeTab(Miscellany.miscTab);
 		setUnlocalizedName("knowledgegem");
 		setMaxStackSize(1);
 		setMaxDamage(1);
 		setTextureName("miscellany:KnowledgeGem");
+		this.maxLevel = maxLevel;
 	}
 	
 	int timer;
@@ -38,6 +40,7 @@ public class KnowledgeGem extends Item{
 			itemstack.stackTagCompound = new NBTTagCompound();
 			itemstack.stackTagCompound.setInteger("xp", 0);
 			itemstack.stackTagCompound.setBoolean("creative", false);
+			itemstack.stackTagCompound.setInteger("max", this.maxLevel);
 			timer = 0;
 		}
 	}
@@ -48,6 +51,14 @@ public class KnowledgeGem extends Item{
 			itemstack.stackTagCompound = new NBTTagCompound();
 			itemstack.stackTagCompound.setInteger("xp", 0);
 			itemstack.stackTagCompound.setBoolean("creative", false);
+			if(entity instanceof EntityPlayer){
+				EntityPlayer player = (EntityPlayer)entity;
+				if(itemstack.stackTagCompound.getInteger("max")==0){
+					itemstack.stackTagCompound.setInteger("max", 20);
+				}else{
+					itemstack.stackTagCompound.setInteger("max", this.maxLevel);
+				}
+			}
 			timer = 0;
 		}
 		if(entity instanceof EntityPlayer){
@@ -65,17 +76,22 @@ public class KnowledgeGem extends Item{
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-		if(player.experienceLevel>0 && !player.isPotionActive(MiscItems.knowledgePotion)){
+		if(player.experienceLevel>0 && !player.isPotionActive(MiscItems.knowledgePotion) && itemstack.stackTagCompound.getInteger("xp")!=itemstack.stackTagCompound.getInteger("max")){
 			player.experienceLevel=player.experienceLevel-1;
 			if(!player.capabilities.isCreativeMode){
+				if(player.getHealth() > 2){
+				}
 				player.setHealth(player.getHealth()-1);
+				if(Config.gemShake){
+					player.performHurtAnimation();
+				}
 			}
 //			player.attackEntityFrom(new DamageSource("KnowledgeOverdose"), 2);
 			itemstack.stackTagCompound.setInteger("xp", itemstack.stackTagCompound.getInteger("xp")+1);
 			player.playSound("note.bd", 3.0F, 2.0F);
 			player.playSound("random.burp", 1.0F, 0.5F);
 		}
-		if(player.getHealth()<=0.001f){
+		if(player.getHealth()<=0.000){
 			player.onDeath(DamageSource.anvil);
 		}
 		if(player.isPotionActive(MiscItems.knowledgePotion)){
@@ -97,6 +113,11 @@ public class KnowledgeGem extends Item{
 				if(!player.capabilities.isCreativeMode){
 					player.setHealth(player.getHealth()-2);
 				}
+				
+				if(player.getHealth()<=0.000){
+					player.onDeath(DamageSource.anvil);
+				}
+				
 				player.playSound("random.bow", 3.0F, 2.0F);
 				player.playSound("random.burp", 1.0F, 2F);
 			}
@@ -115,7 +136,7 @@ public class KnowledgeGem extends Item{
 				}else{
 					obs = "";
 				}
-				list.add(obs + "Wisdom Stored: " + itemstack.stackTagCompound.getInteger("xp"));
+				list.add(obs + "Wisdom Stored: " + itemstack.stackTagCompound.getInteger("xp") + "/" + itemstack.stackTagCompound.getInteger("max"));
 			}else{
 				list.add("CREATIVE");
 			}

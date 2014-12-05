@@ -42,6 +42,8 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 				break;
 				case 4: doProcess(new ItemStack(MiscItems.theheart));
 				break;
+				case 5: doProcess(new ItemStack(MiscItems.Shake));
+				break;
 			}
 		}
 	}

@@ -12,6 +12,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.util.StringResources;
 
@@ -34,9 +35,13 @@ public class RedstonicJetBoots extends ItemArmor implements ISpecialArmor{
 	}
 	
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+			
+	}
 	
+	@Override
+	public void onUpdate(ItemStack itemstack, World world, Entity entity, int what, boolean isthis) {
 		
-	};
+	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot,

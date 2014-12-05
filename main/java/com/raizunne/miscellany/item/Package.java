@@ -19,14 +19,16 @@ import com.raizunne.miscellany.util.StringResources;
 public class Package extends Item{
 
 	public NBTTagCompound nbt = new NBTTagCompound();	
+	private int itemid;
+	private int count;
 	
-	public Package(){
+	public Package(int id, int count){
 		setMaxStackSize(1);
 		setUnlocalizedName("package");
 		setTextureName("miscellany:thepackage");
 		setCreativeTab(Miscellany.miscTab);
 		setMaxDamage(1);
-		
+		this.itemid = id;
 	}
 	
 	@Override
@@ -42,6 +44,10 @@ public class Package extends Item{
 		if(itemstack.stackTagCompound==null){
 			itemstack.stackTagCompound = new NBTTagCompound();
 		}
+		if(itemstack.stackTagCompound!=null){
+			itemstack.stackTagCompound.setInteger("item", itemid);
+			itemstack.stackTagCompound.setInteger("count", count);
+		}
 	}
 	
 	@Override
@@ -51,9 +57,7 @@ public class Package extends Item{
 		list.add(StringResources.pack);
 		if(itemstack.stackTagCompound!=null){
 			if(itemstack.stackTagCompound.getInteger("item")!=0){
-				int id = itemstack.stackTagCompound.getInteger("item");
-				int count = itemstack.stackTagCompound.getInteger("number");
-				Item thisitem = getItemById(id);
+				Item thisitem = getItemById(itemid);
 				list.add("Currently Contains: " + count + " of " + getItemStackDisplayName(new ItemStack(thisitem)));
 			}else{
 				list.add("Currently Empty");

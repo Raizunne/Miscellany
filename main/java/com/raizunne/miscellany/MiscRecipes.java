@@ -3,6 +3,10 @@ package com.raizunne.miscellany;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+
+import com.raizunne.miscellany.util.recipe.GemLeveling;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class MiscRecipes {
@@ -13,18 +17,6 @@ public class MiscRecipes {
    	 		" G ",
    	 		"III",
    	 		'I', Items.gold_ingot, 'W', Items.water_bucket, 'G', Blocks.gold_block});
-   	 	
-   	 	GameRegistry.addRecipe(new ItemStack(MiscItems.breadLoaf), new Object[]{
-   	 		" S ",
-   	 		"BBB",
-   	 		" S ",
-   	 		'S', Items.sugar, 'B', Items.bread});
-   	 	
-   	 	GameRegistry.addRecipe(new ItemStack(MiscItems.Shake), new Object[]{
-   	 		"LLL",
-   	 		"ESE",
-   	 		"LLL",
-   	 		'L', MiscItems.breadLoaf, 'S', Items.glass_bottle, 'E', Items.ender_eye});
    	 	
    	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.brewer), new Object[]{
    	 		"SSS",
@@ -47,8 +39,15 @@ public class MiscRecipes {
    	 		"EDE",
    	 		" E ", 'E', Items.emerald, 'D', Items.diamond});
    	 	
+   	 	IRecipe gem = new GemLeveling();
+   	 	
+   	 	GameRegistry.addRecipe(gem);
+   	 	
+   	 	
+   	 	
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.manualBook), Items.book, Items.flint);
    	 	GameRegistry.addShapelessRecipe(new ItemStack(MiscItems.pamphlet), Items.paper, Items.flint);
+   	 	
 	}
 	
 }
