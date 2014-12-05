@@ -1,0 +1,49 @@
+itemGroup.Miscellany=Miscellany
+
+item.redstonicBoots.name=Bottes à réaction redstonique
+item.sacredChalice.name=§6Calice sacré
+item.manualBook.name=Manuel de recueil
+item.pamphlet.name=Brochure de recueil 0.4
+item.shake.name=Secousse
+item.debugHunger.name=Déboguez la faim
+item.breadLoaf.name=Morceau de pain
+item.package.name=Empaqueté
+item.explosivecatalyst.name=Catalyseur explosif
+item.theflute.name=La Flute
+item.knowledgegem.name=§aPierre de connaissance
+
+item.emptyFlask.name=Flasque vide
+item.flightFlask.name=Flasque de vol
+item.knowledgeFlask.name=§aFlasque de connaissance
+item.antiwither.name=Flasque Anti-Wither
+item.theheart.name=Flasque de coeur
+
+item.redstonicBoots.documentation=Permet d'enjamber un seul bloc, augmente la vitesse et double le saut.
+item.sacredChalice.documentation=Consomme les pavés, reçoit de l'eau.
+item.manualBook.documentation=Manuel pour le rcueil de Raizunne.
+item.pamphlet.documentation=Propagande libre donnée au joueur quant il apparait ou qu'une nouvelle version sort !
+item.debugHunger.doumentation=Elément créatif qui diminue la fain pour déboguer.
+item.shake.documentation=Nouvelle technologie pour ingérer la nourriture, secouez pour manger ! (Le clic gauche pour ingérer la nourriture et la saturation, pour les ennuyeux.)
+item.package.documentation=Compression d'éléments dans un seul.
+
+emptyPotionFlask.name=Flasque de potion vide
+flightPotionFlask.name=Potion de vol
+knowledgePotionFlask.name=Potion de connaissance
+
+knowledgePotion=Connaissance
+knowledgePotion.postfix=Connaissance
+flightPotion=Vol
+flightPotion.postfix=Vol
+
+item.packagedFood.name=Nouriture empaqueté
+tile.foodPackager.name=Empaqueteur de nouriture
+tile.advBrew.name=Brasseur réactif
+tile.present.name=Présent
+tile.thepackage.name=Empaqueteur
+tile.nonite.name=Pas de nuit
+tile.hearthealer.name=Guérisseur du coeur
+tile.trophybase.name=Base de trophé
+
+tile.foodPackager.documentation=Produisez une meilleure nourriture a partir de la nourriture pauvre !
+tile.advBrew.documentation=La préparation réactive est la meilleure préparation, du moins c'est ce qu'ils disent.
+tile.present.documentation=Insérez des élément et placez ce bloc pour donner des cadeaux à vos amis !
