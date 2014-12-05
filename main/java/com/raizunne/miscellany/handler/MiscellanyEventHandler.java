@@ -1,5 +1,7 @@
 package com.raizunne.miscellany.handler;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,8 +16,12 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.client.model.ModelVeneer;
+import com.raizunne.miscellany.client.render.RenderOnPlayer;
+import com.raizunne.miscellany.proxies.ClientProxy;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 public class MiscellanyEventHandler {
 
@@ -77,7 +83,8 @@ public class MiscellanyEventHandler {
 		}
 	}
 	
-	public void onPlayerLogin(EntityPlayer player){
+	public void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event){
+		EntityPlayer player = event.player;
 		
 	}
 	
@@ -86,27 +93,12 @@ public class MiscellanyEventHandler {
 		TextOnScreen.init(event);
 	}
 	
-	ModelVeneer veneer = new ModelVeneer();
-	
-//	@SubscribeEvent
-//	public void onPlayerRender(RenderPlayerEvent.Post event){
-//		EntityPlayer player = event.entityPlayer;
-//		
-//		Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Miscellany.MODID + ":" + "textures/model/Veneer.png"));
-//		
-//		veneer.render(player, (float)player.posX, (float)player.posY, (float)player.posZ, 0F, 0F, 0F);
-//	}
-	
 	@SubscribeEvent
-	public void onRenderLiving(RenderLivingEvent.Pre event){
-		if(event.entity instanceof EntityPlayer){
-			EntityPlayer player = (EntityPlayer)event.entity;
-			
-			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(Miscellany.MODID + ":" + "textures/model/Veneer.png"));
-			
-			veneer.render(player, (float)player.posX, (float)player.posY, (float)player.posZ, 0F, 0F, 0F);
-		}
+	public void playerRender(RenderPlayerEvent.Pre event){
+		RenderOnPlayer.renderForRaizunne(event);
+		
 	}
+	
 }
 
 

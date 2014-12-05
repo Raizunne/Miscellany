@@ -50,7 +50,8 @@ public class RenderAdvReactBrewer extends TileEntitySpecialRenderer{
 			
 			if(slot1!=null){
 				GL11.glPushMatrix();
-				EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, slot1);
+				EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld());
+				entItem.setEntityItemStack(brewer.getStackInSlot(1));
 				entItem.hoverStart = 0.0F;
 				RenderItem.renderInFrame = true;
 				GL11.glTranslatef((float)x + 0.51F, (float)y + 0.81F, (float)z + 0.02F);
@@ -95,8 +96,14 @@ public class RenderAdvReactBrewer extends TileEntitySpecialRenderer{
 				GL11.glTranslatef((float)x + 0.5F, (float)y + 0.93F, (float)z + 0.5F);
 				GL11.glScalef(0.6F, 0.6F, 0.6F);
 				GL11.glRotatef(90, 1, 90, 1);
+				
+				//WAYOFTIME ROCKS (code example for this)
+				float rotationAngle = (float) (720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL);
+				GL11.glRotatef(rotationAngle, 0F, 1F, 0F);
+				//WAYOFTIME ROCKS ENDS
+				
 				RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
-				RenderItem.renderInFrame = true;
+				RenderItem.renderInFrame = true;				
 				GL11.glPopMatrix();
 			}
 			

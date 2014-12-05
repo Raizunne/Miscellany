@@ -5,7 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 /**
- * ModelVeneer - 
+ * ModelVeneer - Raizunne
  * Created using Tabula 4.0.2
  */
 public class ModelVeneer extends ModelBase {

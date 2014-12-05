@@ -14,6 +14,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.util.Config;

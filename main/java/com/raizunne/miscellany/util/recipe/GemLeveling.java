@@ -4,6 +4,9 @@ Source code found at github.com/Raizunne
  */
 package com.raizunne.miscellany.util.recipe;
 
+import java.util.ArrayList;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;

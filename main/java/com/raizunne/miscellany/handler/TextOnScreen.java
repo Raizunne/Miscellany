@@ -4,14 +4,18 @@ Source code found at github.com/Raizunne
  */
 package com.raizunne.miscellany.handler;
 
-import com.raizunne.miscellany.MiscItems;
-import com.raizunne.miscellany.util.Config;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+
+import com.raizunne.miscellany.MiscItems;
+import com.raizunne.miscellany.proxies.ClientProxy;
+import com.raizunne.miscellany.util.Config;
+
+import cpw.mods.fml.common.FMLLog;
 
 public class TextOnScreen {
 
@@ -19,6 +23,7 @@ public class TextOnScreen {
 		Minecraft minecraft = Minecraft.getMinecraft();
 		if(minecraft.thePlayer.inventory.getCurrentItem()!=null){
 			ItemStack item = minecraft.thePlayer.inventory.getCurrentItem();
+			EntityPlayer player = minecraft.thePlayer;
 			
 			//KNOWLEDGE GEM
 			if(Config.gemText){
@@ -37,7 +42,9 @@ public class TextOnScreen {
 						level = "Gem Level";
 						xp = "" + itemerino.stackTagCompound.getInteger("xp") + "/" + itemerino.stackTagCompound.getInteger("max"); 
 					}
-					
+				if(ClientProxy.donors.contains(player.getDisplayName())){
+					minecraft.fontRenderer.drawStringWithShadow("Donor! <3", (event.resolution.getScaledWidth()/2)+93, event.resolution.getScaledHeight() - 29, 0xFF0000);
+				}
 					minecraft.fontRenderer.drawStringWithShadow(level, (event.resolution.getScaledWidth()/2)+93, event.resolution.getScaledHeight() - 20, 0x33CC33);
 					minecraft.fontRenderer.drawStringWithShadow(xp, (event.resolution.getScaledWidth()/2)+103, event.resolution.getScaledHeight() - 11, 0xCC00FF);
 					return;

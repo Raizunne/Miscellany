@@ -1,5 +1,11 @@
 package com.raizunne.miscellany.proxies;
 
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -28,6 +34,8 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy
 {		
+	public static ArrayList<String> donors;
+	
 	public void initRenderers(){
 		//Present
 		TileEntitySpecialRenderer present = new RenderPresent();
@@ -56,6 +64,24 @@ public class ClientProxy extends CommonProxy
 		TileEntitySpecialRenderer trophy = new RenderTrophyBase();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrophyBase.class, trophy);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MiscBlocks.trophybase), new ItemTrophyBase(trophy, new TileEntityTrophyBase()));
+	}
+	
+	public static void checkDonors() throws Exception{
+		int timeout = 10000;
+        URL url = new URL("https://raw.githubusercontent.com/Raizunne/Miscellany/master/Donors.txt");
+        URLConnection text = url.openConnection();
+        text.setConnectTimeout(timeout);
+        text.setReadTimeout(timeout);
+        
+		@SuppressWarnings("resource")
+		Scanner scannerino = new Scanner(text.getInputStream());
+		donors = new ArrayList<String>();
+		
+		while(scannerino.hasNextLine()){
+			donors.add(scannerino.nextLine());
+		}
+		
+		System.out.println(donors);
 	}
 	
 }

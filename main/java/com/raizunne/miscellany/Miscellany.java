@@ -9,6 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 import com.raizunne.miscellany.handler.GUIHandler;
 import com.raizunne.miscellany.handler.MiscellanyEventHandler;
 import com.raizunne.miscellany.handler.PotionHandler;
+import com.raizunne.miscellany.proxies.ClientProxy;
 import com.raizunne.miscellany.proxies.CommonProxy;
 import com.raizunne.miscellany.server.debugHunger;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
@@ -59,6 +60,11 @@ public class Miscellany
    	 	MiscBlocks.init();
    		MiscRecipes.init();
    		proxy.initRenderers();
+   		try {
+			ClientProxy.checkDonors();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
    		
    	 	GameRegistry.registerTileEntity(TileEntityAdvReactBrewer.class, "advreactbrewer");
    	 	GameRegistry.registerTileEntity(TileEntityPresent.class, "present");
