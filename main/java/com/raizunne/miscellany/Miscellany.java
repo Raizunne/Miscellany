@@ -62,6 +62,7 @@ public class Miscellany
    		proxy.initRenderers();
    		try {
 			ClientProxy.checkDonors();
+			ClientProxy.checkAuthors();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
