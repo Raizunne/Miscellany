@@ -58,10 +58,9 @@ private static final ResourceLocation texture = new ResourceLocation(Miscellany.
 				GL11.glRotatef(90, 0, 1, 0);
 				GL11.glScalef(0.8F, 0.8F, 0.8F);
 			}
-			//WAYOFTIME ROCKS (code example for this)
-			float rotationAngle = (float) (720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL);
+			
+			float rotationAngle = (float) (720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL); //Credits to BloodMagic for code example!
 			GL11.glRotatef(rotationAngle, 0F, 1F, 0F);
-			//WAYOFTIME ROCKS ENDS
 			
 			
 			RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
