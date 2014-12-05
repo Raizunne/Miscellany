@@ -17,7 +17,7 @@ public class RenderOnPlayer {
 	
 	public static void renderForRaizunne(RenderPlayerEvent.Pre event){
 		if(ClientProxy.authors.contains(event.entityPlayer.getCommandSenderName())){
-			System.out.println(event.entityPlayer.getHideCape());
+//			System.out.println(event.entityPlayer.getHideCape());
 			if(event.entityPlayer.getHideCape()==false){
 				if(!event.entityPlayer.isInvisible()){
 					GL11.glPushMatrix();
