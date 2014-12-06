@@ -47,7 +47,7 @@ public class ItemTrophyBase implements IItemRenderer{
 			GL11.glRotatef(150, 0, 1F, 0);
 			break;
 		case ENTITY:
-			GL11.glTranslatef(-0.05F, -0.7F, -0.05F);
+			GL11.glTranslatef(1.0F, -0.0F, -0.3F);
 			GL11.glRotatef(240, 0F, 1F, 0);
 			GL11.glScalef(1.5F, 1.5F, 1.5F);
 			break;

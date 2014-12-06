@@ -4,6 +4,7 @@ Source code found at github.com/Raizunne
  */
 package com.raizunne.miscellany.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
@@ -13,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityTrophyBase;
 
 public class TrophyBase extends BlockContainer{
@@ -30,6 +32,7 @@ public class TrophyBase extends BlockContainer{
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int hey, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
 		TileEntityTrophyBase te = (TileEntityTrophyBase)world.getTileEntity(x, y, z);		
+		te.getWorldObj().scheduleBlockUpdate(te.xCoord, te.yCoord, te.zCoord, te.getWorldObj().getBlock(te.xCoord, te.yCoord, te.zCoord), 400);
 		if(player.getCurrentEquippedItem()!=null){
 			if(te.getStackInSlot(0)==null){
 				ItemStack item = ItemStack.copyItemStack(player.getCurrentEquippedItem());
@@ -54,13 +57,14 @@ public class TrophyBase extends BlockContainer{
 	}
 	
 	@Override
-	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int p_149664_5_) {
-		TileEntityTrophyBase te = (TileEntityTrophyBase)world.getTileEntity(x, y, z);
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		TileEntityTrophyBase tile = (TileEntityTrophyBase)world.getTileEntity(x, y, z);
 		EntityItem item;
-		item = new EntityItem(world, x+0.5F, y, z+0.5F, ItemStack.copyItemStack(te.getStackInSlot(0)));
-		if(!world.isRemote){
+		if(tile.getStackInSlot(0)!=null){
+			item = new EntityItem(world, x, y, z, tile.getStackInSlot(0));
 			world.spawnEntityInWorld(item);
 		}
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 	
 	@Override

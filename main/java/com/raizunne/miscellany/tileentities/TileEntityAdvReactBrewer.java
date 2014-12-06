@@ -1,17 +1,18 @@
 package com.raizunne.miscellany.tileentities;
 
-import com.raizunne.miscellany.MiscItems;
-import com.raizunne.miscellany.util.RecipeUtil;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+
+import com.raizunne.miscellany.MiscItems;
+import com.raizunne.miscellany.util.RecipeUtil;
 
 public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 
@@ -58,6 +59,7 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 				decrStackSize(i, 1);
 			}
 			progress=0;
+			this.worldObj.playSound(this.xCoord, this.yCoord, this.zCoord, "mob.zombie.remedy", 1F, 2F, true);
 		}
 	}
 	
@@ -186,6 +188,19 @@ public class TileEntityAdvReactBrewer extends TileEntity implements IInventory{
 	
 	public boolean canExtractItem(int i, ItemStack itemstack, int j){
 		return false;		
+	}	
+	
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		NBTTagCompound tag = pkt.func_148857_g();
+		this.readFromNBT(tag);		
 	}
 	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound tag = new NBTTagCompound();
+		this.writeToNBT(tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
+	}
+
 }

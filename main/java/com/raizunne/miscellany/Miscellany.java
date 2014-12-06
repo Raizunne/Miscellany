@@ -13,6 +13,7 @@ import com.raizunne.miscellany.proxies.ClientProxy;
 import com.raizunne.miscellany.proxies.CommonProxy;
 import com.raizunne.miscellany.server.debugHunger;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 import com.raizunne.miscellany.tileentities.TileEntityHeart;
 import com.raizunne.miscellany.tileentities.TileEntityPackage;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
@@ -72,6 +73,7 @@ public class Miscellany
    	 	GameRegistry.registerTileEntity(TileEntityPackage.class, "package");
    	 	GameRegistry.registerTileEntity(TileEntityHeart.class, "heart");
    	 	GameRegistry.registerTileEntity(TileEntityTrophyBase.class, "trophy");
+   	 	GameRegistry.registerTileEntity(TileEntityFoodPackager.class, "foodpackager");
    	 	   	 	
    	 	MinecraftForge.EVENT_BUS.register(new MiscellanyEventHandler());
    	 	MinecraftForge.EVENT_BUS.register(new Config());

@@ -17,6 +17,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.util.StringResources;
@@ -24,6 +25,8 @@ import com.raizunne.miscellany.util.StringResources;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
 public class AdvReactBrewer extends BlockContainer{
+	
+	TileEntityAdvReactBrewer brewer;
 	
 	public AdvReactBrewer(Material material) {
 		super(material);
@@ -38,6 +41,8 @@ public class AdvReactBrewer extends BlockContainer{
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
 		TileEntityAdvReactBrewer tileentity = (TileEntityAdvReactBrewer)world.getTileEntity(x, y, z);
+		this.brewer = tileentity;
+		tileentity.getWorldObj().scheduleBlockUpdate(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord, tileentity.getWorldObj().getBlock(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord), 400);
 		if(tileentity.getProgress()!=0){
 			String particle = "smoke"; 
 			switch(random.nextInt(3)){
@@ -75,14 +80,11 @@ public class AdvReactBrewer extends BlockContainer{
 				world.spawnParticle(particle2, (double)x-1+i-n, (double)y+i-n, (double)z+1+i-n, 0.0D, 0.0D, 0.0D);
 			}
 		}
-		
 		if(tileentity.getProgress()!=0){
 			int r = random.nextInt(6);
-			System.out.println(r);
 			if(r==4){
 				EntityPlayer player = world.getClosestPlayer((double)x, (double)y, (double)z, 2);
 				if(player!=null){
-					System.out.println("nNO");
 					if(player.getHealth()>=2){
 						player.setHealth(player.getHealth()-1);
 					}
@@ -90,6 +92,27 @@ public class AdvReactBrewer extends BlockContainer{
 					player.playSound("mob.zombie.remedy", 1.0F, 1.0F);
 				}
 			}
+		}
+		if(world.isRemote){
+			Item[] items = {MiscItems.flightFlask, MiscItems.knowledgeFlask, MiscItems.WitherAnti, MiscItems.Shake, MiscItems.theheart};
+			for(int p=0; p<items.length; p++){
+				if(checkslot(new ItemStack(items[p])) && tileentity.getProgress()==0){
+					world.spawnParticle("reddust", (float)x + 0.5F, (float)y + 1.1F, (float)z + 0.5F, 0, 0, 0);
+//					System.out.println("HEY");
+				}
+			}
+		}
+	}
+	
+	public boolean checkslot(ItemStack stack){
+		if(brewer.getStackInSlot(3)!=null){
+			if(brewer.getStackInSlot(3).isItemEqual(stack)){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
 		}
 	}
 	
@@ -108,7 +131,7 @@ public class AdvReactBrewer extends BlockContainer{
 	public void updateTick(World world, int x, int y, int z, Random random) {
 		TileEntityAdvReactBrewer tileentity = (TileEntityAdvReactBrewer)world.getTileEntity(x, y, z);
 		int r = random.nextInt(10);
-		System.out.println(r);
+//		System.out.println(r);
 		if(tileentity.getProgress()!=0){
 			if(r==4){
 				EntityPlayer player = world.getClosestPlayer((double)x, (double)y, (double)z, 2);

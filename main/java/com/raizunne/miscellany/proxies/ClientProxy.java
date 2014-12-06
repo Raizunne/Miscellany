@@ -13,6 +13,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import com.raizunne.miscellany.MiscBlocks;
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.client.render.RenderAdvReactBrewer;
+import com.raizunne.miscellany.client.render.RenderFoodPackager;
 import com.raizunne.miscellany.client.render.RenderHeart;
 import com.raizunne.miscellany.client.render.RenderPackage;
 import com.raizunne.miscellany.client.render.RenderPresent;
@@ -25,6 +26,7 @@ import com.raizunne.miscellany.client.renderItem.ItemPackage;
 import com.raizunne.miscellany.client.renderItem.ItemPresent;
 import com.raizunne.miscellany.client.renderItem.ItemTrophyBase;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 import com.raizunne.miscellany.tileentities.TileEntityHeart;
 import com.raizunne.miscellany.tileentities.TileEntityPackage;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
@@ -65,6 +67,11 @@ public class ClientProxy extends CommonProxy
 		TileEntitySpecialRenderer trophy = new RenderTrophyBase();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTrophyBase.class, trophy);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MiscBlocks.trophybase), new ItemTrophyBase(trophy, new TileEntityTrophyBase()));
+		
+		//FoodPackager
+		TileEntitySpecialRenderer foodpackager = new RenderFoodPackager();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFoodPackager.class, foodpackager);
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MiscBlocks.packager), new ItemTrophyBase(foodpackager, new TileEntityFoodPackager()));
 	}
 	
 	public static void checkDonors() throws Exception{
