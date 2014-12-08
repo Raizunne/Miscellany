@@ -71,7 +71,7 @@ public class ClientProxy extends CommonProxy
 		//FoodPackager
 		TileEntitySpecialRenderer foodpackager = new RenderFoodPackager();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFoodPackager.class, foodpackager);
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MiscBlocks.packager), new ItemTrophyBase(foodpackager, new TileEntityFoodPackager()));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MiscBlocks.packager), new ItemFoodPackager(foodpackager, new TileEntityFoodPackager()));
 	}
 	
 	public static void checkDonors() throws Exception{

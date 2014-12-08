@@ -11,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import com.raizunne.miscellany.MiscItems;
@@ -83,9 +84,9 @@ public class MiscellanyEventHandler {
 		}
 	}
 	
-	public void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event){
-		EntityPlayer player = event.player;
-		
+	@SubscribeEvent
+	public void onEntityJoinWorld(EntityJoinWorldEvent event){
+//		System.out.println("Joined!");
 	}
 	
 	@SubscribeEvent

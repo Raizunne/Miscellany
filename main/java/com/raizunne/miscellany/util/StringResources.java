@@ -8,7 +8,7 @@ public class StringResources {
 	public static final String loaf = EnumChatFormatting.LIGHT_PURPLE + "Loaf it up!";
 	public static final String debugHunger = EnumChatFormatting.LIGHT_PURPLE + "Squash the bugs.";
 	public static final String manualBook = EnumChatFormatting.LIGHT_PURPLE + "Manual for Raizunne's Miscellany";
-	public static final String packagedFood = EnumChatFormatting.LIGHT_PURPLE + "Compressed food.";
+	public static final String packagedFood = EnumChatFormatting.LIGHT_PURPLE + "Compressed nutrients.";
 	public static final String pamphlet = EnumChatFormatting.LIGHT_PURPLE + "Extra, Extra, Miscellany is cool!!";
 	public static final String potionFlask = EnumChatFormatting.LIGHT_PURPLE + "";
 	public static final String redstonicJetBoots = EnumChatFormatting.LIGHT_PURPLE + "Powered by Redstone.";

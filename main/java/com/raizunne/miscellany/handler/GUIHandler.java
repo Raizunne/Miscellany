@@ -13,6 +13,7 @@ import com.raizunne.miscellany.gui.GuiAdvReactBrewer;
 import com.raizunne.miscellany.gui.GuiFoodPackager;
 import com.raizunne.miscellany.gui.GuiManualBooks;
 import com.raizunne.miscellany.gui.GuiPackage;
+import com.raizunne.miscellany.gui.GuiPackageValues;
 import com.raizunne.miscellany.gui.GuiPamphlet;
 import com.raizunne.miscellany.gui.GuiPresent;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
@@ -50,6 +51,7 @@ public class GUIHandler implements IGuiHandler {
 				return new ContainerPackage(player.inventory, (TileEntityPackage)te);
 			}
 			break;
+			case 6: return null;
 			default: return null;
 		}
 		return null;
@@ -60,7 +62,7 @@ public class GUIHandler implements IGuiHandler {
 		TileEntity te = world.getTileEntity(x, y, z);
 		switch(ID){
 			case 0: if(te != null && te instanceof TileEntityFoodPackager){
-				return new GuiFoodPackager(player.inventory,  (TileEntityFoodPackager)te);
+				return new GuiFoodPackager(player.inventory,  (TileEntityFoodPackager)te, player);
 			}
 			break;	
 			case 1: if(te != null && te instanceof TileEntityAdvReactBrewer){
@@ -77,6 +79,7 @@ public class GUIHandler implements IGuiHandler {
 				return new GuiPackage(player.inventory, (TileEntityPackage)te);
 			}
 			break;
+			case 6: return new GuiPackageValues(player);
 			default: return null;
 		}
 		return null;

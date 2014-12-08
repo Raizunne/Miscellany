@@ -9,12 +9,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class RecipeUtil {
-	 /**
+	 
+	private Item witherSkull;
+	/**
      * 1 = Knowledge, 2 = Flight, 3 = Anti-Wither, 4 = Heart Potion, 5=Shake
      */
-	
-	private Item witherSkull;
-	
 	public static int advBrew(Item slot1, Item slot2, Item slot3, Item slot4){		
 		if(slot1==getItems(Blocks.emerald_block)&& slot2==Items.book && slot3==getItems(Blocks.emerald_block) && slot4==MiscItems.potionFlask){
 			return 1;
@@ -49,5 +48,4 @@ public class RecipeUtil {
 			return false;
 		}
 	}
-	
 }

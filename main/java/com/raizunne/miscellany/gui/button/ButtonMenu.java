@@ -11,7 +11,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.ResourceLocation;
 
-public class buttonMenu extends GuiButton {
+public class ButtonMenu extends GuiButton {
 	
 	public int width;
 	public int height;
@@ -25,7 +25,7 @@ public class buttonMenu extends GuiButton {
 	public int color2;
 	public boolean page;
 
-	public buttonMenu(int id, int posX, int posY, int i, int j, String text, int color, int color2, boolean page) {
+	public ButtonMenu(int id, int posX, int posY, int i, int j, String text, int color, int color2, boolean page) {
 		super(id, posX, posY, i, j, text);
 		this.width = i;
         this.height = j;

@@ -11,7 +11,6 @@ import com.raizunne.miscellany.handler.MiscellanyEventHandler;
 import com.raizunne.miscellany.handler.PotionHandler;
 import com.raizunne.miscellany.proxies.ClientProxy;
 import com.raizunne.miscellany.proxies.CommonProxy;
-import com.raizunne.miscellany.server.debugHunger;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 import com.raizunne.miscellany.tileentities.TileEntityHeart;
@@ -94,12 +93,5 @@ public class Miscellany
     	new GUIHandler();
     	new PotionHandler();
     }
-    
-    @EventHandler
-    public void serverLoad(FMLServerStartingEvent event)
-    {
-      event.registerServerCommand(new debugHunger());
-    }
-    
 
 }

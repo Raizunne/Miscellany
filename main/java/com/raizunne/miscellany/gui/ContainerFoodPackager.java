@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
@@ -43,4 +44,41 @@ public class ContainerFoodPackager extends Container{
 		return packager.isUseableByPlayer(player);
 	}
 
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
+//		System.out.println(par2);
+	    ItemStack itemstack = null;
+	    Slot slot = (Slot) this.inventorySlots.get(par2);
+
+	    if(slot != null && slot.getHasStack()) {
+	      ItemStack itemstack1 = slot.getStack();
+	      itemstack = itemstack1.copy();
+
+	      if(par2 < 35){
+	    	  if(!mergeItemStack(itemstack1, 36, 42, false)){
+	    		  if(!mergeItemStack(itemstack1, 9, 35, false)){
+	    			  return null;
+	    		  }
+	    	  }
+	      }else if(par2<9){
+	    	 if(!mergeItemStack(itemstack1, 0, 9, false)){
+	    		 return null;
+	    	 }
+	      }else if(!mergeItemStack(itemstack1, 0, 35, false)){
+	    	  return null;
+	      }
+
+	      if(itemstack1.stackSize == 0) {
+	        slot.putStack((ItemStack) null);
+	      } else {
+	        slot.onSlotChanged();
+	      }
+	      
+	      if (itemstack1.stackSize == itemstack.stackSize) {
+              return null;
+	      }
+	      slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
+	    }
+	    return itemstack;
+	 }
+	
 }

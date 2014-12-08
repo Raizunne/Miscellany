@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.raizunne.miscellany.gui.button.buttonMenu;
+import com.raizunne.miscellany.gui.button.ButtonMenu;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
 public class GuiPresent extends GuiContainer{
@@ -61,8 +61,8 @@ public class GuiPresent extends GuiContainer{
     	textfield.setFocused(true);
     	textfield.setMaxStringLength(15);
     	textfield.setEnableBackgroundDrawing(false);    	
-    	buttonMenu menu0 = new buttonMenu(0, guiLeft + 140, guiTop + 34, 90, 12, "Done", 0x999999, 0x565656, false);
-    	buttonMenu test = new buttonMenu(1, guiLeft + 50, guiTop + 10, 90, 12, "Hey", 0x999999, 0x565656, false);
+    	ButtonMenu menu0 = new ButtonMenu(0, guiLeft + 140, guiTop + 34, 90, 12, "Done", 0x999999, 0x565656, false);
+    	ButtonMenu test = new ButtonMenu(1, guiLeft + 50, guiTop + 10, 90, 12, "Hey", 0x999999, 0x565656, false);
     	buttonList.add(test);
     	if(present.userFor==null){
     		buttonList.add(menu0);

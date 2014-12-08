@@ -2,6 +2,7 @@ package com.raizunne.miscellany;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 
 import com.raizunne.miscellany.handler.PotionHandler;
@@ -9,6 +10,7 @@ import com.raizunne.miscellany.item.ExplosiveCatalyst;
 import com.raizunne.miscellany.item.KnowledgeGem;
 import com.raizunne.miscellany.item.ManualBook;
 import com.raizunne.miscellany.item.Package;
+import com.raizunne.miscellany.item.PackagedFood;
 import com.raizunne.miscellany.item.Pamphlet;
 import com.raizunne.miscellany.item.PotionFlask;
 import com.raizunne.miscellany.item.RedstonicJetBoots;
@@ -37,6 +39,7 @@ public class MiscItems {
 	public static Item theflute;
 	public static Item theheart;
 	public static Item knowledgegem;
+	public static Item PackagedFood;
 	
 	public static Item potionFlask;
 	public static Item flightFlask;
@@ -60,6 +63,7 @@ public class MiscItems {
    	 	theflute = new TheFlute();
    	 	knowledgegem = new KnowledgeGem(20);
    	 	whip = new Whip();
+   	 	PackagedFood = new PackagedFood(20, 18, false);
    	 	
    	 	potionFlask = new PotionFlask();
    	 	flightFlask = new Flight();
@@ -78,6 +82,7 @@ public class MiscItems {
 	 	GameRegistry.registerItem(theheart, theheart.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(knowledgegem, knowledgegem.getUnlocalizedName());
 	 	GameRegistry.registerItem(whip, whip.getUnlocalizedName());
+	 	GameRegistry.registerItem(PackagedFood, PackagedFood.getUnlocalizedName());
 //	 	GameRegistry.registerItem(theflute, theflute.getUnlocalizedName().substring(5));
 
 	 	//Potions

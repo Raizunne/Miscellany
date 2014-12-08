@@ -2,10 +2,12 @@ package com.raizunne.miscellany.item;
 
 import java.util.List;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.util.StringResources;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -72,6 +74,25 @@ public class DebugHunger extends Item{
 			}
 		}
 		return itemstack;
+	}
+	
+	@Override
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+		if(entityLiving instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer)entityLiving;
+//			if(stack.equals(new ItemStack(MiscItems.debugHunger))){
+				switch(stack.stackTagCompound.getInteger("type")){
+				case 0:
+					player.getFoodStats().addStats(-1, -10);
+					entityLiving.worldObj.playSoundAtEntity(player, "note.pling", 0.5F, 1.0F);
+				break;
+				case 1:
+					player.setHealth(player.getHealth()-1);
+					entityLiving.worldObj.playSoundAtEntity(player, "random.burp", 0.5F, 1.0F);
+				}
+//			}
+		}
+		return false;
 	}
 	
 	@Override

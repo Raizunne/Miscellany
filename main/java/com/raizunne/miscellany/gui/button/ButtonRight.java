@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-public class buttonRight extends GuiButton {
+public class ButtonRight extends GuiButton {
 	
 	public int width;
 	public int height;
@@ -21,13 +21,14 @@ public class buttonRight extends GuiButton {
 	public String text;
 	public boolean enabled;
 	public boolean visible;
+	public boolean alt;
 	
-	public buttonRight(int id, int posX, int posY, String text)
+	public ButtonRight(int id, int posX, int posY, String text, boolean bool)
     {
-        this(id, posX, posY, 18, 10, text);
+        this(id, posX, posY, 18, 10, text, bool);
     }
 
-	public buttonRight(int id2, int posX2, int posY2, int i, int j, String text2) {
+	public ButtonRight(int id2, int posX2, int posY2, int i, int j, String text2, boolean bool) {
 		super(id2, posX2, posY2, i, j, text2);
 		this.width = 18;
         this.height = 10;
@@ -40,6 +41,7 @@ public class buttonRight extends GuiButton {
         this.height = j;
         this.displayString = text2;
         boolean h1 = true;
+        this.alt = bool;
 	}
 	
 	public int getHoverState(boolean p_146114_1_)
@@ -64,22 +66,39 @@ public class buttonRight extends GuiButton {
     {
         if (this.visible)
         {
+        	int xTexture = 0;
+        	int yTexture = 0;
         	ResourceLocation texture = new ResourceLocation("miscellany", "textures/gui/bookTemplate.png");
+        	ResourceLocation tex = new ResourceLocation("miscellany", "textures/gui/FoodPackagerManual.png");
         	/*Color used when not hovered*/
-        	Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+        	if(alt==false){
+        		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+        	}else{
+        		Minecraft.getMinecraft().renderEngine.bindTexture(tex);
+        	}
         	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         	GL11.glEnable(GL11.GL_BLEND);
             OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-        	int xTexture = 187;
-        	int yTexture = 166;
+            if(alt==false){
+            	xTexture = 187;
+        		yTexture = 166;
+            }else{
+            	xTexture = 153;
+            	yTexture = 0;
+            }
             this.field_146123_n = p_146112_2_ >= this.xPosition && p_146112_3_ >= this.yPosition && p_146112_2_ < this.xPosition + this.width && p_146112_3_ < this.yPosition + this.height;
             int hover = this.getHoverState(this.field_146123_n);
           
             if (hover==2)
             {
             	/*Color used when WHEN hovered*/
-            	xTexture = 210;
-            	yTexture = 166;
+            	if(alt==false){
+            		xTexture = 210;
+            		yTexture = 166;
+            	}else{
+            		xTexture = 176;
+            		yTexture = 0;
+            	}
                 
             }
             this.drawTexturedModalRect(this.xPosition, this.yPosition, xTexture, yTexture, 18, 10);                

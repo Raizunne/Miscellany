@@ -6,7 +6,6 @@ item.manualBook.name=Miscellany Manual
 item.pamphlet.name=Miscellany Pamphlet 0.4
 item.shake.name=Shake
 item.debugHunger.name=Debug Hunger
-item.breadLoaf.name=Bread Loaf
 item.package.name=Packaged
 item.explosivecatalyst.name=Explosive Catalyst
 item.theflute.name=The Flute
@@ -35,8 +34,8 @@ knowledgePotion.postfix=Knowledge
 flightPotion=Flight
 flightPotion.postfix=Flight
 
-item.packagedFood.name=Packaged Food
-tile.foodPackager.name=Food Packager
+item.PackagedFood.name=§9Packaged Food
+tile.foodpackager.name=Food Packager
 tile.advBrew.name=Reactive Brewer
 tile.present.name=Present
 tile.thepackage.name=Packager
@@ -44,6 +43,6 @@ tile.nonite.name=No Nite
 tile.hearthealer.name=Heart Healer
 tile.trophybase.name=Trophy Base
 
-tile.foodPackager.documentation=Generate better food from poor food!
+tile.foodpackager.documentation=Generate better food from poor food!
 tile.advBrew.documentation=Reactive brewing is best brewing, at least that's what they say.
 tile.present.documentation=Insert items and place this block for giving presents to your friends!

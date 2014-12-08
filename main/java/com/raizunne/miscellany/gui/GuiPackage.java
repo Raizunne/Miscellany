@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.raizunne.miscellany.gui.button.buttonMenu;
+import com.raizunne.miscellany.gui.button.ButtonMenu;
 import com.raizunne.miscellany.tileentities.TileEntityPackage;
 
 public class GuiPackage extends GuiContainer{
@@ -44,7 +44,7 @@ public class GuiPackage extends GuiContainer{
 	public void initGui() {
 		super.initGui();
 
-		GuiButton ready = new buttonMenu(0, guiLeft + 133, guiTop + 53, 44, 14, "Pack", 0xFFFFFF, 0x999999, false);
+		GuiButton ready = new ButtonMenu(0, guiLeft + 133, guiTop + 53, 44, 14, "Pack", 0xFFFFFF, 0x999999, false);
 		buttonList.add(ready);
 		
 		

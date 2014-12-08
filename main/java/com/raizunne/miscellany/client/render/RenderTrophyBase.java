@@ -50,7 +50,7 @@ private static final ResourceLocation texture = new ResourceLocation(Miscellany.
 			entItem.hoverStart = 0.0F;
 			RenderItem.renderInFrame = true;
 			if(item.getItem() instanceof ItemBlock){
-				GL11.glTranslatef((float)x + 0.5F, (float)y + 0.3F, (float)z + 0.5F);
+				GL11.glTranslatef((float)x + 0.5F, (float)y + 0.25F, (float)z + 0.5F);
 				GL11.glRotatef(90, 0, 1, 0);
 				GL11.glScalef(0.8F, 0.8F, 0.8F);
 			}else if(item.getItem() instanceof Item){

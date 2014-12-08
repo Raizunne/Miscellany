@@ -39,6 +39,11 @@ public class MiscRecipes {
    	 		"EDE",
    	 		" E ", 'E', Items.emerald, 'D', Items.diamond});
    	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.trophybase), new Object[]{
+   	 		"   ",
+   	 		" I ",
+   	 		"WWW", 'I', Items.iron_ingot, 'W', Blocks.planks});
+   	 	
    	 	IRecipe gem = new GemLeveling();
    	 	
    	 	GameRegistry.addRecipe(gem);

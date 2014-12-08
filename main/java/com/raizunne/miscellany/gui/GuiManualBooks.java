@@ -24,11 +24,11 @@ import org.lwjgl.opengl.GL11;
 import com.raizunne.miscellany.MiscBlocks;
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
-import com.raizunne.miscellany.gui.button.buttonLeft;
-import com.raizunne.miscellany.gui.button.buttonMenu;
-import com.raizunne.miscellany.gui.button.buttonNormal;
-import com.raizunne.miscellany.gui.button.buttonRight;
-import com.raizunne.miscellany.util.bookResources;
+import com.raizunne.miscellany.gui.button.ButtonLeft;
+import com.raizunne.miscellany.gui.button.ButtonMenu;
+import com.raizunne.miscellany.gui.button.ButtonNormal;
+import com.raizunne.miscellany.gui.button.ButtonRight;
+import com.raizunne.miscellany.util.BookResources;
 
 public class GuiManualBooks extends GuiScreen{
 	
@@ -87,21 +87,21 @@ public class GuiManualBooks extends GuiScreen{
 		if(entry && currentSection=="sacredChalice" && subSection==0){
 			//CHALICE
 			fontrenderer.drawString("Sacred Chalice", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.chalice1, posX + 10, posY + 80, 98, 0);
-			fontrenderer.drawSplitString(bookResources.chalice2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.chalice1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(BookResources.chalice2, posX + 121, posY + 17, 98, 0);
 			Item goldBlock = Blocks.gold_block.getItemDropped(Blocks.gold_block.getIdFromBlock(Blocks.gold_block), new Random(), 1);
 			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, goldBlock, null, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, MiscItems.sacredChalice, 20, 20, x, y);	
 		}else if(entry && currentSection=="shake" && subSection==0){
 			//SHAKE
 			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.shake1, posX + 10, posY + 93, 98, 0);
-			fontrenderer.drawSplitString(bookResources.shake2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.shake1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(BookResources.shake2, posX + 121, posY + 17, 98, 0);
 			drawAlchemy(new ItemStack(Items.speckled_melon), new ItemStack(Items.bread), new ItemStack(Items.sugar), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.Shake), 20, 20, x, y);
 		}else if(entry && currentSection=="brewer" && subSection==0){
 			//BREWER
 			fontrenderer.drawString("Reactive Brewer", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.brewer1, posX + 10, posY + 80, 98, 0);
-			fontrenderer.drawSplitString(bookResources.brewer2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.brewer1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(BookResources.brewer2, posX + 121, posY + 17, 98, 0);
 			Item clay = Blocks.hardened_clay.getItemDropped(Blocks.hardened_clay.getIdFromBlock(Blocks.hardened_clay), new Random(), 1);
 			Item slab = Blocks.stone_slab.getItemDropped(Blocks.stone_slab.getIdFromBlock(Blocks.stone_slab), new Random(), 1);
 			Item brewer = MiscBlocks.brewer.getItemDropped(MiscBlocks.brewer.getIdFromBlock(MiscBlocks.brewer), new Random(), 1);
@@ -109,41 +109,41 @@ public class GuiManualBooks extends GuiScreen{
 		}else if(entry && currentSection=="knowledge" && subSection==0){
 			//KNOWLEDGE
 			fontrenderer.drawString("Knowledge Flask", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.knowledge1, posX + 10, posY + 93, 98, 0);
-			fontrenderer.drawSplitString(bookResources.knowledge2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.knowledge1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(BookResources.knowledge2, posX + 121, posY + 17, 98, 0);
 			drawAlchemy(new ItemStack(Blocks.emerald_block), new ItemStack(Items.book), new ItemStack(Blocks.emerald_block), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.knowledgeFlask), 20, 20, x, y);
 		}else if(entry && currentSection=="flight" && subSection==0){
 			//FLIGHT
 			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.flight1, posX + 10, posY + 93, 98, 0);
-			fontrenderer.drawSplitString(bookResources.flight2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.flight1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(BookResources.flight2, posX + 121, posY + 17, 98, 0);
 			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.feather), new ItemStack(Items.diamond), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.flightFlask), 20, 20, x, y);
 		}else if(entry && currentSection=="anit-wither" && subSection==0){
 			//ANTIWITHER
 			fontrenderer.drawString("Anti-Wither Flask", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.wither1, posX + 10, posY + 93, 98, 0);
-			fontrenderer.drawSplitString(bookResources.wither2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.wither1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(BookResources.wither2, posX + 121, posY + 17, 98, 0);
 			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.skull, 1, 1), new ItemStack(Blocks.red_flower), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.WitherAnti), 20, 20, x, y);
 		}else if(entry && currentSection=="heart" && subSection==0){
 			//Heart Flask
 			fontrenderer.drawString("Heart Flask", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.heart1, posX + 10, posY + 93, 98, 0);
-			fontrenderer.drawSplitString(bookResources.heart2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.heart1, posX + 10, posY + 93, 98, 0);
+			fontrenderer.drawSplitString(BookResources.heart2, posX + 121, posY + 17, 98, 0);
 			drawAlchemy(new ItemStack(Items.speckled_melon), new ItemStack(Items.blaze_powder, 1, 1), new ItemStack(Items.speckled_melon), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.theheart), 20, 20, x, y);
 		}else if(entry && currentSection=="gem" && subSection==0){
 			//KNOWLEDGE GEM
 			fontrenderer.drawString("Knowledge Gem", posX + 10, posY + 8, 0x000000, false);
-			fontrenderer.drawSplitString(bookResources.gem1, posX + 10, posY + 80, 98, 0);
-			fontrenderer.drawSplitString(bookResources.gem2, posX + 121, posY + 17, 98, 0);
-			fontrenderer.drawSplitString(bookResources.gem3, posX + 121, posY + 105, 98, 0);
+			fontrenderer.drawSplitString(BookResources.gem1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(BookResources.gem2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.gem3, posX + 121, posY + 105, 98, 0);
 			drawCrafting(null, Items.emerald, null, Items.emerald, Items.diamond, Items.emerald, null, Items.emerald, null, MiscItems.knowledgegem, 20, 20, x, y);	
 		}else if(entry && currentSection=="gem" && subSection==1){
 			//KNOWLEDGE GEM PAGE 2
 			fontrenderer.drawString("Knowledge Gem", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(EnumChatFormatting.DARK_PURPLE + "Upgrades", posX + 10, posY + 80, 98, 0);
-			fontrenderer.drawSplitString(bookResources.gemLevel1, posX + 10, posY + 92, 98, 0);
-			fontrenderer.drawSplitString(bookResources.gemLevel2, posX + 121, posY + 17, 98, 0);
-			fontrenderer.drawSplitString(bookResources.gemLevel3, posX + 121, posY + 95, 98, 0);
+			fontrenderer.drawSplitString(BookResources.gemLevel1, posX + 10, posY + 92, 98, 0);
+			fontrenderer.drawSplitString(BookResources.gemLevel2, posX + 121, posY + 17, 98, 0);
+			fontrenderer.drawSplitString(BookResources.gemLevel3, posX + 121, posY + 95, 98, 0);
 			drawCrafting(null, Items.emerald, null, Items.emerald, MiscItems.knowledgegem, Items.emerald, null, Items.emerald, null, MiscItems.knowledgegem, 20, 20, x, y);	
 		}
 		
@@ -175,31 +175,31 @@ public class GuiManualBooks extends GuiScreen{
 		int color1 = 0xA3007A;
 		int color2 = 0x720056;
 		
-		buttonLeft prevButton = new buttonLeft(0, posX + 0, posY + 167, 18, 12, "Prev");
-		buttonRight nextButton = new buttonRight(1, posX + 210, posY + 167, 18, 12, "Next");
-		buttonNormal returnIndex = new buttonNormal(2, posX + 87, posY + 167, 50, 14, "Return");
+		ButtonLeft prevButton = new ButtonLeft(0, posX + 0, posY + 167, 18, 12, "Prev", false);
+		ButtonRight nextButton = new ButtonRight(1, posX + 210, posY + 167, 18, 12, "Next", false);
+		ButtonNormal returnIndex = new ButtonNormal(2, posX + 87, posY + 167, 50, 14, "Return", false);
 		
-		buttonMenu menu0 = new buttonMenu(11, posX + 124, posY + 18, 90, 12, "Items", color1, color2, true);
-		buttonMenu menu1 = new buttonMenu(12, posX + 124, posY + 30, 90, 12, "Advanced Alchemy", color1, color2, true);
-		buttonMenu menu2 = new buttonMenu(13, posX + 124, posY + 42, 90, 12, "Blocks", color1, color2, true);
-		buttonMenu menu3 = new buttonMenu(14, posX + 124, posY + 54, 90, 12, "Machines", color1, color2, true);
-		buttonMenu menu4 = new buttonMenu(15, posX + 124, posY + 66, 90, 12, "Equipment", color1, color2, true);
+		ButtonMenu menu0 = new ButtonMenu(11, posX + 124, posY + 18, 90, 12, "Items", color1, color2, true);
+		ButtonMenu menu1 = new ButtonMenu(12, posX + 124, posY + 30, 90, 12, "Advanced Alchemy", color1, color2, true);
+		ButtonMenu menu2 = new ButtonMenu(13, posX + 124, posY + 42, 90, 12, "Blocks", color1, color2, true);
+		ButtonMenu menu3 = new ButtonMenu(14, posX + 124, posY + 54, 90, 12, "Machines", color1, color2, true);
+		ButtonMenu menu4 = new ButtonMenu(15, posX + 124, posY + 66, 90, 12, "Equipment", color1, color2, true);
 
-		buttonMenu items1 = new buttonMenu(31, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2, true);
-		buttonMenu items2 = new buttonMenu(32, posX + 124, posY + 30, 90, 12, "Shake", color1, color2, true);
-		buttonMenu items3 = new buttonMenu(33, posX + 124, posY + 42, 90, 12, "Knowledge Gem", color1, color2, true);
+		ButtonMenu items1 = new ButtonMenu(31, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2, true);
+		ButtonMenu items2 = new ButtonMenu(32, posX + 124, posY + 30, 90, 12, "Shake", color1, color2, true);
+		ButtonMenu items3 = new ButtonMenu(33, posX + 124, posY + 42, 90, 12, "Knowledge Gem", color1, color2, true);
 		
-		buttonMenu blocks1 = new buttonMenu(51, posX + 124, posY + 18, 90, 12, "Present", color1, color2, true);
+		ButtonMenu blocks1 = new ButtonMenu(51, posX + 124, posY + 18, 90, 12, "Present", color1, color2, true);
 		
-		buttonMenu machines1 = new buttonMenu(71, posX + 124, posY + 18, 90, 12, "Food Packager", color1, color2, true);
+		ButtonMenu machines1 = new ButtonMenu(71, posX + 124, posY + 18, 90, 12, "Food Packager", color1, color2, true);
 		
-		buttonMenu equipment1 = new buttonMenu(91, posX + 124, posY + 18, 90, 12, "Redstonic JetBoots", color1, color2, true);
+		ButtonMenu equipment1 = new ButtonMenu(91, posX + 124, posY + 18, 90, 12, "Redstonic JetBoots", color1, color2, true);
 		
-		buttonMenu alchemy1 = new buttonMenu(112, posX + 124, posY + 18, 90, 12, "Reactive Brewer", color1, color2, true);
-		buttonMenu alchemy2 = new buttonMenu(113, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2, true);
-		buttonMenu alchemy3 = new buttonMenu(114, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
-		buttonMenu alchemy4 = new buttonMenu(115, posX + 124, posY + 54, 90, 12, "Anti-Wither Potion", color1, color2, true);
-		buttonMenu alchemy5 = new buttonMenu(116, posX + 124, posY + 66, 90, 12, "Heart Potion", color1, color2, true);
+		ButtonMenu alchemy1 = new ButtonMenu(112, posX + 124, posY + 18, 90, 12, "Reactive Brewer", color1, color2, true);
+		ButtonMenu alchemy2 = new ButtonMenu(113, posX + 124, posY + 30, 90, 12, "Knowledge Potion", color1, color2, true);
+		ButtonMenu alchemy3 = new ButtonMenu(114, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
+		ButtonMenu alchemy4 = new ButtonMenu(115, posX + 124, posY + 54, 90, 12, "Anti-Wither Potion", color1, color2, true);
+		ButtonMenu alchemy5 = new ButtonMenu(116, posX + 124, posY + 66, 90, 12, "Heart Potion", color1, color2, true);
 			
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);
@@ -253,7 +253,6 @@ public class GuiManualBooks extends GuiScreen{
 		
 	@Override
 	protected void actionPerformed(GuiButton button){
-		
 		switch(button.id){
 		case 0: 
 			if(currentSection!="index" && maxPages==subSection){

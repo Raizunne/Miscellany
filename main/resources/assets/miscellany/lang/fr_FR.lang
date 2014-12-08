@@ -6,7 +6,6 @@ item.manualBook.name=Manuel de recueil
 item.pamphlet.name=Brochure de recueil 0.4
 item.shake.name=Secousse
 item.debugHunger.name=Déboguez la faim
-item.breadLoaf.name=Morceau de pain
 item.package.name=Empaqueté
 item.explosivecatalyst.name=Catalyseur explosif
 item.theflute.name=La Flute
@@ -35,8 +34,8 @@ knowledgePotion.postfix=Connaissance
 flightPotion=Vol
 flightPotion.postfix=Vol
 
-item.packagedFood.name=Nouriture empaqueté
-tile.foodPackager.name=Empaqueteur de nouriture
+item.PackagedFood.name=§9Nouriture empaqueté
+tile.foodpackager.name=Empaqueteur de nouriture
 tile.advBrew.name=Brasseur réactif
 tile.present.name=Présent
 tile.thepackage.name=Empaqueteur
@@ -44,6 +43,6 @@ tile.nonite.name=Pas de nuit
 tile.hearthealer.name=Guérisseur du coeur
 tile.trophybase.name=Base de trophé
 
-tile.foodPackager.documentation=Produisez une meilleure nourriture a partir de la nourriture pauvre !
+tile.foodpackager.documentation=Produisez une meilleure nourriture a partir de la nourriture pauvre !
 tile.advBrew.documentation=La préparation réactive est la meilleure préparation, du moins c'est ce qu'ils disent.
 tile.present.documentation=Insérez des élément et placez ce bloc pour donner des cadeaux à vos amis !
