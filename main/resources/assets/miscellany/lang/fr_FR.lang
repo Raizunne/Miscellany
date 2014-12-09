@@ -34,7 +34,7 @@ knowledgePotion.postfix=Connaissance
 flightPotion=Vol
 flightPotion.postfix=Vol
 
-item.PackagedFood.name=§9Nouriture empaqueté
+item.PackagedFood.name=Nouriture empaqueté
 tile.foodpackager.name=Empaqueteur de nouriture
 tile.advBrew.name=Brasseur réactif
 tile.present.name=Présent

@@ -4,11 +4,14 @@ Source code found at github.com/Raizunne
  */
 package com.raizunne.miscellany.gui;
 
+import net.minecraft.client.gui.inventory.GuiFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
@@ -16,6 +19,7 @@ import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 public class ContainerFoodPackager extends Container{
 
 	private TileEntityFoodPackager packager;
+	int lastEnergy;
 	
 	public ContainerFoodPackager(InventoryPlayer invplayer, TileEntityFoodPackager te){
 		this.packager = te;
@@ -40,12 +44,37 @@ public class ContainerFoodPackager extends Container{
 	}
 	
 	@Override
+	public void detectAndSendChanges() {
+		super.detectAndSendChanges();
+		for (int i = 0; i < this.crafters.size(); ++i){
+			ICrafting icrafting = (ICrafting)this.crafters.get(i);
+			if(this.lastEnergy!=this.packager.getEnergyStored(ForgeDirection.UP)){
+				icrafting.sendProgressBarUpdate(this, 0, this.packager.getEnergyStored(ForgeDirection.UP));
+			}
+		}
+		this.lastEnergy = this.packager.getEnergyStored(ForgeDirection.UP);
+	}
+	
+	@Override
+	public void updateProgressBar(int par1, int par2) {
+		super.updateProgressBar(par1, par2);
+		if(par1==0){
+			this.packager.setEnergy(par2);
+		}
+	}
+	
+	@Override
 	public boolean canInteractWith(EntityPlayer player) {
 		return packager.isUseableByPlayer(player);
 	}
+	
+	@Override
+	public void addCraftingToCrafters(ICrafting icrafting) {
+		super.addCraftingToCrafters(icrafting); 
+		icrafting.sendProgressBarUpdate(this, 0, this.packager.getEnergyStored(ForgeDirection.UP));
+	}
 
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-//		System.out.println(par2);
 	    ItemStack itemstack = null;
 	    Slot slot = (Slot) this.inventorySlots.get(par2);
 

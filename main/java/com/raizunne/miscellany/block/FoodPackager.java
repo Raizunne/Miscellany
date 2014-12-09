@@ -22,7 +22,7 @@ import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
-public class FoodPackager extends BlockContainer{
+public class FoodPackager extends BlockContainer {
 
 	TileEntityFoodPackager packager;
 	

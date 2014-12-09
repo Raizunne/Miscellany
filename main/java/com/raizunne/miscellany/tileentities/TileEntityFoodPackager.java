@@ -17,6 +17,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
@@ -58,7 +59,7 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 		if(getStackInSlot(6)!=null && getStackInSlot(6).stackSize==64){
 			return;
 		}
-		if(calories>=500 && storage.getEnergyStored()>=200){
+		if(calories>=500){
 			if(convertingTimer!=80){
 				convertingTimer++;
 			}else{
@@ -77,7 +78,7 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 				}
 			}
 		}
-		if(storage.getEnergyStored()>=100){
+//		if(storage.getEnergyStored()>=100){
 			if(getStackInSlot(0)!=null && getStackInSlot(0).getItem() instanceof ItemFood && !getStackInSlot(0).isItemEqual(stack(MiscItems.PackagedFood))){
 				doProgress(0);
 			}else if(getStackInSlot(1)!=null && getStackInSlot(1).getItem() instanceof ItemFood && !getStackInSlot(1).isItemEqual(stack(MiscItems.PackagedFood))){
@@ -91,9 +92,9 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 			}else if(getStackInSlot(5)!=null && getStackInSlot(5).getItem() instanceof ItemFood && !getStackInSlot(5).isItemEqual(stack(MiscItems.PackagedFood))){
 				doProgress(5);
 			}
-		}else{
-			return;
-		}
+//		}else{
+//			return;
+//		}
 	}	
 	
 	public void doProgress(int i) {
@@ -281,6 +282,7 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 		compound.setInteger("timer", this.timer);
 		compound.setInteger("conversion", this.convertingTimer);
 		compound.setTag("Items", items);
+		storage.writeToNBT(compound);
 	}
 	
 	@Override
@@ -299,6 +301,7 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 		this.calories = compound.getInteger("calories");
 		this.timer = compound.getInteger("timer");
 		this.convertingTimer = compound.getInteger("conversion");
+		storage.readFromNBT(compound);
 	}
 	
 	@Override
@@ -339,6 +342,10 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract,
 			boolean simulate) {
-		return storage.extractEnergy(maxExtract, simulate);
+		return storage.extractEnergy(500, simulate);
+	}
+	
+	public void setEnergy(int i){
+		storage.setEnergyStored(i);
 	}
 }

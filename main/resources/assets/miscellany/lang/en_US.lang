@@ -34,7 +34,7 @@ knowledgePotion.postfix=Knowledge
 flightPotion=Flight
 flightPotion.postfix=Flight
 
-item.PackagedFood.name=§9Packaged Food
+item.PackagedFood.name=Packaged Food
 tile.foodpackager.name=Food Packager
 tile.advBrew.name=Reactive Brewer
 tile.present.name=Present

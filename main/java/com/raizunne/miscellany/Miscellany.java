@@ -34,7 +34,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Miscellany
 {
     public static final String MODID = "Miscellany";
-    public static final String VERSION = "0.3a";
+    public static final String VERSION = "0.5";
     
     @Instance
     public static Miscellany instance;
