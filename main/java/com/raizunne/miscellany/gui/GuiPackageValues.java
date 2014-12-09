@@ -89,20 +89,17 @@ public class GuiPackageValues extends GuiScreen{
 			drawItems(Items.cooked_fished, Items.mushroom_stew, Items.baked_potato, null, 122, x, y, 13); //ADD 15 FOR DOUBLE ROWS
 			drawItems(null, Items.carrot, Items.bread, null, 137, x, y, 0);
 		}else if(page==2){
-			drawSeparator(73);
-			drawSeparator(108);
-			drawSeparator(145);
+			drawSeparator(59);
+			drawSeparator(91);
+			drawSeparator(125);
 			fontrenderer.drawString(EnumChatFormatting.BLACK + "Calories - 250", posX + 38, posY + 35, 120, false); //ADD 8 TO GET Y VALUE OF DISPLAY ITEMS
-			drawItems(Items.pumpkin_pie, Items.cooked_chicken, Items.cooked_beef, Items.cooked_porkchop, 43, x, y, 0);
-			drawItems(Items.golden_carrot, null, null, null, 57, x, y, 37);
-			fontrenderer.drawString(EnumChatFormatting.BLACK + "Calories - 300", posX + 38, posY + 82, 120, false);
-			drawItems(Items.cake, null, null, null, 91, x, y, 37);
-			fontrenderer.drawString(EnumChatFormatting.BLACK + "Calories - 500", posX + 38, posY + 116, 120, false);
-			drawItems(Items.golden_apple, null, null, null, 124, x, y, 37);
+			drawItems(Items.golden_carrot, Items.cooked_chicken, Items.cooked_beef, Items.cooked_porkchop, 43, x, y, 0);
+			fontrenderer.drawString(EnumChatFormatting.BLACK + "Calories - 300", posX + 38, posY + 67, 120, false);
+			drawItems(null, Items.cake, Items.pumpkin_pie, null, 75, x, y, 0);
+			fontrenderer.drawString(EnumChatFormatting.BLACK + "Calories - 2000", posX + 35, posY + 99, 120, false);
+			drawItems(Items.golden_apple, null, null, null, 107, x, y, 37);
 		}
 		super.drawScreen(x, y, f);
-		
-//		stack(Items.pumpkin_pie), stack(Items.cooked_chicken), stack(Items.cooked_beef), stack(Items.cooked_porkchop), stack(Items.golden_carrot) 
 	}
 	
 	@Override

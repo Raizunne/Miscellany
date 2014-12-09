@@ -10,8 +10,11 @@ import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.util.StringResources;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 public class PackagedFood extends ItemFood{
@@ -30,10 +33,9 @@ public class PackagedFood extends ItemFood{
 	}
 	
 	@Override
-	public ItemStack onEaten(ItemStack p_77654_1_, World p_77654_2_,
-			EntityPlayer p_77654_3_) {
+	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
 		// TODO Auto-generated method stub
-		return super.onEaten(p_77654_1_, p_77654_2_, p_77654_3_);
+		return EnumAction.eat;
 	}
 	
 	@Override

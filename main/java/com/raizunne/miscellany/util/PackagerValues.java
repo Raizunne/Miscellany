@@ -36,12 +36,11 @@ public class PackagerValues {
 		stack(Items.cooked_fished), stack(Items.mushroom_stew), stack(Items.baked_potato), stack(Items.carrot), stack(Items.bread)
 	};
 	public static final ItemStack[] twofifty = {
-		stack(Items.pumpkin_pie), stack(Items.cooked_chicken), stack(Items.cooked_beef), stack(Items.cooked_porkchop), stack(Items.golden_carrot) 
+		stack(Items.cooked_chicken), stack(Items.cooked_beef), stack(Items.cooked_porkchop), stack(Items.golden_carrot) 
 	};
 	public static final ItemStack[] threehundo = {
-		new ItemStack(Blocks.cake)
+		new ItemStack(Items.cake), stack(Items.pumpkin_pie)
 	};
-	
 	public static final ItemStack[] fivehundo = {
 		meta(Items.golden_apple, 0)
 	};

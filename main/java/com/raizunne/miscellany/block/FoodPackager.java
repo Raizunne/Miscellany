@@ -51,13 +51,20 @@ public class FoodPackager extends BlockContainer{
 		TileEntityFoodPackager tileentity = (TileEntityFoodPackager)world.getTileEntity(x, y, z);
 		this.packager = tileentity;
 		tileentity.getWorldObj().scheduleBlockUpdate(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord, tileentity.getWorldObj().getBlock(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord), 400);
-		
-		if(tileentity.getConvertingProgress()==80){
-			if(!world.isRemote){
-				world.playSound((double)x, (double)y, (double)z, "mob.irongolem.hit", 1F, 1F, true);
+		if(tileentity.getConvertingProgress()>=78){
+			if(world.isRemote){
+//				world.playSound((double)x, (double)y, (double)z, "mob.irongolem.hit", 0.5F, 2F, true);
+//				world.playSound((double)x, (double)y, (double)z, "mob.irongolem.hit", 0.5F, -1F, true);
 			}else{
 			}
 		}
+		
+	}
+	
+	@Override
+	public void updateTick(World world, int z, int y, int x, Random random) {
+		TileEntityFoodPackager tileentity = (TileEntityFoodPackager)world.getTileEntity(x, y, z);
+		
 	}
 	
 	@Override

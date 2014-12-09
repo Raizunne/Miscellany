@@ -8,6 +8,7 @@ import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -24,8 +25,7 @@ public class ButtonLeft extends GuiButton {
 	public boolean visible;
 	public boolean alt;
 	
-	public ButtonLeft(int id, int posX, int posY, String text, boolean bool)
-    {
+	public ButtonLeft(int id, int posX, int posY, String text, boolean bool){
         this(id, posX, posY, 18, 10, text, bool);
     }
 
@@ -102,7 +102,8 @@ public class ButtonLeft extends GuiButton {
             	}
                 
             }
-            this.drawTexturedModalRect(this.xPosition, this.yPosition, xTexture, yTexture, 18, 10);                
+            this.drawTexturedModalRect(this.xPosition, this.yPosition, xTexture, yTexture, 18, 10);
+            
         }
     }
 	public void func_146113_a(SoundHandler p_146113_1_)
