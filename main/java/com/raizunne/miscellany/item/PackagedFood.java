@@ -19,11 +19,6 @@ import net.minecraft.world.World;
 
 public class PackagedFood extends ItemFood{
 
-	/**
-	 * @param p_i45339_1_
-	 * @param p_i45339_2_
-	 * @param p_i45339_3_
-	 */
 	public PackagedFood(int hunger, float sat, boolean wolf) {
 		super(hunger, sat, wolf);
 		setCreativeTab(Miscellany.miscTab);
@@ -33,9 +28,24 @@ public class PackagedFood extends ItemFood{
 	}
 	
 	@Override
-	public EnumAction getItemUseAction(ItemStack p_77661_1_) {
-		// TODO Auto-generated method stub
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+		if(player.getFoodStats().getFoodLevel()<20){
+			player.setItemInUse(itemstack, getMaxItemUseDuration(itemstack));
+		}
+		if(!world.isRemote){
+			
+		}
+		return itemstack;
+	}
+	
+	@Override
+	public EnumAction getItemUseAction(ItemStack itemstack) {
 		return EnumAction.eat;
+	}
+	
+	@Override
+	public int getMaxItemUseDuration(ItemStack itemstack) {
+		return 16;
 	}
 	
 	@Override

@@ -73,9 +73,10 @@ public class GuiPackageValues extends GuiScreen{
 		
 		if(page==0){
 			fontrenderer.drawSplitString(EnumChatFormatting.BLUE + "Packaged Food " + EnumChatFormatting.BLACK + "is generated with the use of calories that are accquiered from buring other food. "
-					+ "Different foods have different amounts of caloreis. Here are the amount of calories generated from different foods. If a food is not listed, "
-					+ "it generates 100 calories.", posX + 8, posY + 50, 138, 0);
-			drawItems(MiscItems.PackagedFood, null,  null, null, 33, x, y, 37);
+					+ "Different foods have different amounts of caloreis. "+ EnumChatFormatting.BOLD + "500 calories " + EnumChatFormatting.RESET + "are required for a " + EnumChatFormatting.BLUE + "Packaged Food" + 
+					EnumChatFormatting.BLACK + ". Here are the amount of calories generated from different foods. If a food is not listed, "
+					+ "it generates 100 calories.", posX + 8, posY + 46, 138, 0);
+			drawItems(MiscItems.PackagedFood, null,  null, null, 30, x, y, 37);
 		}else if(page==1){
 			drawSeparator(59);
 			drawSeparator(108);

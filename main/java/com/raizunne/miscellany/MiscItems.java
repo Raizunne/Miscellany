@@ -63,7 +63,7 @@ public class MiscItems {
    	 	theflute = new TheFlute();
    	 	knowledgegem = new KnowledgeGem(20);
    	 	whip = new Whip();
-   	 	PackagedFood = new PackagedFood(20, 18, false);
+   	 	PackagedFood = new PackagedFood(16, 18, false);
    	 	
    	 	potionFlask = new PotionFlask();
    	 	flightFlask = new Flight();
@@ -81,7 +81,7 @@ public class MiscItems {
 	 	GameRegistry.registerItem(ExplosiveCatalyst, ExplosiveCatalyst.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(theheart, theheart.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(knowledgegem, knowledgegem.getUnlocalizedName());
-	 	GameRegistry.registerItem(whip, whip.getUnlocalizedName());
+//	 	GameRegistry.registerItem(whip, whip.getUnlocalizedName());
 	 	GameRegistry.registerItem(PackagedFood, PackagedFood.getUnlocalizedName());
 //	 	GameRegistry.registerItem(theflute, theflute.getUnlocalizedName().substring(5));
 
