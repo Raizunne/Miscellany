@@ -26,6 +26,7 @@ import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.IEnergyStorage;
 
 import com.raizunne.miscellany.MiscItems;
+import com.raizunne.miscellany.item.PackagedFood;
 import com.raizunne.miscellany.util.PackagerValues;
 
 public class TileEntityFoodPackager extends TileEntity implements IInventory, IEnergyHandler{
@@ -54,8 +55,6 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 	@Override
 	public void updateEntity() {
 		super.updateEntity();
-//		storage.setEnergyStored(storage.getEnergyStored()+50);
-//		System.out.println(storage.getEnergyStored());
 		if(getStackInSlot(6)!=null && getStackInSlot(6).stackSize==64){
 			return;
 		}
@@ -78,7 +77,7 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 				}
 			}
 		}
-//		if(storage.getEnergyStored()>=100){
+		if(storage.getEnergyStored()>=100){
 			if(getStackInSlot(0)!=null && getStackInSlot(0).getItem() instanceof ItemFood && !getStackInSlot(0).isItemEqual(stack(MiscItems.PackagedFood))){
 				doProgress(0);
 			}else if(getStackInSlot(1)!=null && getStackInSlot(1).getItem() instanceof ItemFood && !getStackInSlot(1).isItemEqual(stack(MiscItems.PackagedFood))){
@@ -92,9 +91,9 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 			}else if(getStackInSlot(5)!=null && getStackInSlot(5).getItem() instanceof ItemFood && !getStackInSlot(5).isItemEqual(stack(MiscItems.PackagedFood))){
 				doProgress(5);
 			}
-//		}else{
-//			return;
-//		}
+		}else{
+			return;
+		}
 	}	
 	
 	public void doProgress(int i) {
@@ -257,11 +256,12 @@ public class TileEntityFoodPackager extends TileEntity implements IInventory, IE
 	}
 	
 	public boolean canInsertItem(int i, ItemStack itemstack, int j){
-		return false;
+		return itemstack.getItem() instanceof ItemFood;
 	}
 	
 	public boolean canExtractItem(int i, ItemStack itemstack, int j){
-		return false;		
+		
+		return true;		
 	}
 	
 	@Override
