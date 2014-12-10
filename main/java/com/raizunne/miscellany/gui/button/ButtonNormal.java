@@ -83,7 +83,7 @@ public class ButtonNormal extends GuiButton {
              */           
             this.field_146123_n = p_146112_2_ >= this.xPosition && p_146112_3_ >= this.yPosition && p_146112_2_ < this.xPosition + this.width && p_146112_3_ < this.yPosition + this.height;
         	int hover = this.getHoverState(this.field_146123_n);
-            int l = 9408399;
+            int l = 0xEDEDED;
             
         	                      
             if (hover==2)
