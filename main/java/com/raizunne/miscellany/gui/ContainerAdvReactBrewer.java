@@ -1,5 +1,6 @@
 package com.raizunne.miscellany.gui;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,36 +38,47 @@ public class ContainerAdvReactBrewer extends Container{
 	}
 	
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int i) {
-		ItemStack stack = null;
-		Slot slotObject = (Slot) inventorySlots.get(i);
-		
-		if(slotObject != null && slotObject.getHasStack()){
-			ItemStack stackInSlot = slotObject.getStack();
-            stack = stackInSlot.copy();
+	public ItemStack transferStackInSlot(EntityPlayer player, int par2) {
+		ItemStack itemstack = null;
+	    Slot slot = (Slot) this.inventorySlots.get(par2);
 
-            //merges the item into player inventory since its in the tileEntity
-            if (i < 9) {
-                    if (!this.mergeItemStack(stackInSlot, 0, 35, true)) {
-                            return null;
-                    }
-            }
-            //places it into the tileEntity is possible since its in the player inventory
-            else if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
-                    return null;
-            }
+	    if(slot != null && slot.getHasStack()) {
+	      ItemStack itemstack1 = slot.getStack();
+	      itemstack = itemstack1.copy();
 
-            if (stackInSlot.stackSize == 0) {
-                    slotObject.putStack(null);
-            } else {
-                    slotObject.onSlotChanged();
-            }
+	      if(par2 < 35){
+	    	  if(itemstack1.isItemEqual(new ItemStack(MiscItems.potionFlask))){
+	    		  if(!mergeItemStack(itemstack1, 38, 40, false)){
+		    		  if(!mergeItemStack(itemstack1, 9, 35, false)){
+		    			  return null;
+		    		  }
+		    	  }
+	    	  }else{
+		    	  if(!mergeItemStack(itemstack1, 36, 39, false)){
+		    		  if(!mergeItemStack(itemstack1, 9, 35, false)){
+		    			  return null;
+		    		  }
+		    	  }
+	    	  }
+	      }else if(par2<9){
+	    	 if(!mergeItemStack(itemstack1, 0, 9, false)){
+	    		 return null;
+	    	 }
+	      }else if(!mergeItemStack(itemstack1, 0, 35, false)){
+	    	  return null;
+	      }
 
-            if (stackInSlot.stackSize == stack.stackSize) {
-                    return null;
-            }
-            slotObject.onPickupFromSlot(player, stackInSlot);
-		}
-    return stack;
-	}	
+	      if(itemstack1.stackSize == 0) {
+	        slot.putStack((ItemStack) null);
+	      } else {
+	        slot.onSlotChanged();
+	      }
+	      
+	      if (itemstack1.stackSize == itemstack.stackSize) {
+              return null;
+	      }
+	      slot.onPickupFromSlot(player, itemstack1);
+	    }
+	    return itemstack;
+	 }
 }
