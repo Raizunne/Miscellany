@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -23,7 +24,6 @@ import org.lwjgl.opengl.GL11;
 
 import com.raizunne.miscellany.MiscBlocks;
 import com.raizunne.miscellany.MiscItems;
-import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.gui.button.ButtonLeft;
 import com.raizunne.miscellany.gui.button.ButtonMenu;
 import com.raizunne.miscellany.gui.button.ButtonNormal;
@@ -83,53 +83,49 @@ public class GuiManualBooks extends GuiScreen{
 		fontrenderer.drawSplitString("Raizunne's Miscellany is still a very work in progress, the mod has a few items and other "
 				+ "miscellaneous stuff in it." , posX+7, posY+90, 100, 0);
 		}
-		
+				
 		if(entry && currentSection=="sacredChalice" && subSection==0){
 			//CHALICE
 			fontrenderer.drawString("Sacred Chalice", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.chalice1, posX + 10, posY + 80, 98, 0);
 			fontrenderer.drawSplitString(BookResources.chalice2, posX + 121, posY + 17, 98, 0);
-			Item goldBlock = Blocks.gold_block.getItemDropped(Blocks.gold_block.getIdFromBlock(Blocks.gold_block), new Random(), 1);
-			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, goldBlock, null, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, MiscItems.sacredChalice, 20, 20, x, y);	
+			drawCrafting(Items.gold_ingot, Items.water_bucket, Items.gold_ingot, null, Blocks.gold_block, null, Items.gold_ingot, Items.gold_ingot, Items.gold_ingot, MiscItems.sacredChalice, 20, 20, x, y);	
 		}else if(entry && currentSection=="shake" && subSection==0){
 			//SHAKE
 			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.shake1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(BookResources.shake2, posX + 121, posY + 17, 98, 0);
-			drawAlchemy(new ItemStack(Items.speckled_melon), new ItemStack(Items.bread), new ItemStack(Items.sugar), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.Shake), 20, 20, x, y);
+			drawAlchemy(Items.speckled_melon, Items.bread, Items.sugar, MiscItems.potionFlask, MiscItems.Shake, 20, 20, x, y);
 		}else if(entry && currentSection=="brewer" && subSection==0){
 			//BREWER
 			fontrenderer.drawString("Reactive Brewer", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.brewer1, posX + 10, posY + 80, 98, 0);
 			fontrenderer.drawSplitString(BookResources.brewer2, posX + 121, posY + 17, 98, 0);
-			Item clay = Blocks.hardened_clay.getItemDropped(Blocks.hardened_clay.getIdFromBlock(Blocks.hardened_clay), new Random(), 1);
-			Item slab = Blocks.stone_slab.getItemDropped(Blocks.stone_slab.getIdFromBlock(Blocks.stone_slab), new Random(), 1);
-			Item brewer = MiscBlocks.brewer.getItemDropped(MiscBlocks.brewer.getIdFromBlock(MiscBlocks.brewer), new Random(), 1);
-			drawCrafting(slab, slab, slab, null, clay, null, clay, clay, clay, brewer, 20, 20, x, y);
+			drawCrafting(Blocks.stone_slab, Blocks.stone_slab, Blocks.stone_slab, null, Blocks.hardened_clay, null, Blocks.hardened_clay, Blocks.hardened_clay, Blocks.hardened_clay, MiscBlocks.brewer, 20, 20, x, y);
 		}else if(entry && currentSection=="knowledge" && subSection==0){
 			//KNOWLEDGE
 			fontrenderer.drawString("Knowledge Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.knowledge1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(BookResources.knowledge2, posX + 121, posY + 17, 98, 0);
-			drawAlchemy(new ItemStack(Blocks.emerald_block), new ItemStack(Items.book), new ItemStack(Blocks.emerald_block), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.knowledgeFlask), 20, 20, x, y);
+			drawAlchemy(Blocks.emerald_block, Items.book, Blocks.emerald_block, MiscItems.potionFlask, MiscItems.knowledgeFlask, 20, 20, x, y);
 		}else if(entry && currentSection=="flight" && subSection==0){
 			//FLIGHT
 			fontrenderer.drawString("Flight Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.flight1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(BookResources.flight2, posX + 121, posY + 17, 98, 0);
-			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.feather), new ItemStack(Items.diamond), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.flightFlask), 20, 20, x, y);
+			drawAlchemy(Items.diamond, Items.feather, Items.diamond, MiscItems.potionFlask, MiscItems.flightFlask, 20, 20, x, y);
 		}else if(entry && currentSection=="anit-wither" && subSection==0){
 			//ANTIWITHER
 			fontrenderer.drawString("Anti-Wither Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.wither1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(BookResources.wither2, posX + 121, posY + 17, 98, 0);
-			drawAlchemy(new ItemStack(Items.diamond), new ItemStack(Items.skull, 1, 1), new ItemStack(Blocks.red_flower), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.WitherAnti), 20, 20, x, y);
+			drawAlchemy(Items.diamond, Items.skull, Blocks.red_flower, MiscItems.potionFlask, MiscItems.WitherAnti, 20, 20, x, y);
 		}else if(entry && currentSection=="heart" && subSection==0){
 			//Heart Flask
 			fontrenderer.drawString("Heart Flask", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.heart1, posX + 10, posY + 93, 98, 0);
 			fontrenderer.drawSplitString(BookResources.heart2, posX + 121, posY + 17, 98, 0);
-			drawAlchemy(new ItemStack(Items.speckled_melon), new ItemStack(Items.blaze_powder, 1, 1), new ItemStack(Items.speckled_melon), new ItemStack(MiscItems.potionFlask), new ItemStack(MiscItems.theheart), 20, 20, x, y);
+			drawAlchemy(Items.speckled_melon, Items.blaze_powder, Items.speckled_melon, MiscItems.potionFlask, MiscItems.theheart, 20, 20, x, y);
 		}else if(entry && currentSection=="gem" && subSection==0){
 			//KNOWLEDGE GEM
 			fontrenderer.drawString("Knowledge Gem", posX + 10, posY + 8, 0x000000, false);
@@ -145,9 +141,15 @@ public class GuiManualBooks extends GuiScreen{
 			fontrenderer.drawSplitString(BookResources.gemLevel2, posX + 121, posY + 17, 98, 0);
 			fontrenderer.drawSplitString(BookResources.gemLevel3, posX + 121, posY + 95, 98, 0);
 			drawCrafting(null, Items.emerald, null, Items.emerald, MiscItems.knowledgegem, Items.emerald, null, Items.emerald, null, MiscItems.knowledgegem, 20, 20, x, y);	
+		}else if(entry && currentSection=="foodpackager" && subSection==0){
+			fontrenderer.drawString("Food Packager", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(BookResources.packager1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(BookResources.packager2, posX + 121, posY + 17, 98, 0);
+			drawCrafting(Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Items.gold_ingot, Blocks.furnace, Items.gold_ingot, Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, MiscBlocks.packager, 20, 20, x, y);	
 		}
 		
 		if(brew){
+			RenderHelper.disableStandardItemLighting();
 			fontrenderer.drawString("Brewer Recipe", posX+21, posY+80, 0x939393, false);
 			if(x > posX + 12 && x < posX + 104 && y > posY + 80 && y < posY + 86){
 				String[] desc = { "Put the top three", "items inside of the", "Brewer and a Potion", "Flask on the bottom slot." };
@@ -156,6 +158,7 @@ public class GuiManualBooks extends GuiScreen{
 	            zLevel = 2;
 	            drawHoveringText(temp, x, y, fontrenderer);
 			}
+			RenderHelper.enableGUIStandardItemLighting();
 		}
 		super.drawScreen(x, y, f);
 	}
@@ -175,15 +178,15 @@ public class GuiManualBooks extends GuiScreen{
 		int color1 = 0xA3007A;
 		int color2 = 0x720056;
 		
-		ButtonLeft prevButton = new ButtonLeft(0, posX + 0, posY + 167, 18, 12, "Prev", false);
-		ButtonRight nextButton = new ButtonRight(1, posX + 210, posY + 167, 18, 12, "Next", false);
-		ButtonNormal returnIndex = new ButtonNormal(2, posX + 87, posY + 167, 50, 14, "Return", false);
+		ButtonLeft prevButton = new ButtonLeft(0, posX + 0, posY + 167, 18, 12, "Prev", true);
+		ButtonRight nextButton = new ButtonRight(1, posX + 210, posY + 167, 18, 12, "Next", true);
+		ButtonNormal returnIndex = new ButtonNormal(2, posX + 87, posY + 167, 50, 14, "Return", true);
 		
-		ButtonMenu menu0 = new ButtonMenu(11, posX + 124, posY + 18, 90, 12, "Items", color1, color2, true);
-		ButtonMenu menu1 = new ButtonMenu(12, posX + 124, posY + 30, 90, 12, "Advanced Alchemy", color1, color2, true);
-		ButtonMenu menu2 = new ButtonMenu(13, posX + 124, posY + 42, 90, 12, "Blocks", color1, color2, true);
-		ButtonMenu menu3 = new ButtonMenu(14, posX + 124, posY + 54, 90, 12, "Machines", color1, color2, true);
-		ButtonMenu menu4 = new ButtonMenu(15, posX + 124, posY + 66, 90, 12, "Equipment", color1, color2, true);
+		ButtonMenu items = new ButtonMenu(11, posX + 124, posY + 18, 90, 12, "Items", color1, color2, true);
+		ButtonMenu machines = new ButtonMenu(12, posX + 124, posY + 42, 90, 12, "Machines", color1, color2, true);
+		ButtonMenu alchemy = new ButtonMenu(13, posX + 124, posY + 30, 90, 12, "Advanced Alchemy", color1, color2, true);
+		ButtonMenu blocks = new ButtonMenu(14, posX + 124, posY + 54, 90, 12, "Blocks", color1, color2, true);
+		ButtonMenu equipment = new ButtonMenu(15, posX + 124, posY + 66, 90, 12, "Equipment", color1, color2, true);
 
 		ButtonMenu items1 = new ButtonMenu(31, posX + 124, posY + 18, 90, 12, "Sacred Chalice", color1, color2, true);
 		ButtonMenu items2 = new ButtonMenu(32, posX + 124, posY + 30, 90, 12, "Shake", color1, color2, true);
@@ -203,8 +206,9 @@ public class GuiManualBooks extends GuiScreen{
 			
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);
-			buttonList.add(menu0);
-			buttonList.add(menu1);
+			buttonList.add(items);
+			buttonList.add(machines);
+			buttonList.add(alchemy);
 		}else if(entry){
 			buttonList.removeAll(buttonList);
 			if(maxPages!=subSection){
@@ -283,17 +287,17 @@ public class GuiManualBooks extends GuiScreen{
 			entry=false;
 		break;
 		case 12:
-			currentSection="alchemy";
+			currentSection="machines";
 			subSection=0;
 			entry=false;
 		break;
 		case 13:
-			currentSection="blocks";
+			currentSection="alchemy";
 			subSection=0;
 			entry=false;
 		break;
 		case 14:
-			currentSection="machines";
+			currentSection="blocks";
 			subSection=0;
 			entry=false;
 		break;
@@ -327,6 +331,15 @@ public class GuiManualBooks extends GuiScreen{
 			maxPages=1;
 		break;	
 			
+		//MACHINES
+		case 71:
+			currentSection="foodpackager";
+			prevSection="machines";
+			subSection=0;
+			entry=true;
+			maxPages=0;
+		break;
+		
 		//ALCHEMY
 		case 112:
 			currentSection="brewer";
@@ -379,8 +392,7 @@ public class GuiManualBooks extends GuiScreen{
 		this.initGui();
 	}
 	
-	public void drawCrafting(Item slot1, Item slot2, Item slot3, Item slot4, Item slot5, Item slot6, Item slot7, Item slot8,
-			Item slot9, Item product, int xPos, int yPos, int mousex, int mousey){
+	public void drawCrafting(Object i1, Object i2, Object i3, Object i4, Object i5, Object i6, Object i7, Object i8, Object i9, Object pro,int xPos, int yPos, int mousex, int mousey){
 		FontRenderer itemsInGrid = Minecraft.getMinecraft().fontRenderer;
 		RenderHelper.disableStandardItemLighting();
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -390,104 +402,156 @@ public class GuiManualBooks extends GuiScreen{
 		int xPosCrafting = posX + yPos;
 		int yPosCrafting = posY + xPos;
 		
+		ItemStack slot1 = null, slot2 = null, slot3 = null, slot4 = null, slot5 = null, slot6 = null, slot7 = null, slot8 = null, slot9 = null, product = null;
+		if(i1 instanceof Item){
+			slot1 = new ItemStack((Item)i1);
+		}else if(i1 instanceof Block){
+			slot1 = new ItemStack((Block)i1);
+		}
+		if(i2 instanceof Item){
+			slot2 = new ItemStack((Item)i2);
+		}else if(i2 instanceof Block){
+			slot2 = new ItemStack((Block)i2);
+		}
+		if(i3 instanceof Item){
+			slot3 = new ItemStack((Item)i3);
+		}else if(i3 instanceof Block){
+			slot3 = new ItemStack((Block)i3);
+		}
+		if(i4 instanceof Item){
+			slot4 = new ItemStack((Item)i4);
+		}else if(i4 instanceof Block){
+			slot4 = new ItemStack((Block)i4);
+		}
+		if(i5 instanceof Item){
+			slot5 = new ItemStack((Item)i5);
+		}else if(i5 instanceof Block){
+			slot5 = new ItemStack((Block)i5);
+		}
+		if(i6 instanceof Item){
+			slot6 = new ItemStack((Item)i6);
+		}else if(i6 instanceof Block){
+			slot6 = new ItemStack((Block)i6);
+		}
+		if(i7 instanceof Item){
+			slot7 = new ItemStack((Item)i7);
+		}else if(i7 instanceof Block){
+			slot7 = new ItemStack((Block)i7);
+		}
+		if(i8 instanceof Item){
+			slot8 = new ItemStack((Item)i8);
+		}else if(i8 instanceof Block){
+			slot8 = new ItemStack((Block)i8);
+		}
+		if(i1 instanceof Item){
+			slot9 = new ItemStack((Item)i9);
+		}else if(i9 instanceof Block){
+			slot9 = new ItemStack((Block)i9);
+		}
+		if(pro instanceof Item){
+			product = new ItemStack((Item)pro);
+		}else if(pro instanceof Block){
+			product = new ItemStack((Block)pro);
+		}
+		
 		Minecraft.getMinecraft().getTextureManager().bindTexture(craftingGrid);
 		drawTexturedModalRect(xPosCrafting, yPosCrafting, 0, 0, 76, 56);		
 		
 		if(slot1!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot1), xPosCrafting + 1, yPosCrafting + 1);	
+					slot1, xPosCrafting + 1, yPosCrafting + 1);	
 		}
 		if(slot2!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot2), xPosCrafting + 20, yPosCrafting + 1);	
+					slot2, xPosCrafting + 20, yPosCrafting + 1);	
 		}
 		if(slot3!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot3), xPosCrafting + 39, yPosCrafting + 1);	
+					slot3, xPosCrafting + 39, yPosCrafting + 1);	
 		}
 		if(slot4!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot4), xPosCrafting + 1, yPosCrafting + 20);	
+					slot4, xPosCrafting + 1, yPosCrafting + 20);	
 		}
 		if(slot5!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot5), xPosCrafting + 20, yPosCrafting + 20);	
+					slot5, xPosCrafting + 20, yPosCrafting + 20);	
 		}
 		if(slot6!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot6), xPosCrafting + 39, yPosCrafting + 20);	
+					slot6, xPosCrafting + 39, yPosCrafting + 20);	
 		}
 		if(slot7!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot7), xPosCrafting + 1, yPosCrafting + 39);	
+					slot7, xPosCrafting + 1, yPosCrafting + 39);	
 		}
 		if(slot8!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot8), xPosCrafting + 20, yPosCrafting + 39);	
+					slot8, xPosCrafting + 20, yPosCrafting + 39);	
 		}
 		if(slot9!=null){
 			RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(slot9), xPosCrafting + 39, yPosCrafting + 39);	
+					slot9, xPosCrafting + 39, yPosCrafting + 39);	
 		}	
 		
 		RenderHelper.disableStandardItemLighting();
 			itemRender.renderItemAndEffectIntoGUI(itemsInGrid, Minecraft.getMinecraft().getTextureManager(), 
-					new ItemStack(product), xPosCrafting + 59, yPosCrafting + 8);
+					product, xPosCrafting + 59, yPosCrafting + 8);
 			RenderHelper.disableStandardItemLighting();
 		
 		if(slot1!=null){
 			if(mousex>xPosCrafting+2 && mousex<xPosCrafting+16 && mousey>yPosCrafting+2 && mousey<yPosCrafting+16){
-				renderToolTip(new ItemStack(slot1), mousex, mousey);
+				renderToolTip(slot1, mousex, mousey);
 			}
 		}
 		if(slot2!=null){
 			if(mousex>xPosCrafting+21 && mousex<xPosCrafting+35 && mousey>yPosCrafting+2 && mousey<yPosCrafting+16){
-				renderToolTip(new ItemStack(slot2), mousex, mousey);
+				renderToolTip(slot2, mousex, mousey);
 			}
 		}
 		if(slot3!=null){
 			if(mousex>xPosCrafting+40 && mousex<xPosCrafting+54 && mousey>yPosCrafting+2 && mousey<yPosCrafting+16){
-				renderToolTip(new ItemStack(slot3), mousex, mousey);
+				renderToolTip(slot3, mousex, mousey);
 			}
 		}
 		if(slot4!=null){
 			if(mousex>xPosCrafting+2 && mousex<xPosCrafting+16 && mousey>yPosCrafting+21 && mousey<yPosCrafting+35){
-				renderToolTip(new ItemStack(slot4), mousex, mousey);
+				renderToolTip(slot4, mousex, mousey);
 			}
 		}
 		if(slot5!=null){
 			if(mousex>xPosCrafting+21 && mousex<xPosCrafting+35 && mousey>yPosCrafting+21 && mousey<yPosCrafting+35){
-				renderToolTip(new ItemStack(slot5), mousex, mousey);
+				renderToolTip(slot5, mousex, mousey);
 			}
 		}
 		if(slot6!=null){
 			if(mousex>xPosCrafting+40 && mousex<xPosCrafting+54 && mousey>yPosCrafting+21 && mousey<yPosCrafting+35){
-				renderToolTip(new ItemStack(slot6), mousex, mousey);
+				renderToolTip(slot6, mousex, mousey);
 			}
 		}
 		if(slot7!=null){
 			if(mousex>xPosCrafting+2 && mousex<xPosCrafting+16 && mousey>yPosCrafting+40 && mousey<yPosCrafting+54){
-				renderToolTip(new ItemStack(slot7), mousex, mousey);
+				renderToolTip(slot7, mousex, mousey);
 				
 			}
 		}
 		if(slot8!=null){
 			if(mousex>xPosCrafting+21 && mousex<xPosCrafting+35 && mousey>yPosCrafting+40 && mousey<yPosCrafting+54){
-				renderToolTip(new ItemStack(slot8), mousex, mousey);
+				renderToolTip(slot8, mousex, mousey);
 			}
 		}
 		if(slot9!=null){
 			if(mousex>xPosCrafting+40 && mousex<xPosCrafting+54 && mousey>yPosCrafting+40 && mousey<yPosCrafting+54){
-				renderToolTip(new ItemStack(slot9), mousex, mousey);
+				renderToolTip(slot9, mousex, mousey);
 			}
 		}	
 		
@@ -502,14 +566,14 @@ public class GuiManualBooks extends GuiScreen{
 			RenderHelper.disableStandardItemLighting();
 			GL11.glEnable(GL11.GL_DEPTH_TEST);
 		if(mousex>xPosCrafting+60 && mousex<xPosCrafting+74 && mousey>yPosCrafting+9 && mousey<yPosCrafting+23){
-			renderToolTip(new ItemStack(product), mousex, mousey);
+			renderToolTip(product, mousex, mousey);
 			GL11.glDisable(GL11.GL_DEPTH_TEST);
 			GL11.glDisable(GL11.GL_LIGHTING);
 		}
 	}
 	
 	
-	public void drawAlchemy(ItemStack slot1, ItemStack slot2, ItemStack slot3, ItemStack slot4, ItemStack product, int xPos, int yPos, int mousex, int mousey){
+	public void drawAlchemy(Object i1, Object i2, Object i3, Object i4, Object pro, int xPos, int yPos, int mousex, int mousey){
 		FontRenderer itemsInGrid = Minecraft.getMinecraft().fontRenderer;
 		RenderHelper.disableStandardItemLighting();
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -518,6 +582,34 @@ public class GuiManualBooks extends GuiScreen{
 		int posY = (this.height - ySizeofTexture) / 2;
 		int xPosCrafting = posX + yPos;
 		int yPosCrafting = posY + xPos;
+		
+		ItemStack slot1 = null, slot2 = null, slot3 = null, slot4 = null, product = null;
+	
+		if(i1 instanceof Item){
+			slot1 = new ItemStack((Item)i1);
+		}else if(i1 instanceof Block){
+			slot1 = new ItemStack((Block)i1);
+		}
+		if(i2 instanceof Item){
+			slot2 = new ItemStack((Item)i2);
+		}else if(i2 instanceof Block){
+			slot2 = new ItemStack((Block)i2);
+		}
+		if(i3 instanceof Item){
+			slot3 = new ItemStack((Item)i3);
+		}else if(i3 instanceof Block){
+			slot3 = new ItemStack((Block)i3);
+		}
+		if(i4 instanceof Item){
+			slot4 = new ItemStack((Item)i4);
+		}else if(i4 instanceof Block){
+			slot4 = new ItemStack((Block)i4);
+		}
+		if(pro instanceof Item){
+			product = new ItemStack((Item)pro);
+		}else if(pro instanceof Block){
+			product = new ItemStack((Block)pro);
+		}
 		
 		Minecraft.getMinecraft().getTextureManager().bindTexture(craftingGrid);
 		drawTexturedModalRect(xPosCrafting, yPosCrafting, 97, 0, 81, 56);		
