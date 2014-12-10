@@ -1,6 +1,7 @@
 package com.raizunne.miscellany;
 
 import com.raizunne.miscellany.block.AdvReactBrewer;
+import com.raizunne.miscellany.block.Column;
 import com.raizunne.miscellany.block.FoodPackager;
 import com.raizunne.miscellany.block.Heart;
 import com.raizunne.miscellany.block.NoNite;
@@ -21,6 +22,7 @@ public class MiscBlocks {
     public static Block thepackage;
     public static Block heart;
     public static Block trophybase;
+    public static Block column;
     
 	public static void init(){
    	 	present = new Present(Material.ground);
@@ -30,12 +32,14 @@ public class MiscBlocks {
    	 	thepackage = new ThePackage(Material.ground);
    	 	trophybase = new TrophyBase(Material.ground);
    	 	packager = new FoodPackager(Material.ground);
+   	 	column = new Column(Material.ground);
    	 	
 //   	 	GameRegistry.registerBlock(noNite, "nonite");
-//   	 	GameRegistry.registerBlock(thepackage, "thepackage");
+   	 	GameRegistry.registerBlock(thepackage, "thepackage");
 	 	GameRegistry.registerBlock(brewer, "advBrew");
 	 	GameRegistry.registerBlock(trophybase, "trophybase");
 	 	GameRegistry.registerBlock(packager, "foodpackager");
+	 	GameRegistry.registerBlock(column, "misccolumn");
 //	 	GameRegistry.registerBlock(heart, "hearthealer");
 //	 	GameRegistry.registerBlock(present, "present");
 	 	

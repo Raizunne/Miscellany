@@ -57,7 +57,7 @@ public class MiscItems {
    	 	manualBook = new ManualBook();
    	 	Shake = new Shake();
    	 	pamphlet = new Pamphlet();
-   	 	pack = new Package(0, 0);
+   	 	pack = new Package();
    	 	ExplosiveCatalyst = new ExplosiveCatalyst();
    	 	theheart = new TheHeart();
    	 	theflute = new TheFlute();
@@ -70,7 +70,7 @@ public class MiscItems {
    	 	knowledgeFlask = new Knowledge();
    	 	WitherAnti = new AntiWither();
    	 	
-//	 	GameRegistry.registerItem(pack, pack.getUnlocalizedName().substring(5));
+	 	GameRegistry.registerItem(pack, pack.getUnlocalizedName().substring(5));
 //	 	GameRegistry.registerItem(redstonicBoots, redstonicBoots.getUnlocalizedName().substring(5));
 //	 	GameRegistry.registerItem(packagedFood, packagedFood.getUnlocalizedName().substring(5));
 	 	GameRegistry.registerItem(debugHunger, debugHunger.getUnlocalizedName().substring(5));

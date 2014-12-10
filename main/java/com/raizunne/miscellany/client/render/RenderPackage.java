@@ -15,17 +15,18 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import com.raizunne.miscellany.Miscellany;
-import com.raizunne.miscellany.client.model.modelPackage;
+import com.raizunne.miscellany.client.model.ModelPackage;
 import com.raizunne.miscellany.tileentities.TileEntityPackage;
 
 public class RenderPackage extends TileEntitySpecialRenderer{
 
-	private static final ResourceLocation texture = new ResourceLocation(Miscellany.MODID + ":" + "textures/model/Package.png");
+	private static final ResourceLocation texture = new ResourceLocation(Miscellany.MODID + ":" + "textures/model/Packager/Package.png");
+	private static final ResourceLocation texture2 = new ResourceLocation(Miscellany.MODID + ":" + "textures/model/Packager/Package2.png");
 	
-	private modelPackage model;
+	private ModelPackage model;
 	
 	public RenderPackage() {
-		this.model = new modelPackage();
+		this.model = new ModelPackage();
 	}
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) {
@@ -55,7 +56,11 @@ public class RenderPackage extends TileEntitySpecialRenderer{
 				break;
 		}	
 		GL11.glRotatef(180, 0F, 0F, 1F);
+		if(pack.getProgress()==0){
 			this.bindTexture(texture);
+		}else{
+			this.bindTexture(texture2);
+		}
 			GL11.glPushMatrix();
 				this.model.renderModel(0.0625F);
 			GL11.glPopMatrix();

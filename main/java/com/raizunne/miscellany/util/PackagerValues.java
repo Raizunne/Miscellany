@@ -27,13 +27,13 @@ public class PackagerValues {
 		stack(Items.fish), stack(Items.chicken), stack(Items.porkchop), stack(Items.beef), stack(Items.apple)
 	};
 	public static final ItemStack[] hundred = {
-		
+		stack(Items.carrot)
 	};	
 	public static final ItemStack[] hundredfifty = {
 		
 	};
 	public static final ItemStack[] twohundred = {
-		stack(Items.cooked_fished), stack(Items.mushroom_stew), stack(Items.baked_potato), stack(Items.carrot), stack(Items.bread)
+		stack(Items.cooked_fished), stack(Items.mushroom_stew), stack(Items.baked_potato), stack(Items.bread)
 	};
 	public static final ItemStack[] twofifty = {
 		stack(Items.cooked_chicken), stack(Items.cooked_beef), stack(Items.cooked_porkchop), stack(Items.golden_carrot) 

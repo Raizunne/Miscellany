@@ -37,5 +37,10 @@ public class BookResources {
 	public static final String gem3 = EnumChatFormatting.DARK_PURPLE + "Check next page for gem upgrades";
 	public static final String gemLevel1 = "Now that you have an ancient artifact in your hands, its obviously time to upgrade it!";
 	public static final String gemLevel2 = "Place the gem in the middle of a crafting table, and then some emeralds near it, just like the diagram at the left.";
-	public static final String gemLevel3 = EnumChatFormatting.DARK_PURPLE + "This will increase the gem's max level capacity by 15.";
+	public static final String gemLevel3 = EnumChatFormatting.DARK_PURPLE + "This will increase the gem's max level capacity by 10.";
+	
+	public static final String packager1= "This is the type of machine that you'd see on an informercial, but this one works. It requires RF to work.";
+	public static final String packager2= "Insert food on the machine, this will generate Calories, these Calories can be used to make a special food called " + EnumChatFormatting.BLUE + "Packaged Food" + EnumChatFormatting.RESET + EnumChatFormatting.BLACK + 
+			". It requires 500 calories to make. It heals 8 food hunches and 18 saturation, greater than the golden carrot (14 saturation).";
+	
 }

@@ -13,6 +13,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import com.raizunne.miscellany.MiscBlocks;
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.client.render.RenderAdvReactBrewer;
+import com.raizunne.miscellany.client.render.RenderColumn;
 import com.raizunne.miscellany.client.render.RenderFoodPackager;
 import com.raizunne.miscellany.client.render.RenderHeart;
 import com.raizunne.miscellany.client.render.RenderPackage;
@@ -20,12 +21,14 @@ import com.raizunne.miscellany.client.render.RenderPresent;
 import com.raizunne.miscellany.client.render.RenderTrophyBase;
 import com.raizunne.miscellany.client.renderItem.ItemAdvReactBrewer;
 import com.raizunne.miscellany.client.renderItem.ItemChaliceRender;
+import com.raizunne.miscellany.client.renderItem.ItemColumn;
 import com.raizunne.miscellany.client.renderItem.ItemFoodPackager;
 import com.raizunne.miscellany.client.renderItem.ItemHeart;
 import com.raizunne.miscellany.client.renderItem.ItemPackage;
 import com.raizunne.miscellany.client.renderItem.ItemPresent;
 import com.raizunne.miscellany.client.renderItem.ItemTrophyBase;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+import com.raizunne.miscellany.tileentities.TileEntityColumn;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 import com.raizunne.miscellany.tileentities.TileEntityHeart;
 import com.raizunne.miscellany.tileentities.TileEntityPackage;
@@ -72,6 +75,11 @@ public class ClientProxy extends CommonProxy
 		TileEntitySpecialRenderer foodpackager = new RenderFoodPackager();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFoodPackager.class, foodpackager);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MiscBlocks.packager), new ItemFoodPackager(foodpackager, new TileEntityFoodPackager()));
+		
+		//FoodPackager
+		TileEntitySpecialRenderer column = new RenderColumn();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityColumn.class, column);
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MiscBlocks.column), new ItemColumn(column, new TileEntityColumn()));
 	}
 	
 	public static void checkDonors() throws Exception{

@@ -44,6 +44,11 @@ public class MiscRecipes {
    	 		" I ",
    	 		"WWW", 'I', Items.iron_ingot, 'W', Blocks.planks});
    	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.trophybase), new Object[]{
+	 		"III",
+	 		"IFI",
+	 		"CCC", 'I', Items.iron_ingot, 'F', Blocks.furnace, 'C', Blocks.cobblestone});
+   	 	
    	 	IRecipe gem = new GemLeveling();
    	 	
    	 	GameRegistry.addRecipe(gem);

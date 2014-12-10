@@ -6,7 +6,7 @@ item.manualBook.name=Miscellany Manual
 item.pamphlet.name=Miscellany Pamphlet 0.4
 item.shake.name=Shake
 item.debugHunger.name=Debug Hunger
-item.package.name=Packaged
+item.package.name=Package
 item.explosivecatalyst.name=Explosive Catalyst
 item.theflute.name=The Flute
 item.knowledgegem.name=§aKnowledge Gem
@@ -16,6 +16,7 @@ item.flightFlask.name=Flight Flask
 item.knowledgeFlask.name=§aKnowledge Flask
 item.antiwither.name=Anti-Wither Flask
 item.theheart.name=Heart Flask
+item.PackagedFood.name=Packaged Food
 
 item.redstonicBoots.documentation=Can step-up a single block, increases speed and gives double jump.
 item.sacredChalice.documentation=Consumes cobblestone, receives water.
@@ -34,7 +35,7 @@ knowledgePotion.postfix=Knowledge
 flightPotion=Flight
 flightPotion.postfix=Flight
 
-item.PackagedFood.name=Packaged Food
+
 tile.foodpackager.name=Food Packager
 tile.advBrew.name=Reactive Brewer
 tile.present.name=Present
@@ -42,6 +43,7 @@ tile.thepackage.name=Packager
 tile.nonite.name=No Nite
 tile.hearthealer.name=Heart Healer
 tile.trophybase.name=Trophy Base
+tile.misccolumn.name=Column
 
 tile.foodpackager.documentation=Generate better food from poor food!
 tile.advBrew.documentation=Reactive brewing is best brewing, at least that's what they say.

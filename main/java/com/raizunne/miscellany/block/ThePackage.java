@@ -14,8 +14,11 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityPackage;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
+
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
 public class ThePackage extends BlockContainer{
 
@@ -30,28 +33,27 @@ public class ThePackage extends BlockContainer{
 		setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 0.9375F, 0.9375F);
 	}
 	
+	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
 		if(!world.isRemote){
-			player.addChatComponentMessage(new ChatComponentText("" + world.getBlockMetadata(x, y, z)));
-			player.openGui(Miscellany.instance, 5, world, x, y, z);
-			TileEntity te = world.getTileEntity(x, y, z);
+			if(player.isSneaking()==false){
+				FMLNetworkHandler.openGui(player, Miscellany.instance, 5, world, x, y, z);
+			}
+			return true;
 		}
 		return true;
-	}
+	}	
 	
 	@Override
-	public void updateTick(World world, int x, int y, int z, Random random) {
-
+	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
+		TileEntityPackage tileentity = (TileEntityPackage)world.getTileEntity(x, y, z);
+		tileentity.getWorldObj().scheduleBlockUpdate(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord, tileentity.getWorldObj().getBlock(tileentity.xCoord, tileentity.yCoord, tileentity.zCoord), 400);
 	}
 	
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemstack) {
 		int dir = MathHelper.floor_double((double)((player.rotationYaw * 4F) / 360F) + 0.5D) & 3;
         world.setBlockMetadataWithNotify(x, y, z, dir, 0);
-        if(!world.isRemote){
-        	EntityPlayer pl = (EntityPlayer)player;
-        	pl.addChatComponentMessage(new ChatComponentText("" + world.getBlockMetadata(x, y, z)));
-        }
 	}
 	
 	@Override
