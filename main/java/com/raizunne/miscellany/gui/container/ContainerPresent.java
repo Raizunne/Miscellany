@@ -6,6 +6,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
@@ -36,9 +37,7 @@ public class ContainerPresent extends Container{
 		return present.isUseableByPlayer(player);
 	}
 	
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int par2) {
-		System.out.println(par2);
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
 		ItemStack itemstack = null;
 	    Slot slot = (Slot) this.inventorySlots.get(par2);
 
@@ -69,9 +68,8 @@ public class ContainerPresent extends Container{
 	      if (itemstack1.stackSize == itemstack.stackSize) {
               return null;
 	      }
-	      slot.onPickupFromSlot(player, itemstack1);
+	      slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
 	    }
 	    return itemstack;
 	}
-
 }

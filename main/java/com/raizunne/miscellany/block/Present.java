@@ -2,9 +2,11 @@ package com.raizunne.miscellany.block;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -13,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 
 import com.raizunne.miscellany.Miscellany;
+import com.raizunne.miscellany.tileentities.TileEntityPackage;
 import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
 public class Present extends BlockContainer{
@@ -52,6 +55,19 @@ public class Present extends BlockContainer{
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		TileEntityPresent tile = (TileEntityPresent)world.getTileEntity(x, y, z);
+		EntityItem item;
+		for(int i=0; i<tile.getSizeInventory(); i++){
+			if(tile.getStackInSlot(i)!=null){
+				item = new EntityItem(world, x, y, z, tile.getStackInSlot(i));
+				world.spawnEntityInWorld(item);
+			}
+		}
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 	
 	@Override

@@ -45,7 +45,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Miscellany
 {
     public static final String MODID = "Miscellany";
-    public static final String VERSION = "0.5";
+    public static final String VERSION = "0.5.1";
     
     @Instance
     public static Miscellany instance;
