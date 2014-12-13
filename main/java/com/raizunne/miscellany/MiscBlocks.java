@@ -6,6 +6,7 @@ import com.raizunne.miscellany.block.FoodPackager;
 import com.raizunne.miscellany.block.Heart;
 import com.raizunne.miscellany.block.NoNite;
 import com.raizunne.miscellany.block.Present;
+import com.raizunne.miscellany.block.ShiftyPlate;
 import com.raizunne.miscellany.block.ThePackage;
 import com.raizunne.miscellany.block.TrophyBase;
 
@@ -23,6 +24,7 @@ public class MiscBlocks {
     public static Block heart;
     public static Block trophybase;
     public static Block column;
+    public static Block shifty;
     
 	public static void init(){
    	 	present = new Present(Material.ground);
@@ -33,6 +35,7 @@ public class MiscBlocks {
    	 	trophybase = new TrophyBase(Material.ground);
    	 	packager = new FoodPackager(Material.ground);
    	 	column = new Column(Material.ground);
+   	 	shifty = new ShiftyPlate(Material.ground);
    	 	
 //   	 	GameRegistry.registerBlock(noNite, "nonite");
    	 	GameRegistry.registerBlock(thepackage, "thepackage");
@@ -40,8 +43,9 @@ public class MiscBlocks {
 	 	GameRegistry.registerBlock(trophybase, "trophybase");
 	 	GameRegistry.registerBlock(packager, "foodpackager");
 	 	GameRegistry.registerBlock(column, "misccolumn");
+//	 	GameRegistry.registerBlock(shifty, "shiftyplate");
 //	 	GameRegistry.registerBlock(heart, "hearthealer");
-//	 	GameRegistry.registerBlock(present, "present");
+	 	GameRegistry.registerBlock(present, "present");
 	 	
 	}
 	

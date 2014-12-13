@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -26,11 +27,11 @@ public class ThePackage extends BlockContainer{
 		super(material);
 		setBlockName("thepackage");
 		setStepSound(soundTypeStone);
-		setBlockTextureName("miscellany:purpleColor");
+		setBlockTextureName("miscellany:Present");
 		setHarvestLevel("pickaxe", 0);
 		setHardness(1.0F);
 		setCreativeTab(Miscellany.miscTab);
-		setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 0.9375F, 0.9375F);
+		setBlockBounds(0.125F, 0F, 0.125F, 0.875F, 0.75F, 0.875F);
 	}
 	
 	@Override
@@ -54,6 +55,19 @@ public class ThePackage extends BlockContainer{
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack itemstack) {
 		int dir = MathHelper.floor_double((double)((player.rotationYaw * 4F) / 360F) + 0.5D) & 3;
         world.setBlockMetadataWithNotify(x, y, z, dir, 0);
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		TileEntityPackage tile = (TileEntityPackage)world.getTileEntity(x, y, z);
+		EntityItem item;
+		for(int i=0; i<tile.getSizeInventory(); i++){
+			if(tile.getStackInSlot(i)!=null){
+				item = new EntityItem(world, x, y, z, tile.getStackInSlot(i));
+				world.spawnEntityInWorld(item);
+			}
+		}
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 	
 	@Override

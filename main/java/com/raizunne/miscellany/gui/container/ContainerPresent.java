@@ -1,7 +1,4 @@
-package com.raizunne.miscellany.gui;
-
-import com.raizunne.miscellany.MiscItems;
-import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+package com.raizunne.miscellany.gui.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -9,12 +6,15 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerAdvReactBrewer extends Container{
+import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
+import com.raizunne.miscellany.tileentities.TileEntityPresent;
 
-	private TileEntityAdvReactBrewer advbrewer;
+public class ContainerPresent extends Container{
+
+	private TileEntityPresent present;
 	
-	public ContainerAdvReactBrewer(InventoryPlayer invplayer, TileEntityAdvReactBrewer advbrewer){
-		this.advbrewer = advbrewer;
+	public ContainerPresent(InventoryPlayer invplayer, TileEntityPresent present){
+		this.present = present;
 		
 		for(int x=0; x < 9; x++){
 			addSlotToContainer(new Slot(invplayer, x, 8 + 18 * x, 142));
@@ -25,20 +25,20 @@ public class ContainerAdvReactBrewer extends Container{
 				addSlotToContainer(new Slot(invplayer, x + y * 9 + 9, 8 + 18 * x, 84 + y * 18));
 			}
 		}
-		addSlotToContainer(new Slot(advbrewer, 0, 54, 26));
-		addSlotToContainer(new Slot(advbrewer, 1, 80, 16));
-		addSlotToContainer(new Slot(advbrewer, 2, 106, 26));
-		addSlotToContainer(new Slot(advbrewer, 3, 80, 59));
+		
+		for(int x=0; x<7; x++){
+			addSlotToContainer(new Slot(present, x, 26 + 18*x, 58));
+		}	
+		
 	}
-	
-	
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
-		return advbrewer.isUseableByPlayer(player);
+		return present.isUseableByPlayer(player);
 	}
 	
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int par2) {
+		System.out.println(par2);
 		ItemStack itemstack = null;
 	    Slot slot = (Slot) this.inventorySlots.get(par2);
 
@@ -47,18 +47,10 @@ public class ContainerAdvReactBrewer extends Container{
 	      itemstack = itemstack1.copy();
 
 	      if(par2 < 35){
-	    	  if(itemstack1.isItemEqual(new ItemStack(MiscItems.potionFlask))){
-	    		  if(!mergeItemStack(itemstack1, 38, 40, false)){
-		    		  if(!mergeItemStack(itemstack1, 9, 35, false)){
-		    			  return null;
-		    		  }
-		    	  }
-	    	  }else{
-		    	  if(!mergeItemStack(itemstack1, 36, 39, false)){
-		    		  if(!mergeItemStack(itemstack1, 9, 35, false)){
-		    			  return null;
-		    		  }
-		    	  }
+	    	  if(!mergeItemStack(itemstack1, 36, 43, false)){
+	    		  if(!mergeItemStack(itemstack1, 9, 35, false)){
+	    			  return null;
+	    		  }
 	    	  }
 	      }else if(par2<9){
 	    	 if(!mergeItemStack(itemstack1, 0, 9, false)){
@@ -80,5 +72,6 @@ public class ContainerAdvReactBrewer extends Container{
 	      slot.onPickupFromSlot(player, itemstack1);
 	    }
 	    return itemstack;
-	 }
+	}
+
 }

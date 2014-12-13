@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.raizunne.miscellany.MiscBlocks;
+import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.tileentities.TileEntityColumn;
 
 public class Column extends BlockContainer{
@@ -26,6 +27,7 @@ public class Column extends BlockContainer{
 		setHarvestLevel("pickaxe", 2);
 		setHardness(1.0F);
 		setBlockBounds(0.0625F, 0, 0.0625F, 0.9375F, 1, 0.9375F);
+		setCreativeTab(Miscellany.miscTab);
 	}
 	
 	@Override
@@ -49,11 +51,6 @@ public class Column extends BlockContainer{
 			te.setState(3);
 		}
 		
-	}
-	
-	@Override
-	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer p_149699_5_) {
-		System.out.println(world.getBlockMetadata(x, y, z));
 	}
 	
 	@Override

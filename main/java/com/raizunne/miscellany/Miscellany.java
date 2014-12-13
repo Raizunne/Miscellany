@@ -1,11 +1,19 @@
+/**
+Code made by Raizunne as a part of Raizunne's Miscellany  
+Source code found at github.com/Raizunne
+ */
 package com.raizunne.miscellany;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockPressurePlate;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
+import com.raizunne.miscellany.client.render.RenderOnPlayer;
 import com.raizunne.miscellany.handler.GUIHandler;
 import com.raizunne.miscellany.handler.MiscellanyEventHandler;
 import com.raizunne.miscellany.handler.PotionHandler;
@@ -30,8 +38,10 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = Miscellany.MODID, version = Miscellany.VERSION)
+@Mod(modid = Miscellany.MODID, version = Miscellany.VERSION, dependencies = "required-after:CoFHCore")
 public class Miscellany
 {
     public static final String MODID = "Miscellany";
@@ -61,12 +71,6 @@ public class Miscellany
    	 	MiscBlocks.init();
    		MiscRecipes.init();
    		proxy.initRenderers();
-   		try {
-			ClientProxy.checkDonors();
-			ClientProxy.checkAuthors();
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
    		
    	 	GameRegistry.registerTileEntity(TileEntityAdvReactBrewer.class, "advreactbrewer");
    	 	GameRegistry.registerTileEntity(TileEntityPresent.class, "present");
@@ -86,8 +90,7 @@ public class Miscellany
     }
     
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event){
     	NetworkRegistry.INSTANCE.registerGuiHandler(this, new GUIHandler());
     }
     

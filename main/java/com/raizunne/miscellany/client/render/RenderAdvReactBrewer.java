@@ -17,7 +17,6 @@ import com.raizunne.miscellany.MiscBlocks;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.client.model.modelAdvReactBrewer;
 import com.raizunne.miscellany.client.model.modelAdvReactBrewerOLD;
-import com.raizunne.miscellany.client.model.modelPresent;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 
 public class RenderAdvReactBrewer extends TileEntitySpecialRenderer{

@@ -41,13 +41,33 @@ public class MiscRecipes {
    	 	
    	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.trophybase), new Object[]{
    	 		"   ",
-   	 		" I ",
+   	 		"WIW",
    	 		"WWW", 'I', Items.iron_ingot, 'W', Blocks.planks});
    	 	
-   	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.trophybase), new Object[]{
+   	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.packager), new Object[]{
 	 		"III",
 	 		"IFI",
 	 		"CCC", 'I', Items.iron_ingot, 'F', Blocks.furnace, 'C', Blocks.cobblestone});
+   	 	
+   	 GameRegistry.addRecipe(new ItemStack(MiscBlocks.thepackage), new Object[]{
+	 		"III",
+	 		"ICI",
+	 		"IBI", 'I', Items.iron_ingot, 'C', Blocks.chest, 'B', Blocks.iron_block});
+   	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.column, 7), new Object[]{
+	 		"QQQ",
+	 		" Q ",
+	 		"QQQ", 'Q', Blocks.quartz_block});
+   	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscItems.pack), new Object[]{
+	 		" P ",
+	 		"PCP",
+	 		" P ", 'P', Items.paper, 'C', Blocks.chest});
+   	 	
+   	 	GameRegistry.addRecipe(new ItemStack(MiscBlocks.present), new Object[]{
+	 		"PPP",
+	 		"PCP",
+	 		"PPP", 'P', Items.paper, 'C', Blocks.chest});
    	 	
    	 	IRecipe gem = new GemLeveling();
    	 	

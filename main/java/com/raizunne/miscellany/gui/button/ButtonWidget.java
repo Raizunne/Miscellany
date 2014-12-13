@@ -4,6 +4,8 @@ Source code found at github.com/Raizunne
  */
 package com.raizunne.miscellany.gui.button;
 
+import java.util.Random;
+
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.block.Block;
@@ -125,6 +127,21 @@ public class ButtonWidget extends GuiButton{
     }
 	
 	public void func_146113_a(SoundHandler p_146113_1_){
-//        p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation("gui.button.press"), 1.0F));
+		ResourceLocation page1 = new ResourceLocation("miscellany:pageflip1");
+		ResourceLocation page2 = new ResourceLocation("miscellany:pageflip2");
+		ResourceLocation page3 = new ResourceLocation("miscellany:pageflip3");
+		ResourceLocation page4 = new ResourceLocation("miscellany:pageflip4");
+		
+		Random r = new Random();
+		int n = r.nextInt(4) + 1;
+		if(n==1){
+			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page1, 1.0F));
+		}else if(n==2){
+			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page2, 1.0F));
+		}else if(n==3){
+			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page3, 1.0F));
+		}else if(n==4){
+			p_146113_1_.playSound(PositionedSoundRecord.func_147674_a(page4, 1.0F));
+		}
     }
 }

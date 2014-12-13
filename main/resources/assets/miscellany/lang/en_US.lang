@@ -22,9 +22,10 @@ item.redstonicBoots.documentation=Can step-up a single block, increases speed an
 item.sacredChalice.documentation=Consumes cobblestone, receives water.
 item.manualBook.documentation=Manual for the Raizunne's Miscellany.
 item.pamphlet.documentation=Free propaganda given to the player when spawned or a new version comes out!
-item.debugHunger.doumentation=Creative item that decreases hunger for debuging.
+item.debugHunger.documentation=Creative item that decreases hunger for debuging.
 item.shake.documentation=New technology for ingesting food, Shake to Eat! (Left click to ingest food and saturation, for the boring ones.)
-item.package.documentation=Compressing items into one.
+item.package.documentation=Can hold up to 576 of a single item. Packager needed to insert items in it.
+item.PackagedFood.documentation=Regens 8 hunches, gives 18 saturation.
 
 emptyPotionFlask.name=Empty Potion Flask
 flightPotionFlask.name=Potion of Flight
@@ -34,7 +35,6 @@ knowledgePotion=Knowledge
 knowledgePotion.postfix=Knowledge
 flightPotion=Flight
 flightPotion.postfix=Flight
-
 
 tile.foodpackager.name=Food Packager
 tile.advBrew.name=Reactive Brewer
@@ -48,3 +48,4 @@ tile.misccolumn.name=Column
 tile.foodpackager.documentation=Generate better food from poor food!
 tile.advBrew.documentation=Reactive brewing is best brewing, at least that's what they say.
 tile.present.documentation=Insert items and place this block for giving presents to your friends!
+tile.thepackage.documentation=Can inser items into packages. 

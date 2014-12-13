@@ -45,9 +45,9 @@ public class ItemChaliceRender implements IItemRenderer{
 			GL11.glTranslatef(2F, -5F, -2F);
 			break;
 		case EQUIPPED_FIRST_PERSON:
-			float scale2 = 0.4F;
+			float scale2 = 0.3F;
 			GL11.glScalef(scale2, scale2, scale2);
-			GL11.glTranslatef(5F, 6F, 0.0F);
+			GL11.glTranslatef(6F, 6F, 1F);
 			GL11.glRotatef(-180F, 10.0F, 0F, 0F);
 			break;
 		case ENTITY:

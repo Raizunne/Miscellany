@@ -24,11 +24,15 @@ import org.lwjgl.opengl.GL11;
 
 import com.raizunne.miscellany.MiscBlocks;
 import com.raizunne.miscellany.MiscItems;
+import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.gui.button.ButtonLeft;
 import com.raizunne.miscellany.gui.button.ButtonMenu;
 import com.raizunne.miscellany.gui.button.ButtonNormal;
 import com.raizunne.miscellany.gui.button.ButtonRight;
+import com.raizunne.miscellany.gui.button.ButtonWidget;
 import com.raizunne.miscellany.util.BookResources;
+
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 
 public class GuiManualBooks extends GuiScreen{
 	
@@ -38,6 +42,7 @@ public class GuiManualBooks extends GuiScreen{
 	
 	public final int xSizeofTexture = 228;
 	public final int ySizeofTexture = 166;
+	public EntityPlayer player;
 	
 	public String currentSection;
 	public int subSection;
@@ -55,6 +60,7 @@ public class GuiManualBooks extends GuiScreen{
 	
 	public GuiManualBooks(EntityPlayer player){
 		checkIfClient(player);
+		this.player = player;
 	}
 	
 	public boolean checkIfClient(EntityPlayer player){
@@ -143,16 +149,38 @@ public class GuiManualBooks extends GuiScreen{
 			drawCrafting(null, Items.emerald, null, Items.emerald, MiscItems.knowledgegem, Items.emerald, null, Items.emerald, null, MiscItems.knowledgegem, 20, 20, x, y);	
 		}else if(entry && currentSection=="foodpackager" && subSection==0){
 			fontrenderer.drawString("Food Packager", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(BookResources.foodpackager1, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(BookResources.foodpackager2, posX + 121, posY + 17, 98, 0);
+			drawCrafting(Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Blocks.furnace, Items.iron_ingot, Blocks.cobblestone, Blocks.cobblestone, Blocks.cobblestone, MiscBlocks.packager, 20, 20, x, y);	
+		}else if(entry && currentSection=="packager" && subSection==0){
+			fontrenderer.drawString("Packager", posX + 10, posY + 8, 0x000000, false);
 			fontrenderer.drawSplitString(BookResources.packager1, posX + 10, posY + 80, 98, 0);
 			fontrenderer.drawSplitString(BookResources.packager2, posX + 121, posY + 17, 98, 0);
-			drawCrafting(Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Items.gold_ingot, Blocks.furnace, Items.gold_ingot, Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, MiscBlocks.packager, 20, 20, x, y);	
+			drawCrafting(Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Items.iron_ingot, Blocks.chest, Items.iron_ingot, Items.iron_ingot, Blocks.iron_block, Items.iron_ingot, MiscBlocks.packager, 20, 20, x, y);	
+		}else if(entry && currentSection=="packager" && subSection==1){
+			fontrenderer.drawString("Package", posX + 10, posY + 8, 0x000000, false);
+			fontrenderer.drawSplitString(BookResources.packager3, posX + 10, posY + 80, 98, 0);
+			fontrenderer.drawSplitString(BookResources.packager4, posX + 121, posY + 17, 98, 0);
+			drawCrafting(null, Items.paper, null, Items.paper, Blocks.chest, Items.paper, null, Items.paper, null, MiscItems.pack, 20, 20, x, y);	
 		}
+		
 		
 		if(brew){
 			RenderHelper.disableStandardItemLighting();
 			fontrenderer.drawString("Brewer Recipe", posX+21, posY+80, 0x939393, false);
 			if(x > posX + 12 && x < posX + 104 && y > posY + 80 && y < posY + 86){
 				String[] desc = { "Put the top three", "items inside of the", "Brewer and a Potion", "Flask on the bottom slot." };
+	            @SuppressWarnings("rawtypes")
+	            List temp = Arrays.asList(desc);
+	            zLevel = 2;
+	            drawHoveringText(temp, x, y, fontrenderer);
+	            RenderHelper.enableGUIStandardItemLighting();
+			}
+		}
+		if(currentSection=="foodpackager"){
+			RenderHelper.disableStandardItemLighting();
+			if(x > posX + 226 && x < posX + 248 && y > posY + 10 && y < posY + 30){
+				String[] desc = { "Packager Values" };
 	            @SuppressWarnings("rawtypes")
 	            List temp = Arrays.asList(desc);
 	            zLevel = 2;
@@ -195,6 +223,7 @@ public class GuiManualBooks extends GuiScreen{
 		ButtonMenu blocks1 = new ButtonMenu(51, posX + 124, posY + 18, 90, 12, "Present", color1, color2, true);
 		
 		ButtonMenu machines1 = new ButtonMenu(71, posX + 124, posY + 18, 90, 12, "Food Packager", color1, color2, true);
+		ButtonMenu machines2 = new ButtonMenu(72, posX + 124, posY + 30, 90, 12, "Packager", color1, color2, true);
 		
 		ButtonMenu equipment1 = new ButtonMenu(91, posX + 124, posY + 18, 90, 12, "Redstonic JetBoots", color1, color2, true);
 		
@@ -203,6 +232,8 @@ public class GuiManualBooks extends GuiScreen{
 		ButtonMenu alchemy3 = new ButtonMenu(114, posX + 124, posY + 42, 90, 12, "Flight Potion", color1, color2, true);
 		ButtonMenu alchemy4 = new ButtonMenu(115, posX + 124, posY + 54, 90, 12, "Anti-Wither Potion", color1, color2, true);
 		ButtonMenu alchemy5 = new ButtonMenu(116, posX + 124, posY + 66, 90, 12, "Heart Potion", color1, color2, true);
+		
+		ButtonWidget widget1 = new ButtonWidget(200, posX+228, posY+10, "FoodValues", "right", 0, MiscItems.PackagedFood, itemRender);
 			
 		if(currentSection=="index"|| currentSection==null || currentSection=="0"){
 			buttonList.removeAll(buttonList);
@@ -238,6 +269,7 @@ public class GuiManualBooks extends GuiScreen{
 			buttonList.removeAll(buttonList);
 			buttonList.add(returnIndex);
 			buttonList.add(machines1);
+			buttonList.add(machines2);
 			
 		}else if(currentSection=="equipment"){
 			buttonList.removeAll(buttonList);
@@ -252,6 +284,10 @@ public class GuiManualBooks extends GuiScreen{
 			buttonList.add(alchemy3);
 			buttonList.add(alchemy4);
 			buttonList.add(alchemy5);
+		}
+		
+		if(currentSection=="foodpackager"){
+			buttonList.add(widget1);
 		}
 	}
 		
@@ -339,6 +375,13 @@ public class GuiManualBooks extends GuiScreen{
 			entry=true;
 			maxPages=0;
 		break;
+		case 72:
+			currentSection="packager";
+			prevSection="machines";
+			subSection=0;
+			entry=true;
+			maxPages=1;
+		break;
 		
 		//ALCHEMY
 		case 112:
@@ -379,6 +422,11 @@ public class GuiManualBooks extends GuiScreen{
 			entry=true;
 			maxPages=0;
 			brew=true;
+		break;
+		
+		//WIDGETS
+		case 200:
+			FMLNetworkHandler.openGui(player, Miscellany.instance, 6, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
 		break;
 		}
 	}
@@ -443,7 +491,7 @@ public class GuiManualBooks extends GuiScreen{
 		}else if(i8 instanceof Block){
 			slot8 = new ItemStack((Block)i8);
 		}
-		if(i1 instanceof Item){
+		if(i9 instanceof Item){
 			slot9 = new ItemStack((Item)i9);
 		}else if(i9 instanceof Block){
 			slot9 = new ItemStack((Block)i9);
@@ -558,7 +606,7 @@ public class GuiManualBooks extends GuiScreen{
 		if(mousex>xPosCrafting+58 && mousex<xPosCrafting+67 && mousey>yPosCrafting+38 && mousey<yPosCrafting+42 
 				|| mousex>xPosCrafting+63 && mousex<xPosCrafting+69 && mousey>yPosCrafting+33 && mousey<yPosCrafting+68
 				|| mousex>xPosCrafting+62 && mousex<xPosCrafting+72 && mousey>yPosCrafting+26 && mousey<yPosCrafting+33){
-			String[] desc = { "Produces" };
+			String[] desc = { "Crafting" };
             @SuppressWarnings("rawtypes")
             List temp = Arrays.asList(desc);
             drawHoveringText(temp, mousex, mousey, itemsInGrid);

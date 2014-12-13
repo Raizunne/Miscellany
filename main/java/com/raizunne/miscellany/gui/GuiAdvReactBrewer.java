@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.raizunne.miscellany.gui.container.ContainerAdvReactBrewer;
 import com.raizunne.miscellany.tileentities.TileEntityAdvReactBrewer;
 
 public class GuiAdvReactBrewer extends GuiContainer{

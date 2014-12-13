@@ -21,6 +21,7 @@ import org.lwjgl.opengl.GL11;
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.gui.button.ButtonWidget;
+import com.raizunne.miscellany.gui.container.ContainerFoodPackager;
 import com.raizunne.miscellany.tileentities.TileEntityFoodPackager;
 
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;

@@ -29,12 +29,14 @@ public class ItemPresent implements IItemRenderer{
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+//		GL11.glScalef(1.2F, 1.2F, 1.2F);
 		switch(type){
 		case EQUIPPED:
 			GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
+			GL11.glScalef(1.5F, 1.5F, 1.5F);
 			break;
 		case EQUIPPED_FIRST_PERSON:
-			GL11.glTranslatef(0.5F, 0.25F, 1F);
+			GL11.glTranslatef(0.5F, 0.5F, 1F);
 			GL11.glRotatef(180, 0, 1F, 0);
 			break;
 		default:

@@ -42,8 +42,10 @@ public class TileEntityPackage extends TileEntity implements IInventory, IEnergy
 	@Override
 	public void updateEntity() {
 		super.updateEntity();
-		if(checkIfCool() && checkProduct() && checkNBT(9)){
-			int meta = getStackInSlot(0).getItemDamage();
+		if(checkIfCool() && checkProduct() && checkNBT(9) && storage.getEnergyStored()>=16000){
+			if(getStackInSlot(0).getItem() == MiscItems.pack){
+				return;
+			}
 			if(timer!=60){
 				timer++;
 			}else{
@@ -59,10 +61,17 @@ public class TileEntityPackage extends TileEntity implements IInventory, IEnergy
 				getStackInSlot(4).stackSize + getStackInSlot(5).stackSize + getStackInSlot(6).stackSize + getStackInSlot(7).stackSize + getStackInSlot(8).stackSize; 
 		int id = Item.getIdFromItem(getStackInSlot(0).getItem());
 		int meta = getStackInSlot(0).getItemDamage();
+		String type;
+		if(getStackInSlot(0).getItem() instanceof Item){
+			type = "item";
+		}else{
+			type = "block";
+		}
 		storage.setEnergyStored(storage.getEnergyStored()-16000);
 		getStackInSlot(9).stackTagCompound.setInteger("count", count);
 		getStackInSlot(9).stackTagCompound.setInteger("item", id);
 		getStackInSlot(9).stackTagCompound.setInteger("meta", meta);
+		getStackInSlot(9).stackTagCompound.setString("type", type);
 		for(int i=0; i<9; i++){
 			setInventorySlotContents(i, null);
 		}

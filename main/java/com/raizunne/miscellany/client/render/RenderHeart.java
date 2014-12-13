@@ -12,7 +12,6 @@ import org.lwjgl.opengl.GL11;
 
 import com.raizunne.miscellany.Miscellany;
 import com.raizunne.miscellany.client.model.modelHeart;
-import com.raizunne.miscellany.client.model.modelPresent;
 
 public class RenderHeart extends TileEntitySpecialRenderer{
 	private static final ResourceLocation texture = new ResourceLocation(Miscellany.MODID + ":" + "textures/model/Heart.png");

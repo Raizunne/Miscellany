@@ -38,9 +38,11 @@ public class AntiWither extends Item{
 	
 	@Override
 	public ItemStack onEaten(ItemStack itemstack, World world, EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(MiscItems.flightPotion.getId(), 1800, 0));
-		player.addPotionEffect(new PotionEffect(Potion.damageBoost.getId(), 600, 0));
-		player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 1200, 0));
+		player.addPotionEffect(new PotionEffect(MiscItems.flightPotion.getId(), 2400, 0));
+		player.addPotionEffect(new PotionEffect(Potion.damageBoost.getId(), 2400, 0));
+		player.addPotionEffect(new PotionEffect(Potion.regeneration.getId(), 2400, 0));
+		player.addPotionEffect(new PotionEffect(Potion.field_76444_x.getId(), 2400, 2));
+		player.addPotionEffect(new PotionEffect(Potion.resistance.getId(), 2400, 2));
 		
 		itemstack.damageItem(1, player);
 		if(itemstack.getItemDamage()==1){

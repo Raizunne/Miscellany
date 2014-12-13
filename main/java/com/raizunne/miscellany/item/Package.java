@@ -2,10 +2,9 @@ package com.raizunne.miscellany.item;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -14,7 +13,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.FakePlayerFactory;
 
 import com.raizunne.miscellany.MiscItems;
 import com.raizunne.miscellany.Miscellany;
@@ -29,9 +32,9 @@ public class Package extends Item{
 	public Package(){
 		setMaxStackSize(1);
 		setUnlocalizedName("package");
-		setTextureName("miscellany:thepackage");
+		setTextureName("miscellany:Package");
 		setCreativeTab(Miscellany.miscTab);
-		setMaxDamage(1);
+		setMaxDamage(0);
 	}
 	
 	@Override
@@ -60,14 +63,13 @@ public class Package extends Item{
 			int meta = itemstack.stackTagCompound.getInteger("meta");
 			if(itemstack.stackTagCompound.getInteger("item")!=0){
 				ItemStack stack = new ItemStack(getItemById(id), 1, meta);
-				String name = stack.getUnlocalizedName() + ".name";
-				list.add("Currently Contains: " + itemstack.stackTagCompound.getInteger("count") + " of " +
-				EnumChatFormatting.BLUE + I18n.format(name,new Object[0]));
+				String name = stack.getDisplayName();
+				list.add("Contains: " + itemstack.stackTagCompound.getInteger("count") + " of " + EnumChatFormatting.BLUE + name);
 			}else{
-				list.add("Currently Empty");
+				list.add("Empty");
 			}
 		}else{
-			list.add("Currently Empty");
+			list.add("Empty");
 		}
 	}
 	
@@ -76,13 +78,11 @@ public class Package extends Item{
 		if(itemstack.stackTagCompound.getInteger("item")!=0 && itemstack.stackTagCompound.getInteger("count")!=0){
 			player.setItemInUse(itemstack, getMaxItemUseDuration(itemstack));
 		}else{
-			if(!world.isRemote){
+			if(world.isRemote){
 				player.addChatComponentMessage(new ChatComponentText("Package is empty..."));
 			}
 		}
-		
 		return itemstack;
-		
 	}
 	
 	@Override
@@ -97,8 +97,14 @@ public class Package extends Item{
 		int meta = itemstack.stackTagCompound.getInteger("meta");
 		EntityItem item;
 		
+		itemstack.setItemDamage(1);
+		
+		if(player instanceof FakePlayer){
+			return null;
+		}
+		
 		ItemStack stack = new ItemStack(getItemById(id), count, meta);
-		String name = stack.getUnlocalizedName() + ".name";;
+		String name = stack.getDisplayName();
 		if(player.inventory.addItemStackToInventory(stack)){
 			player.inventory.addItemStackToInventory(stack);
 		}else{
@@ -107,9 +113,9 @@ public class Package extends Item{
 				world.spawnEntityInWorld(item);
 			}	
 		}
-		if(!world.isRemote){
+		if(world.isRemote){
 			player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.LIGHT_PURPLE + "<Package> " + EnumChatFormatting.WHITE + "Added " + 
-			EnumChatFormatting.BLUE + count + EnumChatFormatting.WHITE + " of " + EnumChatFormatting.BLUE + I18n.format(name, new Object[0])));
+			EnumChatFormatting.BLUE + count + EnumChatFormatting.WHITE + " of " + EnumChatFormatting.BLUE + name));
 		}
 		player.playSound("miscellany:openbox", 1F, 1F);
 		return null;

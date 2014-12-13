@@ -25,8 +25,8 @@ public class BookResources {
 	public static final String flight1 = "Potion that gives you temporary invisible wings, to the human eye at least.";
 	public static final String flight2 = "When the effect of the bull in the red is gone, the human will drop to the ground, causing posible death. Use with caution.";
 	
-	public static final String wither1 = "Get rid of those withers with only one potion!";
-	public static final String wither2 = "No need to chug all of those  potions at the last second of that timer! Get this single potions that includes Flight, Regeneration and Strenght!";
+	public static final String wither1 = "Get rid of those withers with only one potion! The user CAN kill the wither with only this potion! Be ready for a good fight!";
+	public static final String wither2 = "No need to chug all of those  potions at the last second of that timer! Get this single potions that includes Flight, Regeneration, Resistance and Strenght!                                    Any skull can be used to craft.";
 	
 	public static final String heart1 = "Shake to regenerate, gives the user some good juice of life.";
 	public static final String heart2 = "Just as the well received Shake, the user receives an amount of life force for each chug it takes.";
@@ -39,8 +39,14 @@ public class BookResources {
 	public static final String gemLevel2 = "Place the gem in the middle of a crafting table, and then some emeralds near it, just like the diagram at the left.";
 	public static final String gemLevel3 = EnumChatFormatting.DARK_PURPLE + "This will increase the gem's max level capacity by 10.";
 	
-	public static final String packager1= "This is the type of machine that you'd see on an informercial, but this one works. It requires RF to work.";
-	public static final String packager2= "Insert food on the machine, this will generate Calories, these Calories can be used to make a special food called " + EnumChatFormatting.BLUE + "Packaged Food" + EnumChatFormatting.RESET + EnumChatFormatting.BLACK + 
+	public static final String foodpackager1= "This is the type of machine that you'd see on an informercial, but this one works. It requires RF to work.";
+	public static final String foodpackager2= "Insert food on the machine, this will generate Calories, these Calories can be used to make a special food called " + EnumChatFormatting.BLUE + "Packaged Food" + EnumChatFormatting.RESET + EnumChatFormatting.BLACK + 
 			". It requires 500 calories to make. It heals 8 food hunches and 18 saturation, greater than the golden carrot (14 saturation).";
+	
+	public static final String packager1 = "Ever had 1821032 rotten flesh and are cloggin up your sorting system? Now there's a way to lower that number!";
+	public static final String packager2 = "With this machine, you can compress up to a number of 576 items into a single item! Insert the items and then insert a Package (Not inclueded) and wait!"
+			+ "To get your items back, right click the package!            " + EnumChatFormatting.DARK_PURPLE + "Check next page for more info about Package" + EnumChatFormatting.BLACK;
+	public static final String packager3 = "When the package has been filled, right click on it to get your items back";
+	public static final String packager4 = "This will add all of the items into the player's inventory. If there's not enough space, the items will be dropped on the ground.";
 	
 }
